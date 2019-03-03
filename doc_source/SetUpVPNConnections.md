@@ -125,7 +125,7 @@ After you create the Site\-to\-Site VPN connection, download the configuration i
      + If your VPN router does not support BGP, choose **Static**\. For **Static IP Prefixes**, specify each IP prefix for the private network of your Site\-to\-Site VPN connection\.
    + Under **Tunnel Options**, you can optionally specify the following information for each tunnel:
      + A size /30 CIDR block from the `169.254.0.0/16` range for the inside tunnel IP addresses\.
-     + The IKE pre\-shared key \(PSK\)\.
+     + The IKE pre\-shared key \(PSK\)\. The following versions are supported: IKEv1 or IKEv2\.
 
      For more information about these options, see [Configuring the VPN Tunnels for Your Site\-to\-Site VPN Connection](VPNTunnels.md)\.
 
