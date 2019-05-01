@@ -30,6 +30,10 @@ When you create a virtual private gateway, you can specify the private Autonomou
 **Note**  
 If you create your virtual private gateway before 2018\-06\-30, the default ASN is 17493 in the Asia Pacific \(Singapore\) region, 10124 in the Asia Pacific \(Tokyo\) region, 9059 in the EU \(Ireland\) region, and 7224 in all other regions\. 
 
+#### AWS Transit Gateway<a name="Transit-Gateway"></a>
+
+You can modify the target gateway of AWS Site\-to\-Site VPN connection from a virtual private gateway to a transit gateway\. A transit gateway is a transit hub that you can use to interconnect your virtual private clouds \(VPC\) and on\-premises networks\. For more information, see [Modifying a Site\-to\-Site VPN Connection's Target Gateway](modify-vpn-target.md)\.
+
 ### Customer Gateway<a name="CustomerGateway"></a>
 
 A *customer gateway* is a physical device or software application on your side of the Site\-to\-Site VPN connection\.
@@ -102,7 +106,7 @@ Alternatively, use one of the following commands:
 + [DescribeVpnConnections](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpnConnections.html) \(Amazon EC2 Query API\)
 + [Get\-EC2VpnConnection](https://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2VpnConnection.html) \(Tools for Windows PowerShell\)
 
-### Migrating to AWS VPN<a name="aws-vpn-migrate"></a>
+### Migrating from AWS Classic VPN to AWS VPN<a name="aws-vpn-migrate"></a>
 
 If your existing Site\-to\-Site VPN connection is an AWS Classic VPN connection, you can migrate to an AWS VPN connection by creating a new virtual private gateway and Site\-to\-Site VPN connection, detaching the old virtual private gateway from your VPC, and attaching the new virtual private gateway to your VPC\.
 

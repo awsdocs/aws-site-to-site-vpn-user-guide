@@ -14,7 +14,7 @@ The following metrics are available for your VPN tunnels\.
 
 | Metric | Description | 
 | --- | --- | 
-|  `TunnelState`  |  The state of the tunnel\. 0 indicates DOWN and 1 indicates UP\. Units: Boolean  | 
+|  `TunnelState`  |  The state of the tunnel\. For static VPNs, 0 indicates DOWN and 1 indicates UP\. For BGP VPNs, 1 indicates ESTABLISHED and 0 is used for all other states\.  Units: Boolean  | 
 |  `TunnelDataIn`  |  The bytes received through the VPN tunnel\. Each metric data point represents the number of bytes received after the previous data point\. Use the Sum statistic to show the total number of bytes received during the period\. This metric counts the data after decryption\. Units: Bytes  | 
 |  `TunnelDataOut`  |  The bytes sent through the VPN tunnel\. Each metric data point represents the number of bytes sent after the previous data point\. Use the Sum statistic to show the total number of bytes sent during the period\. This metric counts the data before encryption\. Units: Bytes  | 
 

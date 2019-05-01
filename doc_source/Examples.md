@@ -8,6 +8,14 @@ When you create multiple Site\-to\-Site VPN connections to a single VPC, you can
 
 ![\[VPN layout\]](http://docs.aws.amazon.com/vpn/latest/s2svpn/images/VPN_Basic_Diagram.png)
 
-## Multiple Site\-to\-Site VPN connections<a name="MultipleVPN"></a>
+## Single Site\-to\-Site VPN Connection with a Transit Gateway<a name="SingleVPN-transit-gateway"></a>
+
+![\[Single Site-to-Site VPN Connection with a Transit Gateway\]](http://docs.aws.amazon.com/vpn/latest/s2svpn/images/site-site-transit-gateway-basic.png)
+
+## Multiple Site\-to\-Site VPN Connections<a name="MultipleVPN"></a>
 
 ![\[Multiple Site-to-Site VPN layout\]](http://docs.aws.amazon.com/vpn/latest/s2svpn/images/Branch_Offices_diagram.png)
+
+## Multiple Site\-to\-Site VPN Connections with a Transit Gateway<a name="MultipleVPN-transit-gateway"></a>
+
+![\[Multiple Site-to-Site VPN connections with a Transit Gateway\]](http://docs.aws.amazon.com/vpn/latest/s2svpn/images/branch-off-transit-gateway.png)

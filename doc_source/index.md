@@ -21,6 +21,7 @@ Amazon's trademarks and trade dress may not be used in
    + [Using Redundant Site-to-Site VPN Connections to Provide Failover](VPNConnections.md)
 + [Getting Started](SetUpVPNConnections.md)
 + [Testing the Site-to-Site VPN Connection](HowToTestEndToEnd_Linux.md)
++ [Modifying a Site-to-Site VPN Connection's Target Gateway](modify-vpn-target.md)
 + [Deleting a Site-to-Site VPN Connection](delete-vpn.md)
 + [Providing Secure Communication Between Sites Using VPN CloudHub](VPN_CloudHub.md)
 + [Monitoring Your Site-to-Site VPN Connection](monitoring-overview-vpn.md)
