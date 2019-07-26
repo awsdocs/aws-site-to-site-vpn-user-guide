@@ -7,13 +7,13 @@ To set up a Site\-to\-Site VPN connection, you need to complete the following st
 + Step 2: [Create a Virtual Private Gateway](#vpn-create-vpg)
 + Step 3: [Enable Route Propagation in Your Route Table](#vpn-configure-routing)
 + Step 4: [Update Your Security Group ](#vpn-configure-security-groups)
-+ Step 5: [Create a Site\-to\-Site VPN Connection and Configure the Customer Gateway](#vpn-create-vpn-connection)
++ Step 5: [Create a Site\-to\-Site VPN Connection and Configure the Customer Gateway Device](#vpn-create-vpn-connection)
 
 These procedures assume that you have a VPC with one or more subnets\.
 
 ## Create a Customer Gateway<a name="vpn-create-cgw"></a>
 
-A customer gateway provides information to AWS about your customer gateway device or software application\. For more information, see [Customer Gateway](VPC_VPN.md#CustomerGateway)\.
+A customer gateway provides information to AWS about your customer gateway device or software application\. For more information, see [Customer Gateway](how_it_works.md#CustomerGateway)\.
 
 **To create a customer gateway using the console**
 
@@ -108,7 +108,7 @@ To allow access to instances in your VPC from your network, you must update your
 
 For more information about working with security groups using the AWS CLI, see [Security Groups for Your VPC](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html) in the *Amazon VPC User Guide*\.
 
-## Create a Site\-to\-Site VPN Connection and Configure the Customer Gateway<a name="vpn-create-vpn-connection"></a>
+## Create a Site\-to\-Site VPN Connection and Configure the Customer Gateway Device<a name="vpn-create-vpn-connection"></a>
 
 After you create the Site\-to\-Site VPN connection, download the configuration information and use it to configure the customer gateway device or software application\.
 
@@ -127,18 +127,20 @@ After you create the Site\-to\-Site VPN connection, download the configuration i
      + A size /30 CIDR block from the `169.254.0.0/16` range for the inside tunnel IP addresses\.
      + The IKE pre\-shared key \(PSK\)\. The following versions are supported: IKEv1 or IKEv2\.
 
-     For more information about these options, see [Configuring the VPN Tunnels for Your Site\-to\-Site VPN Connection](VPNTunnels.md)\.
+     For more information about these options, see [Site\-to\-Site VPN Tunnel Options for Your Site\-to\-Site VPN Connection](VPNTunnels.md)\.
 
    It may take a few minutes to create the Site\-to\-Site VPN connection\. When it's ready, select the connection and choose **Download Configuration**\.
 
 1. In the **Download Configuration** dialog box, select the vendor, platform, and software that corresponds to your customer gateway device or software, and then choose **Yes, Download**\. 
 
-1. Give the configuration file to your network administrator, along with this guide: [Amazon VPC Network Administrator Guide](https://docs.aws.amazon.com/vpc/latest/adminguide/)\. After the network administrator configures the customer gateway, the Site\-to\-Site VPN connection is operational\.
-
 **To create a Site\-to\-Site VPN connection using the command line or API**
 + [CreateVpnConnection](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-CreateVpnConnection.html) \(Amazon EC2 Query API\)
 + [create\-vpn\-connection](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-vpn-connection.html) \(AWS CLI\)
 + [New\-EC2VpnConnection](https://docs.aws.amazon.com/powershell/latest/reference/items/New-EC2VpnConnection.html) \(AWS Tools for Windows PowerShell\)
+
+## Configure the Customer Gateway Device<a name="vpn-configure-customer-gateway-device"></a>
+
+Give the configuration file that you downloaded to your network administrator, along with this guide: [Amazon VPC Network Administrator Guide](https://docs.aws.amazon.com/vpc/latest/adminguide/)\. The network administrator configures the customer gateway device with the settings that match the customer gateway\. After the network administrator configures the customer gateway device, the Site\-to\-Site VPN connection is operational\.
 
 ## Editing Static Routes for a Site\-to\-Site VPN Connection<a name="vpn-edit-static-routes"></a>
 
@@ -178,6 +180,6 @@ This procedure requires assistance from your network administrator group\.
 
 1. Delete the Site\-to\-Site VPN connection\. For more information, see [Deleting a Site\-to\-Site VPN Connection](delete-vpn.md)\. You don't need to delete the VPC or the virtual private gateway\.
 
-1. Create a new Site\-to\-Site VPN connection and specify your own pre\-shared keys for the tunnels or let AWS generate new pre\-shared keys for you\. For more information, see [Create a Site\-to\-Site VPN Connection and Configure the Customer Gateway](#vpn-create-vpn-connection)\.
+1. Create a new Site\-to\-Site VPN connection and specify your own pre\-shared keys for the tunnels or let AWS generate new pre\-shared keys for you\. For more information, see [Create a Site\-to\-Site VPN Connection and Configure the Customer Gateway Device](#vpn-create-vpn-connection)\.
 
 1. Download the new configuration file\.

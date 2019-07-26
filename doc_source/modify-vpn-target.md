@@ -14,12 +14,15 @@ The following tasks help you complete the migration to a new gateway\.
 + [Step 3: Migrate to a New Gateway](#step-migrate-gateway)
 + [Step 4: Update VPC Route Tables](#step-update-routing)
 + [Step 5: Update the Transit Gateway Routing \(Required When the New Gateway is a Transit Gateway\)](#step-update-transit-gateway-routing)
++ [Step 6: Update the Customer Gateway ASN \(Required When the New Gateway has a Different ASN from the Old Gateway\)](#step-update-customer-gateway-asn)
 
 ## Step 1: Create the Transit Gateway<a name="step-create-gateway"></a>
 
-Before you perform the migration to the new gateway, you must configure the new gateway\. For information about adding a virtual private gateway, see [Create a Virtual Private Gateway](SetUpVPNConnections.md#vpn-create-vpg)\. For more information about adding a transit gateway, see [Create the Transit Gateway](https://docs.aws.amazon.com/vpc/latest/tgw/Create the Transit Gateway) in the *Amazon VPC Transit Gateways*\.
+Before you perform the migration to the new gateway, you must configure the new gateway\. For information about adding a virtual private gateway, see [Create a Virtual Private Gateway](SetUpVPNConnections.md#vpn-create-vpg)\. For more information about adding a transit gateway, see [Create a Transit Gateway](https://docs.aws.amazon.com/vpc/latest/tgw/tgw-transit-gateways.html#create-tgw) in *Amazon VPC Transit Gateways*\.
 
-If the new target gateway is a transit gateway, attach the VPCs to the transit gateway\. For information about VPC attachments, see [Transit Gateway Attachments to a VPC](https://docs.aws.amazon.com/vpc/latest/tgw/tgw-vpc-attachments.html) in the *Amazon VPC Transit Gateways*\.
+If the new target gateway is a transit gateway, attach the VPCs to the transit gateway\. For information about VPC attachments, see [Transit Gateway Attachments to a VPC](https://docs.aws.amazon.com/vpc/latest/tgw/tgw-vpc-attachments.html) in *Amazon VPC Transit Gateways*\.
+
+When you modify the target from a virtual private gateway to a transit gateway, you can optionally set the transit gateway ASN to be the same value as the virtual private gateway ASN\. If you choose to have a different ASN, then you must set the ASN on your customer gateway device to the transit gateway ASN\. For more information, see [Step 6: Update the Customer Gateway ASN \(Required When the New Gateway has a Different ASN from the Old Gateway\)](#step-update-customer-gateway-asn)\.
 
 ## Step 2: Delete Your Static Routes \(Required for a Static VPN Connection Migrating to a Transit Gateway\)<a name="step-update-staic-route"></a>
 
@@ -61,7 +64,7 @@ Keep a copy of the static route before you delete it\. You will need to add back
 1. Choose **Save**\.
 
 **To modify a Site\-to\-Site VPN connection using the command line or API**
-+ [ModifyVpnConnection](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/ModifyVpnConnection.html) \(Amazon EC2 Query API\)
++ [ModifyVpnConnection](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyVpnConnection.html) \(Amazon EC2 Query API\)
 + [modify\-vpn\-connection](https://docs.aws.amazon.com/cli/latest/reference/ec2/modify-vpn-connection.html) \(AWS CLI\)
 
 ## Step 4: Update VPC Route Tables<a name="step-update-routing"></a>
@@ -89,3 +92,7 @@ After you migrate to the new gateway, you might need to modify your VPC route ta
 
 **Important**  
  If you deleted VPN static routes, you must add the static routes to the transit gateway route table\.
+
+## Step 6: Update the Customer Gateway ASN \(Required When the New Gateway has a Different ASN from the Old Gateway\)<a name="step-update-customer-gateway-asn"></a>
+
+ When the new gateway has a different ASN from the old gateway, you must update the ASN on your customer gateway device to point to the new ASN\. 
