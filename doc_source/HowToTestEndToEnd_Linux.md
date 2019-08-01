@@ -1,6 +1,6 @@
 # Testing the Site\-to\-Site VPN Connection<a name="HowToTestEndToEnd_Linux"></a>
 
-After you create th AWS Site\-to\-Site VPN connection and configure the customer gateway, you can launch an instance and test the connection by pinging the instance\. You need to use an AMI that responds to ping requests, and you need to ensure that your instance's security group is configured to enable inbound ICMP\. We recommend you use one of the Amazon Linux AMIs\. If you are using instances running Windows Server, you'll need to log in to the instance and enable inbound ICMPv4 on the Windows firewall in order to ping the instance\.
+After you create the AWS Site\-to\-Site VPN connection and configure the customer gateway, you can launch an instance and test the connection by pinging the instance\. You need to use an AMI that responds to ping requests, and you need to ensure that your instance's security group is configured to enable inbound ICMP\. We recommend you use one of the Amazon Linux AMIs\. If you are using instances running Windows Server, you'll need to log in to the instance and enable inbound ICMPv4 on the Windows firewall in order to ping the instance\.
 
 **Important**  
 You must configure any security group or network ACL in your VPC that filters traffic to the instance to allow inbound and outbound ICMP traffic\.

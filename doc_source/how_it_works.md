@@ -1,0 +1,47 @@
+# How AWS Site\-to\-Site VPN Works<a name="how_it_works"></a>
+
+## Components of Your Site\-to\-Site VPN<a name="VPN"></a>
+
+A Site\-to\-Site VPN connection offers two VPN tunnels between a virtual private gateway or transit gateway on the AWS side and a customer gateway on the remote \(customer\) side\.
+
+A Site\-to\-Site VPN connection consists of the following components\. For more information about Site\-to\-Site VPN limits, see [Amazon VPC Limits](https://docs.aws.amazon.com/vpc/latest/userguide/amazon-vpc-limits.html) in the *Amazon VPC User Guide*\.
+
+**Topics**
++ [Virtual Private Gateway](#VPNGateway)
++ [AWS Transit Gateway](#Transit-Gateway)
++ [Customer Gateway](#CustomerGateway)
++ [Customer Gateway Device](#CustomerGatewayDevice)
+
+### Virtual Private Gateway<a name="VPNGateway"></a>
+
+A *virtual private gateway* is the VPN concentrator on the Amazon side of the Site\-to\-Site VPN connection\. You create a virtual private gateway and attach it to the VPC from which you want to create the Site\-to\-Site VPN connection\.
+
+When you create a virtual private gateway, you can specify the private Autonomous System Number \(ASN\) for the Amazon side of the gateway\. If you don't specify an ASN, the virtual private gateway is created with the default ASN \(64512\)\. You cannot change the ASN after you've created the virtual private gateway\. To check the ASN for your virtual private gateway, view its details in the **Virtual Private Gateways** screen in the Amazon VPC console, or use the [describe\-vpn\-gateways](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-vpn-gateways.html) AWS CLI command\.
+
+**Note**  
+If you create your virtual private gateway before 2018\-06\-30, the default ASN is 17493 in the Asia Pacific \(Singapore\) region, 10124 in the Asia Pacific \(Tokyo\) region, 9059 in the EU \(Ireland\) region, and 7224 in all other regions\. 
+
+### AWS Transit Gateway<a name="Transit-Gateway"></a>
+
+You can modify the target gateway of AWS Site\-to\-Site VPN connection from a virtual private gateway to a transit gateway\. A transit gateway is a transit hub that you can use to interconnect your virtual private clouds \(VPC\) and on\-premises networks\. For more information, see [Modifying a Site\-to\-Site VPN Connection's Target Gateway](modify-vpn-target.md)\.
+
+### Customer Gateway<a name="CustomerGateway"></a>
+
+A *customer gateway* resource in AWS, which provides information to AWS about your [Customer Gateway Device](#CustomerGatewayDevice)\.
+
+The following table describes the information you'll need to create a customer gateway resource\.
+
+
+| Item | Description | 
+| --- | --- | 
+|  Internet\-routable IP address \(static\) of the customer gateway devices external interface\.   |  The public IP address value must be static\. If your customer gateway is behind a network address translation \(NAT\) device that's enabled for NAT traversal \(NAT\-T\), use the public IP address of your NAT device, and adjust your firewall rules to unblock UDP port 4500\.  | 
+|  The type of routing—static or dynamic\.   | For more information, see [Site\-to\-Site VPN Routing Options](VPNRoutingTypes.md)\. | 
+|  \(Dynamic routing only\) Border Gateway Protocol \(BGP\) Autonomous System Number \(ASN\) of the customer gateway\.  |  You can use an existing ASN assigned to your network\. If you don't have one, you can use a private ASN \(in the 64512–65534 range\)\.  If you use the VPC wizard in the console to set up your VPC, we automatically use 65000 as the ASN\.  | 
+
+To use Amazon VPC with a Site\-to\-Site VPN connection, you or your network administrator must also configure the customer gateway device or application in your remote network\. When you create the Site\-to\-Site VPN connection, we provide you with the required configuration information and your network administrator typically performs this configuration\. For information about the customer gateway requirements and configuration, see the [Your Customer Gateway](https://docs.aws.amazon.com/vpc/latest/adminguide/Introduction.html) in the *Amazon VPC Network Administrator Guide*\.
+
+The VPN tunnel comes up when traffic is generated from your side of the Site\-to\-Site VPN connection\. The virtual private gateway is not the initiator; your customer gateway must initiate the tunnels\. If your Site\-to\-Site VPN connection experiences a period of idle time \(usually 10 seconds, depending on your configuration\), the tunnel may go down\. To prevent this, you can use a network monitoring tool to generate keepalive pings; for example, by using IP SLA\. 
+
+### Customer Gateway Device<a name="CustomerGatewayDevice"></a>
+
+A *customer gateway device* is a physical device or software application on your side of the Site\-to\-Site VPN connection\. For more information about configuring your customer gateway device, see the *[Amazon VPC Network Administrator Guide](https://docs.aws.amazon.com/vpc/latest/adminguide/Welcome.html)*\.
