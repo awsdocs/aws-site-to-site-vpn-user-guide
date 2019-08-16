@@ -27,16 +27,7 @@ You can modify the target gateway of AWS Site\-to\-Site VPN connection from a vi
 
 ### Customer Gateway<a name="CustomerGateway"></a>
 
-A *customer gateway* resource in AWS, which provides information to AWS about your [Customer Gateway Device](#CustomerGatewayDevice)\.
-
-The following table describes the information you'll need to create a customer gateway resource\.
-
-
-| Item | Description | 
-| --- | --- | 
-|  Internet\-routable IP address \(static\) of the customer gateway devices external interface\.   |  The public IP address value must be static\. If your customer gateway is behind a network address translation \(NAT\) device that's enabled for NAT traversal \(NAT\-T\), use the public IP address of your NAT device, and adjust your firewall rules to unblock UDP port 4500\.  | 
-|  The type of routing—static or dynamic\.   | For more information, see [Site\-to\-Site VPN Routing Options](VPNRoutingTypes.md)\. | 
-|  \(Dynamic routing only\) Border Gateway Protocol \(BGP\) Autonomous System Number \(ASN\) of the customer gateway\.  |  You can use an existing ASN assigned to your network\. If you don't have one, you can use a private ASN \(in the 64512–65534 range\)\.  If you use the VPC wizard in the console to set up your VPC, we automatically use 65000 as the ASN\.  | 
+A *customer gateway* resource in AWS, which provides information to AWS about your [Customer Gateway Device](#CustomerGatewayDevice)\. For information about customer gateway options, see [Customer Gateway Options for Your Site\-to\-Site VPN Connection](cgw-options.md)\.
 
 To use Amazon VPC with a Site\-to\-Site VPN connection, you or your network administrator must also configure the customer gateway device or application in your remote network\. When you create the Site\-to\-Site VPN connection, we provide you with the required configuration information and your network administrator typically performs this configuration\. For information about the customer gateway requirements and configuration, see the [Your Customer Gateway](https://docs.aws.amazon.com/vpc/latest/adminguide/Introduction.html) in the *Amazon VPC Network Administrator Guide*\.
 

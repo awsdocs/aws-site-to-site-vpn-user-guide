@@ -4,7 +4,7 @@ By default, instances that you launch into an Amazon VPC can't communicate with 
 
 Although the term *VPN connection* is a general term, in this documentation, a VPN connection refers to the connection between your VPC and your own on\-premises network\. Site\-to\-Site VPN supports Internet Protocol security \(IPsec\) VPN connections\.
 
-Your Site\-to\-Site VPN connection is either an AWS Classic VPN or an AWS VPN\. For more information, see [AWS Site\-to\-Site VPN Categories](vpn-categories.md)\.
+Your Site\-to\-Site VPN connection is either an AWS Classic VPN or an AWS VPN\. For more information, see [Site\-to\-Site VPN Categories](vpn-categories.md)\.
 
 **Important**  
 We currently do not support IPv6 traffic through a Site\-to\-Site VPN connection\.

@@ -3,7 +3,7 @@
 You can monitor VPN tunnels using CloudWatch, which collects and processes raw data from the VPN service into readable, near real\-time metrics\. These statistics are recorded for a period of 15 months, so that you can access historical information and gain a better perspective on how your web application or service is performing\. VPN metric data is automatically sent to CloudWatch as it becomes available\.
 
 **Important**  
-CloudWatch metrics are not supported for AWS Classic VPN connections\. For more information, see [AWS Site\-to\-Site VPN Categories](vpn-categories.md)\.
+CloudWatch metrics are not supported for AWS Classic VPN connections\. For more information, see [Site\-to\-Site VPN Categories](vpn-categories.md)\.
 
 For more information, see the [Amazon CloudWatch User Guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/)\.
 
@@ -70,7 +70,7 @@ For example, you can create an alarm that monitors the state of a VPN tunnel and
    + Under **Actions**, select an existing notification list or choose **New list** to create a new one\. 
    + Under **Alarm Preview**, select a period of 5 minutes and specify a statistic of **Maximum**\.
 
-You can create an alarm that monitors the state of the Site\-to\-Site VPN connection\. For example, the following alarm sends a notification when the status of both tunnels is DOWN for 1 consecutive 5\-minute period\.
+You can create an alarm that monitors the state of the Site\-to\-Site VPN connection\. For example, you can create an alarm that sends a notification when the status of one or both tunnels is DOWN for 1 consecutive 5\-minute period\.
 
 **To create an alarm for Site\-to\-Site VPN connection state**
 
@@ -83,7 +83,7 @@ You can create an alarm that monitors the state of the Site\-to\-Site VPN connec
 1. Select your Site\-to\-Site VPN connection and the **TunnelState** metric\. Choose **Next**\.
 
 1. Configure the alarm as follows, and choose **Create Alarm** when you are done:
-   + Under **Alarm Threshold**, enter a name and description for your alarm\. For **Whenever**, choose **<=** and enter `0`\. Enter **1** for the consecutive periods\.
+   + Under **Alarm Threshold**, enter a name and description for your alarm\. For **Whenever**, choose **<=** and enter `0` \(or `0.5` for when at least one tunnel is down\)\. Enter **1** for the consecutive periods\.
    + Under **Actions**, select an existing notification list or choose **New list** to create a new one\. 
    + Under **Alarm Preview**, select a period of 5 minutes and specify a statistic of **Maximum**\.
 

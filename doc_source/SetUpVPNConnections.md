@@ -15,6 +15,11 @@ These procedures assume that you have a VPC with one or more subnets\.
 
 A customer gateway provides information to AWS about your customer gateway device or software application\. For more information, see [Customer Gateway](how_it_works.md#CustomerGateway)\.
 
+If you plan to use a private certificate to authenticate your VPN, create a private certificate using AWS Certificate Manager Private Certificate Authority\. For information about creating a private certificate, see [Creating and Managing a Private CA](https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaCreatingManagingCA.html) in the *AWS Certificate Manager Private Certificate Authority User Guide*\.
+
+**Note**  
+You must specify either an IP address, or an Amazon Resource Name of the private certificate\.
+
 **To create a customer gateway using the console**
 
 1. Open the Amazon VPC console at [https://console\.aws\.amazon\.com/vpc/](https://console.aws.amazon.com/vpc/)\.
@@ -25,7 +30,10 @@ A customer gateway provides information to AWS about your customer gateway devic
    + \(Optional\) For **Name**, type a name for your customer gateway\. Doing so creates a tag with a key of `Name` and the value that you specify\.
    + For **Routing**, select the routing type\.
    + For dynamic routing, for **BGP ASN**, type the Border Gateway Protocol \(BGP\) Autonomous System Number \(ASN\)\.
-   + For **IP Address**, type the static, internet\-routable IP address for your customer gateway device\. If your customer gateway is behind a NAT device that's enabled for NAT\-T, use the public IP address of the NAT device\.
+   + \(Optional\) For **IP Address**, type the static, internet\-routable IP address for your customer gateway device\. If your customer gateway is behind a NAT device that's enabled for NAT\-T, use the public IP address of the NAT device\.
+**Note**  
+This is optional when you use a private certificate\.
+   + \(Optional\) If you want to use a private certificate, for **Certificate ARN**, choose the Amazon Resource Name of the private certificate\.
 
 **To create a customer gateway using the command line or API**
 + [CreateCustomerGateway](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-CreateCustomerGateway.html) \(Amazon EC2 Query API\)
@@ -168,18 +176,3 @@ If you have not enabled route propagation for your route table, you must manuall
 + [DeleteVpnConnectionRoute](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DeleteVpnConnectionRoute.html) \(Amazon EC2 Query API\)
 + [delete\-vpn\-connection\-route](https://docs.aws.amazon.com/cli/latest/reference/ec2/delete-vpn-connection-route.html) \(AWS CLI\)
 + [Remove\-EC2VpnConnectionRoute](https://docs.aws.amazon.com/powershell/latest/reference/items/Remove-EC2VpnConnectionRoute.html) \(AWS Tools for Windows PowerShell\)
-
-## Replacing Compromised Credentials<a name="CompromisedCredentials"></a>
-
-If you believe that the tunnel credentials for your Site\-to\-Site VPN connection have been compromised, you can change the IKE pre\-shared key\. To do so, delete the Site\-to\-Site VPN connection, create a new one using the same virtual private gateway, and configure the new keys on your customer gateway\. You can specify your own pre\-shared keys when you create the Site\-to\-Site VPN connection\. You also need to confirm that the tunnel's inside and outside addresses match, because these might change when you recreate the Site\-to\-Site VPN connection\. While you perform the procedure, communication with your instances in the VPC stops, but the instances continue to run uninterrupted\. After the network administrator implements the new configuration information, your Site\-to\-Site VPN connection uses the new credentials, and the network connection to your instances in the VPC resumes\.
-
-**Important**  
-This procedure requires assistance from your network administrator group\.
-
-**To change the IKE pre\-shared key**
-
-1. Delete the Site\-to\-Site VPN connection\. For more information, see [Deleting a Site\-to\-Site VPN Connection](delete-vpn.md)\. You don't need to delete the VPC or the virtual private gateway\.
-
-1. Create a new Site\-to\-Site VPN connection and specify your own pre\-shared keys for the tunnels or let AWS generate new pre\-shared keys for you\. For more information, see [Create a Site\-to\-Site VPN Connection and Configure the Customer Gateway Device](#vpn-create-vpn-connection)\.
-
-1. Download the new configuration file\.
