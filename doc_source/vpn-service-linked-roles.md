@@ -12,7 +12,7 @@ When you work with a Site\-to\-Site VPN connection that uses certificate\-based 
 
 ## Create the Service\-Linked Role<a name="create-service-linked-role"></a>
 
-You don't need to manually create the **AWSServiceRoleForVPCS2SVPN** role\. Site\-to\-Site VPN creates this role for you when you attach a VPC in your account to a transit gateway\.
+You don't need to manually create the **AWSServiceRoleForVPCS2SVPN** role\. Site\-to\-Site VPN creates this role for you when you create a customer gateway with an associated ACM private certificate\.
 
 For a Site\-to\-Site VPN user to create a service\-linked role on your behalf, you must have the required permissions\. For information about service\-linked roles, see [Service\-Linked Role Permissions](https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html#service-linked-role-permissions) in the *IAM User Guide*\.
 

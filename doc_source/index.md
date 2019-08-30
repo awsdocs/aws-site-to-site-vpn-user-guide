@@ -32,6 +32,7 @@ Amazon's trademarks and trade dress may not be used in
    + [Testing the Site-to-Site VPN Connection](HowToTestEndToEnd_Linux.md)
    + [Deleting a Site-to-Site VPN Connection](delete-vpn.md)
    + [Modifying a Site-to-Site VPN Connection's Target Gateway](modify-vpn-target.md)
+   + [Modifying Site-to-Site VPN Tunnel Options](modify-vpn-tunnel-options.md)
    + [Changing the Customer Gateway for a Site-to-Site VPN Connection](change-vpn-cgw.md)
    + [Replacing Compromised Credentials](CompromisedCredentials.md)
    + [Rotating Site-to-Site VPN Tunnel Endpoint Certificates](roate-vpn-certificate.md)

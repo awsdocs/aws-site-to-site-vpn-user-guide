@@ -14,7 +14,7 @@ A pre\-shared key is a string that you enter when you configure your customer ga
 
 If you do not want to use pre\-shared keys, you can use a private certificate from AWS Certificate Manager Private Certificate Authority to authenticate your VPN\. 
 
-You must create a private certificate using AWS Certificate Manager Private Certificate Authority\. For information about creating a private certificate, see [Creating and Managing a Private CA](https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaCreatingManagingCA.html) in the *AWS Certificate Manager Private Certificate Authority User Guide*\.
+You must create a private certificate from a subordinate CA using AWS Certificate Manager Private Certificate Authority\. For information about creating a private certificate, see [Creating and Managing a Private CA](https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaCreatingManagingCA.html) in the *AWS Certificate Manager Private Certificate Authority User Guide*\.
 
 You must create a service\-link role to generate and use the certificate for the AWS side of the Site\-to\-Site VPN tunnel endpoint\. For more information, see [Permissions Granted by the Service\-Linked Role](vpn-service-linked-roles.md#service-linked-role-permissions)\.
 

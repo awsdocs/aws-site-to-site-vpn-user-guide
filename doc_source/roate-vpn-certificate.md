@@ -12,6 +12,4 @@ You can rotate the certificates on the tunnel endpoints on the AWS side by using
 
 1. Select the tunnel endpoint whose certificate you want to rotate\.
 
-1. For **Certificate ARN**, choose the Amazon Resource Name of the private certificate\.
-
 1. Choose **Save**\.

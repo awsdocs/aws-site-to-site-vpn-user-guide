@@ -2,7 +2,7 @@
 
 Use the following procedures to manually set up the AWS Site\-to\-Site VPN connection\. Alternatively, you can let the VPC creation wizard take care of many of these steps for you\. For more information about using the VPC creation wizard to set up the virtual private gateway, see [Scenario 3: VPC with Public and Private Subnets and AWS Site\-to\-Site VPN Access](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Scenario3.html) or [ Scenario 4: VPC with a Private Subnet Only and AWS Site\-to\-Site VPN Access](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Scenario4.html) in the *Amazon VPC User Guide*\.
 
-To set up a Site\-to\-Site VPN connection, you need to complete the following steps:
+To set up a Site\-to\-Site VPN connection, complete the following steps:
 + Step 1: [Create a Customer Gateway](#vpn-create-cgw)
 + Step 2: [Create a Virtual Private Gateway](#vpn-create-vpg)
 + Step 3: [Enable Route Propagation in Your Route Table](#vpn-configure-routing)
@@ -15,7 +15,7 @@ These procedures assume that you have a VPC with one or more subnets\.
 
 A customer gateway provides information to AWS about your customer gateway device or software application\. For more information, see [Customer Gateway](how_it_works.md#CustomerGateway)\.
 
-If you plan to use a private certificate to authenticate your VPN, create a private certificate using AWS Certificate Manager Private Certificate Authority\. For information about creating a private certificate, see [Creating and Managing a Private CA](https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaCreatingManagingCA.html) in the *AWS Certificate Manager Private Certificate Authority User Guide*\.
+If you plan to use a private certificate to authenticate your VPN, create a private certificate from a subordinate CA using AWS Certificate Manager Private Certificate Authority\. For information about creating a private certificate, see [Creating and Managing a Private CA](https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaCreatingManagingCA.html) in the *AWS Certificate Manager Private Certificate Authority User Guide*\.
 
 **Note**  
 You must specify either an IP address, or an Amazon Resource Name of the private certificate\.
@@ -27,12 +27,12 @@ You must specify either an IP address, or an Amazon Resource Name of the private
 1. In the navigation pane, choose **Customer Gateways**, and then **Create Customer Gateway**\.
 
 1. Complete the following and then choose **Create Customer Gateway**:
-   + \(Optional\) For **Name**, type a name for your customer gateway\. Doing so creates a tag with a key of `Name` and the value that you specify\.
+   + \(Optional\) For **Name**, enter a name for your customer gateway\. Doing so creates a tag with a key of `Name` and the value that you specify\.
    + For **Routing**, select the routing type\.
-   + For dynamic routing, for **BGP ASN**, type the Border Gateway Protocol \(BGP\) Autonomous System Number \(ASN\)\.
+   + For dynamic routing, for **BGP ASN**, enter the Border Gateway Protocol \(BGP\) Autonomous System Number \(ASN\)\.
    + \(Optional\) For **IP Address**, type the static, internet\-routable IP address for your customer gateway device\. If your customer gateway is behind a NAT device that's enabled for NAT\-T, use the public IP address of the NAT device\.
 **Note**  
-This is optional when you use a private certificate\.
+This is optional when you use a private certificate for VPN connections to a virtual private gateway \(VGW\)\.
    + \(Optional\) If you want to use a private certificate, for **Certificate ARN**, choose the Amazon Resource Name of the private certificate\.
 
 **To create a customer gateway using the command line or API**
@@ -50,9 +50,9 @@ After you create a virtual private gateway, you must attach it to your VPC\.
 
 1. In the navigation pane, choose **Virtual Private Gateways**, **Create Virtual Private Gateway**\.
 
-1. \(Optional\) Type a name for your virtual private gateway\. Doing so creates a tag with a key of `Name` and the value that you specify\.
+1. \(Optional\) Enter a name for your virtual private gateway\. Doing so creates a tag with a key of `Name` and the value that you specify\.
 
-1. For **ASN**, leave the default selection to use the default Amazon ASN\. Otherwise, choose **Custom ASN** and type a value\. For a 16\-bit ASN, the value must be in the 64512 to 65534 range\. For a 32\-bit ASN, the value must be in the 4200000000 to 4294967294 range\. 
+1. For **ASN**, leave the default selection to use the default Amazon ASN\. Otherwise, choose **Custom ASN** and enter a value\. For a 16\-bit ASN, the value must be in the 64512 to 65534 range\. For a 32\-bit ASN, the value must be in the 4200000000 to 4294967294 range\. 
 
 1. Choose **Create Virtual Private Gateway**\.
 
@@ -81,12 +81,12 @@ If your connection is interrupted, any propagated routes in your route table are
 
 **To enable route propagation using the console**
 
-1. In the navigation pane, choose **Route Tables**, and then select the route table that's associated with the subnet; by default, this is the main route table for the VPC\.
+1. In the navigation pane, choose **Route Tables**, and then select the route table that's associated with the subnet\. By default, this is the main route table for the VPC\.
 
 1. On the **Route Propagation** tab in the details pane, choose **Edit**, select the virtual private gateway that you created in the previous procedure, and then choose **Save**\.
 
 **Note**  
-For static routing, if you do not enable route propagation, you must manually enter the static routes used by your Site\-to\-Site VPN connection\. To do this, select your route table, choose **Routes**, **Edit**\. For **Destination**, add the static route used by your Site\-to\-Site VPN connection \. For **Target**, select the virtual private gateway ID, and choose **Save**\.
+For static routing, if you do not enable route propagation, you must manually enter the static routes used by your Site\-to\-Site VPN connection\. To do this, select your route table, choose **Routes**, **Edit**\. For **Destination**, add the static route used by your Site\-to\-Site VPN connection\. For **Target**, select the virtual private gateway ID, and choose **Save**\.
 
 **To disable route propagation using the console**
 
@@ -125,7 +125,7 @@ After you create the Site\-to\-Site VPN connection, download the configuration i
 1. In the navigation pane, choose **Site\-to\-Site VPN Connections**, **Create VPN Connection**\.
 
 1. Complete the following information, and then choose **Create VPN Connection**:
-   + \(Optional\) For **Name tag**, type a name for your Site\-to\-Site VPN connection\. Doing so creates a tag with a key of `Name` and the value that you specify\.
+   + \(Optional\) For **Name tag**, enter a name for your Site\-to\-Site VPN connection\. Doing so creates a tag with a key of `Name` and the value that you specify\.
    + Select the virtual private gateway that you created earlier\.
    + Select the customer gateway that you created earlier\.
    + Select one of the routing options based on whether your VPN router supports Border Gateway Protocol \(BGP\):
@@ -134,6 +134,7 @@ After you create the Site\-to\-Site VPN connection, download the configuration i
    + Under **Tunnel Options**, you can optionally specify the following information for each tunnel:
      + A size /30 CIDR block from the `169.254.0.0/16` range for the inside tunnel IP addresses\.
      + The IKE pre\-shared key \(PSK\)\. The following versions are supported: IKEv1 or IKEv2\.
+     + Advanced tunnel information, which includes the encryption algorithms for phases 1 and 2 of the IKE negotiations, the integrity algorithms for phases 1 and 2 of the IKE negotiations, the Diffie\-Hellman groups for phases 1 and 2 of the IKE negotiations, the IKE version, the phase 1 and 2 lifetimes, the rekey margin time, the rekey fuzz, the replay window size, and the dead peer detection interval\.
 
      For more information about these options, see [Site\-to\-Site VPN Tunnel Options for Your Site\-to\-Site VPN Connection](VPNTunnels.md)\.
 
