@@ -21,7 +21,7 @@ The following are the key concepts for Site\-to\-Site VPN:
 
 ## Working with Site\-to\-Site VPN<a name="site-site-tools"></a>
 
-You can create, access, and manage yourSite\-to\-Site VPN resources using any of the following interfaces:
+You can create, access, and manage your Site\-to\-Site VPN resources using any of the following interfaces:
 + **AWS Management Console**— Provides a web interface that you can use to access your Site\-to\-Site VPN resources\.
 + **AWS Command Line Interface \(AWS CLI\)** — Provides commands for a broad set of AWS services, including Amazon VPC, and is supported on Windows, macOS, and Linux\. For more information, see [AWS Command Line Interface](https://aws.amazon.com//cli/)\.
 + **AWS SDKs** — Provide language\-specific APIs and takes care of many of the connection details, such as calculating signatures, handling request retries, and error handling\. For more information, see [AWS SDKs](https://aws.amazon.com/tools/#SDKs)\.
