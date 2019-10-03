@@ -40,4 +40,5 @@ Amazon's trademarks and trade dress may not be used in
    + [AWS Site-to-Site VPN Service-Linked Role](vpn-service-linked-roles.md)
 + [Monitoring Your Site-to-Site VPN Connection](monitoring-overview-vpn.md)
    + [Monitoring VPN Tunnels Using Amazon CloudWatch](monitoring-cloudwatch-vpn.md)
++ [Site-to-Site VPN Limits](vpn-limits.md)
 + [Document History](WhatsNew.md)

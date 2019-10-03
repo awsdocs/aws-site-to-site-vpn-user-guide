@@ -120,6 +120,10 @@ For more information about working with security groups using the AWS CLI, see [
 
 After you create the Site\-to\-Site VPN connection, download the configuration information and use it to configure the customer gateway device or software application\.
 
+**Important**  
+The configuration file is an example only and might not match your intended VPN connection settings\. For example, it specifies the minimum requirements of IKE version 1, AES128, SHA1, and DH Group 2 in most AWS Regions, and IKE version 1, AES128, SHA2, and DH Group 14 in the AWS GovCloud Regions\. It also specifies pre\-shared keys for [authentication](vpn-tunnel-authentication-options.md)\. You must modify the example configuration file to take advantage of IKE version 2, AES256, SHA256, other DH groups such as 2, 14\-18, 22, 23, and 24, and private certificates\.   
+If you specified custom tunnel options when creating or modifying your Site\-to\-Site VPN connection, modify the example configuration file to match the custom settings for your tunnels\.
+
 **To create a Site\-to\-Site VPN connection and configure the customer gateway**
 
 1. In the navigation pane, choose **Site\-to\-Site VPN Connections**, **Create VPN Connection**\.

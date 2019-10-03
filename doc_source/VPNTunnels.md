@@ -13,7 +13,7 @@ The following table describes the tunnel options that you can configure\.
 
 | Item | Description | AWS\-provided default values | 
 | --- | --- | --- | 
-| Dead peer detection \(DPD\) timeout \(seconds\) |  The duration after which DPD timeout occurs\. You can specify a number between 0 and 30\.  | 30 | 
+| Dead peer detection \(DPD\) timeout \(seconds\) |  The duration after which DPD timeout occurs\. You can specify 30 or higher\.  | 30 | 
 | IKE versions | The IKE versions that are permitted for the VPN tunnel\. You can specify one or more of the default values\. | ikev1, ikev2 | 
 |  Inside tunnel CIDR  |  The range of inside IP addresses for the VPN tunnel\. You can specify a size /30 CIDR block from the `169.254.0.0/16` range\. The CIDR block must be unique across all Site\-to\-Site VPN connections that use the same virtual private gateway\. The following CIDR blocks are reserved and cannot be used:  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/vpn/latest/s2svpn/VPNTunnels.html)  |  A size /30 CIDR block from the `169.254.0.0/16` range\.  | 
 | Phase 1 Diffie\-Hellman \(DH\) group numbers | The DH group numbers that are permitted for the VPN tunnel for phase 1 of the IKE negotiations\. You can specify one or more of the default values\. | 2, 14, 15, 16, 17, 18, 22, 23, 24 | 
