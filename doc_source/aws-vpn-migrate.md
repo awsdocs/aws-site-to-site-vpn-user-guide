@@ -30,7 +30,7 @@ During this procedure, connectivity over the current Site\-to\-Site VPN connecti
 
 1. Select the new Site\-to\-Site VPN connection and choose **Download Configuration**\. Download the appropriate configuration file for your customer gateway device\.
 
-1. Use the configuration file to configure VPN tunnels on your customer gateway device\. For examples, see the *[Amazon VPC Network Administrator Guide](https://docs.aws.amazon.com/vpc/latest/adminguide/)*\. Do not enable the tunnels yet\. Contact your vendor if you need guidance on keeping the newly configured tunnels disabled\. 
+1. Use the configuration file to configure VPN tunnels on your customer gateway device\. For examples, see the *[AWS Site\-to\-Site VPN Network Administrator Guide](https://docs.aws.amazon.com/vpc/latest/adminguide/)*\. Do not enable the tunnels yet\. Contact your vendor if you need guidance on keeping the newly configured tunnels disabled\. 
 
 1. \(Optional\) Create test VPC and attach the virtual private gateway to the test VPC\. Change the encryption domain/source destination addresses as required, and test connectivity from a host in your local network to a test instance in the test VPC\.
 

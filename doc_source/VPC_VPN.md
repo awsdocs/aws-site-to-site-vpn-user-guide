@@ -1,6 +1,6 @@
 # What is AWS Site\-to\-Site VPN?<a name="VPC_VPN"></a>
 
-By default, instances that you launch into an Amazon VPC can't communicate with your own \(remote\) network\. You can enable access to your remote network from your VPC by attaching a virtual private gateway to the VPC, creating a custom route table, updating your security group rules, creating an AWS Site\-to\-Site VPN \(Site\-to\-Site VPN\) connection, and configuring routing to pass traffic through the connection\.
+By default, instances that you launch into an Amazon VPC can't communicate with your own \(remote\) network\. You can enable access to your remote network from your VPC by creating an AWS Site\-to\-Site VPN \(Site\-to\-Site VPN\) connection, and configuring routing to pass traffic through the connection\.
 
 Although the term *VPN connection* is a general term, in this documentation, a VPN connection refers to the connection between your VPC and your own on\-premises network\. Site\-to\-Site VPN supports Internet Protocol security \(IPsec\) VPN connections\.
 

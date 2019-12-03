@@ -1,6 +1,6 @@
 # Getting Started<a name="SetUpVPNConnections"></a>
 
-Use the following procedures to manually set up the AWS Site\-to\-Site VPN connection\. Alternatively, you can let the VPC creation wizard take care of many of these steps for you\. For more information about using the VPC creation wizard to set up the virtual private gateway, see [Scenario 3: VPC with Public and Private Subnets and AWS Site\-to\-Site VPN Access](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Scenario3.html) or [ Scenario 4: VPC with a Private Subnet Only and AWS Site\-to\-Site VPN Access](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Scenario4.html) in the *Amazon VPC User Guide*\.
+Use the following procedures to manually set up the AWS Site\-to\-Site VPN connection with a virtual private gateway\. Alternatively, you can let the VPC creation wizard take care of many of these steps for you\. For more information about using the VPC creation wizard to set up the virtual private gateway, see [Scenario 3: VPC with Public and Private Subnets and AWS Site\-to\-Site VPN Access](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Scenario3.html) or [ Scenario 4: VPC with a Private Subnet Only and AWS Site\-to\-Site VPN Access](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Scenario4.html) in the *Amazon VPC User Guide*\.
 
 To set up a Site\-to\-Site VPN connection, complete the following steps:
 + Step 1: [Create a Customer Gateway](#vpn-create-cgw)
@@ -10,6 +10,8 @@ To set up a Site\-to\-Site VPN connection, complete the following steps:
 + Step 5: [Create a Site\-to\-Site VPN Connection and Configure the Customer Gateway Device](#vpn-create-vpn-connection)
 
 These procedures assume that you have a VPC with one or more subnets\.
+
+For steps to create a Site\-to\-Site VPN connection on a transit gateway, see [Creating a Transit Gateway VPN Attachment](create-tgw-vpn-attachment.md)\.
 
 ## Create a Customer Gateway<a name="vpn-create-cgw"></a>
 
@@ -153,7 +155,7 @@ If you specified custom tunnel options when creating or modifying your Site\-to\
 
 ## Configure the Customer Gateway Device<a name="vpn-configure-customer-gateway-device"></a>
 
-Give the configuration file that you downloaded to your network administrator, along with this guide: [Amazon VPC Network Administrator Guide](https://docs.aws.amazon.com/vpc/latest/adminguide/)\. The network administrator configures the customer gateway device with the settings that match the customer gateway\. After the network administrator configures the customer gateway device, the Site\-to\-Site VPN connection is operational\.
+Give the configuration file that you downloaded to your network administrator, along with this guide: [AWS Site\-to\-Site VPN Network Administrator Guide](https://docs.aws.amazon.com/vpc/latest/adminguide/)\. The network administrator configures the customer gateway device with the settings that match the customer gateway\. After the network administrator configures the customer gateway device, the Site\-to\-Site VPN connection is operational\.
 
 ## Editing Static Routes for a Site\-to\-Site VPN Connection<a name="vpn-edit-static-routes"></a>
 

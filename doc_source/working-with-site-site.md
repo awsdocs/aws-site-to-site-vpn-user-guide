@@ -4,6 +4,7 @@ You can work with Site\-to\-Site VPN resources using the Amazon VPC console or t
 
 **Topics**
 + [Identifying a Site\-to\-Site VPN Connection](identify-vpn.md)
++ [Creating a Transit Gateway VPN Attachment](create-tgw-vpn-attachment.md)
 + [Migrating from AWS Classic VPN to AWS VPN](aws-vpn-migrate.md)
 + [Testing the Site\-to\-Site VPN Connection](HowToTestEndToEnd_Linux.md)
 + [Deleting a Site\-to\-Site VPN Connection](delete-vpn.md)

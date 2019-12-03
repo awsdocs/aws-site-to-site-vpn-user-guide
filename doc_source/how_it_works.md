@@ -2,9 +2,9 @@
 
 ## Components of Your Site\-to\-Site VPN<a name="VPN"></a>
 
-A Site\-to\-Site VPN connection offers two VPN tunnels between a virtual private gateway or transit gateway on the AWS side and a customer gateway on the remote \(customer\) side\.
+A Site\-to\-Site VPN connection offers two VPN tunnels between a virtual private gateway or a transit gateway on the AWS side and a customer gateway on the remote \(customer\) side\.
 
-A Site\-to\-Site VPN connection consists of the following components\. For more information about Site\-to\-Site VPN limits, see [Amazon VPC Limits](https://docs.aws.amazon.com/vpc/latest/userguide/amazon-vpc-limits.html) in the *Amazon VPC User Guide*\.
+A Site\-to\-Site VPN connection consists of the following components\. For more information about Site\-to\-Site VPN limits, see [Site\-to\-Site VPN Limits](vpn-limits.md)\.
 
 **Topics**
 + [Virtual Private Gateway](#VPNGateway)
@@ -23,16 +23,18 @@ If you create your virtual private gateway before 2018\-06\-30, the default ASN 
 
 ### AWS Transit Gateway<a name="Transit-Gateway"></a>
 
-You can modify the target gateway of AWS Site\-to\-Site VPN connection from a virtual private gateway to a transit gateway\. A transit gateway is a transit hub that you can use to interconnect your virtual private clouds \(VPC\) and on\-premises networks\. For more information, see [Modifying a Site\-to\-Site VPN Connection's Target Gateway](modify-vpn-target.md)\.
+A transit gateway is a transit hub that you can use to interconnect your virtual private clouds \(VPC\) and on\-premises networks\. For more information, see [Amazon VPC Transit Gateways](https://docs.aws.amazon.com/vpc/latest/tgw/)\. You can create a Site\-to\-Site VPN connection as an attachment on a transit gateway\.
+
+You can modify the target gateway of a Site\-to\-Site VPN connection from a virtual private gateway to a transit gateway\. For more information, see [Modifying a Site\-to\-Site VPN Connection's Target Gateway](modify-vpn-target.md)\.
 
 ### Customer Gateway<a name="CustomerGateway"></a>
 
-A *customer gateway* resource in AWS, which provides information to AWS about your [Customer Gateway Device](#CustomerGatewayDevice)\. For information about customer gateway options, see [Customer Gateway Options for Your Site\-to\-Site VPN Connection](cgw-options.md)\.
+A *customer gateway* is a resource in AWS that provides information to AWS about your [Customer Gateway Device](#CustomerGatewayDevice)\. For information about customer gateway options, see [Customer Gateway Options for Your Site\-to\-Site VPN Connection](cgw-options.md)\.
 
-To use Amazon VPC with a Site\-to\-Site VPN connection, you or your network administrator must also configure the customer gateway device or application in your remote network\. When you create the Site\-to\-Site VPN connection, we provide you with the required configuration information and your network administrator typically performs this configuration\. For information about the customer gateway requirements and configuration, see the [Your Customer Gateway](https://docs.aws.amazon.com/vpc/latest/adminguide/Introduction.html) in the *Amazon VPC Network Administrator Guide*\.
+To use Amazon VPC with a Site\-to\-Site VPN connection, you or your network administrator must also configure the customer gateway device or application in your remote network\. When you create the Site\-to\-Site VPN connection, we provide you with the required configuration information and your network administrator typically performs this configuration\. For information about the customer gateway requirements and configuration, see the [Your Customer Gateway](https://docs.aws.amazon.com/vpc/latest/adminguide/Introduction.html) in the *AWS Site\-to\-Site VPN Network Administrator Guide*\.
 
 The VPN tunnel comes up when traffic is generated from your side of the Site\-to\-Site VPN connection\. The virtual private gateway is not the initiator; your customer gateway must initiate the tunnels\. If your Site\-to\-Site VPN connection experiences a period of idle time \(usually 10 seconds, depending on your configuration\), the tunnel may go down\. To prevent this, you can use a network monitoring tool to generate keepalive pings; for example, by using IP SLA\. 
 
 ### Customer Gateway Device<a name="CustomerGatewayDevice"></a>
 
-A *customer gateway device* is a physical device or software application on your side of the Site\-to\-Site VPN connection\. For more information about configuring your customer gateway device, see the *[Amazon VPC Network Administrator Guide](https://docs.aws.amazon.com/vpc/latest/adminguide/Welcome.html)*\.
+A *customer gateway device* is a physical device or software application on your side of the Site\-to\-Site VPN connection\. For more information about configuring your customer gateway device, see the *[AWS Site\-to\-Site VPN Network Administrator Guide](https://docs.aws.amazon.com/vpc/latest/adminguide/Welcome.html)*\.
