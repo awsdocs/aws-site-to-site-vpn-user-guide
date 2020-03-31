@@ -11,9 +11,9 @@ Site\-to\-Site VPN is part of the Amazon VPC service\. For more information abou
 The following topics show you how to configure specific components of Site\-to\-Site VPN to meet your security and compliance objectives\.
 
 **Topics**
-+ [Data Protection in AWS Site\-to\-Site VPN](data-protection.md)
-+ [Identity and Access Management for AWS Site\-to\-Site VPN](vpn-authentication-access-control.md)
-+ [Logging and Monitoring](logging-monitoring.md)
-+ [Compliance Validation for AWS Site\-to\-Site VPN](SERVICENAME-compliance.md)
++ [Data protection in AWS Site\-to\-Site VPN](data-protection.md)
++ [Identity and access management for AWS Site\-to\-Site VPN](vpn-authentication-access-control.md)
++ [Logging and monitoring](logging-monitoring.md)
++ [Compliance validation for AWS Site\-to\-Site VPN](SERVICENAME-compliance.md)
 + [Resilience in AWS Site\-to\-Site VPN](disaster-recovery-resiliency.md)
-+ [Infrastructure Security in AWS Site\-to\-Site VPN](infrastructure-security.md)
++ [Infrastructure security in AWS Site\-to\-Site VPN](infrastructure-security.md)

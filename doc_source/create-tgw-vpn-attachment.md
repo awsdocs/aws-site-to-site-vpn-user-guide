@@ -1,6 +1,6 @@
-# Creating a Transit Gateway VPN Attachment<a name="create-tgw-vpn-attachment"></a>
+# Creating a transit gateway VPN attachment<a name="create-tgw-vpn-attachment"></a>
 
-To create a VPN attachment on a transit gateway, you must specify the customer gateway\. For more information about creating a transit gateway, see [Transit Gateways](https://docs.aws.amazon.com/vpc/latest/tgw/tgw-transit-gateways.html) in *Amazon VPC Transit Gateways*\.
+To create a VPN attachment on a transit gateway, you must specify the customer gateway\. For more information about creating a transit gateway, see [Transit gateways](https://docs.aws.amazon.com/vpc/latest/tgw/tgw-transit-gateways.html) in *Amazon VPC Transit Gateways*\.
 
 **To create a VPN attachment using the console**
 
@@ -22,11 +22,11 @@ To create a VPN attachment on a transit gateway, you must specify the customer g
 
      For **Routing options**, choose whether to use **Dynamic** or **Static**\.
 
-1. \(Optional\) For **Enable Acceleration**, select the check box to enable acceleration\. For more information, see [Accelerated Site\-to\-Site VPN Connections](accelerated-vpn.md)\.
+1. \(Optional\) For **Enable Acceleration**, select the check box to enable acceleration\. For more information, see [Accelerated Site\-to\-Site VPN connections](accelerated-vpn.md)\.
 
    If you enable acceleration, we create two accelerators that are used by your VPN connection\. Additional charges apply\.
 
-1. For **Tunnel Options**, see [Site\-to\-Site VPN Tunnel Options for Your Site\-to\-Site VPN Connection](VPNTunnels.md)\.
+1. For **Tunnel Options**, see [Site\-to\-Site VPN tunnel options for your Site\-to\-Site VPN connection](VPNTunnels.md)\.
 
 1. Choose **Create VPN Connection**\.
 

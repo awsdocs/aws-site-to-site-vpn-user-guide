@@ -1,4 +1,4 @@
-# Modifying Site\-to\-Site VPN Tunnel Options<a name="modify-vpn-tunnel-options"></a>
+# Modifying Site\-to\-Site VPN tunnel options<a name="modify-vpn-tunnel-options"></a>
 
 You can modify the tunnel options for the VPN tunnels in your Site\-to\-Site VPN connection\. You can modify one VPN tunnel at a time\.
 
@@ -15,7 +15,7 @@ When you modify a VPN tunnel, connectivity over the tunnel is interrupted for up
 
 1. For **VPN Tunnel Outside IP Address**, choose the tunnel endpoint IP of the VPN tunnel that you're modifying options for\.
 
-1. Choose or enter new values for the tunnel options\. For more information, see [Site\-to\-Site VPN Tunnel Options for Your Site\-to\-Site VPN Connection](VPNTunnels.md)\.
+1. Choose or enter new values for the tunnel options\. For more information, see [Site\-to\-Site VPN tunnel options for your Site\-to\-Site VPN connection](VPNTunnels.md)\.
 
 1. Choose **Save**\.
 

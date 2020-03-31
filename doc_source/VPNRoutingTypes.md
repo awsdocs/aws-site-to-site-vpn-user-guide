@@ -1,20 +1,20 @@
-# Site\-to\-Site VPN Routing Options<a name="VPNRoutingTypes"></a>
+# Site\-to\-Site VPN routing options<a name="VPNRoutingTypes"></a>
 
 When you create a Site\-to\-Site VPN connection, you must do the following:
 + Specify the type of routing that you plan to use \(static or dynamic\)
 + Update the [route table](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html) for your subnet
 
-There are limits on the number of routes that you can add to a route table\. For more information, see the Route Tables section in [Amazon VPC Limits](https://docs.aws.amazon.com/vpc/latest/userguide/amazon-vpc-limits.html) in the *Amazon VPC User Guide*\.
+There are quotas on the number of routes that you can add to a route table\. For more information, see the Route Tables section in [Amazon VPC quotas](https://docs.aws.amazon.com/vpc/latest/userguide/amazon-vpc-limits.html) in the *Amazon VPC User Guide*\.
 
-## Static and Dynamic Routing<a name="vpn-static-dynamic"></a>
+## Static and dynamic routing<a name="vpn-static-dynamic"></a>
 
-The type of routing that you select can depend on the make and model of your VPN devices\. If your VPN device supports Border Gateway Protocol \(BGP\), specify dynamic routing when you configure your Site\-to\-Site VPN connection\. If your device does not support BGP, specify static routing\. For a list of static and dynamic routing devices that have been tested with Amazon VPC, see [Customer Gateway Devices We've Tested](https://docs.aws.amazon.com/vpc/latest/adminguide/Introduction.html#DevicesTested) in the *AWS Site\-to\-Site VPN Network Administrator Guide*\.
+The type of routing that you select can depend on the make and model of your VPN devices\. If your VPN device supports Border Gateway Protocol \(BGP\), specify dynamic routing when you configure your Site\-to\-Site VPN connection\. If your device does not support BGP, specify static routing\. For a list of static and dynamic routing devices that have been tested with Amazon VPC, see [Customer gateway devices that we've tested](your-cgw.md#DevicesTested)\.
 
 When you use a BGP device, you don't need to specify static routes to the Site\-to\-Site VPN connection because the device uses BGP to advertise its routes to the virtual private gateway\. If you use a device that supports BGP advertising, then you cannot specify static routes, If you use a device that doesn't support BGP, you must select static routing and enter the routes \(IP prefixes\) for your network that should be communicated to the virtual private gateway\. 
 
 We recommend that you use BGP\-capable devices, when available, because the BGP protocol offers robust liveness detection checks that can assist failover to the second VPN tunnel if the first tunnel goes down\. Devices that don't support BGP may also perform health checks to assist failover to the second tunnel when needed\.
 
-## Route Tables and VPN Route Priority<a name="vpn-route-priority"></a>
+## Route tables and VPN route priority<a name="vpn-route-priority"></a>
 
 [Route tables](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html) determine where network traffic is directed\. In your VPC route table, you must add a route for your remote network and specify the virtual private gateway as the target\. This enables traffic from your VPC that's destined for your remote network to route via the virtual private gateway and over one of the VPN tunnels\. You can enable route propagation for your route table to automatically propagate your network routes to the table for you\. 
 
@@ -37,4 +37,13 @@ When a virtual private gateway receives routing information, it uses path select
 + BGP propagated routes from an AWS Direct Connect connection 
 + Manually added static routes for a Site\-to\-Site VPN connection
 + BGP propagated routes from a Site\-to\-Site VPN connection
-+ For matching prefixes where each Site\-to\-Site VPN connection uses BGP, the AS PATH is compared and the prefix with the shortest AS PATH is preferred\. AWS recommends advertising more specific BGP routes to influence routing decisions in the virtual private gateway\.
++ For matching prefixes where each Site\-to\-Site VPN connection uses BGP, the AS PATH is compared and the prefix with the shortest AS PATH is preferred\. Alternatively, you can prepend `AS_PATH`, so that the path is less preferred\.
++ When the AS PATHs are the same length and if the first AS in the AS\_SEQUENCE is the same across multiple paths, multi\-exit discriminators \(MEDs\) are compared\. The path with the lowest MED value is preferred\.
+
+Route priority is affected during [VPN tunnel endpoint updates](#routing-vpn-tunnel-updates)\.
+
+We recommend advertising more specific BGP routes to influence routing decisions in the virtual private gateway\.
+
+### Routing during VPN tunnel endpoint updates<a name="routing-vpn-tunnel-updates"></a>
+
+A Site\-to\-Site VPN connection consists of two VPN tunnels between a customer gateway device and a virtual private gateway or a transit gateway\. We recommend that you configure both tunnels for redundancy\. Your VPN connection may experience a brief loss of redundancy when we perform tunnel endpoint updates on one of the two tunnels\. Tunnel endpoint updates can occur for several reasons, including health reasons, software upgrades, and retirement of underlying hardware\. When we perform updates on one VPN tunnel, we set a lower outbound multi\-exit discriminator \(MED\) value on the other tunnel\. If you have configured your customer gateway device to use both tunnels, your VPN connection uses the other tunnel during the tunnel endpoint update process\.

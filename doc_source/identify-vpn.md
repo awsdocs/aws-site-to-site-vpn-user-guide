@@ -1,4 +1,4 @@
-# Identifying a Site\-to\-Site VPN Connection<a name="identify-vpn"></a>
+# Identifying a Site\-to\-Site VPN connection<a name="identify-vpn"></a>
 
 You can find out the category of your Site\-to\-Site VPN connection by using the Amazon VPC console or a command line tool\. 
 

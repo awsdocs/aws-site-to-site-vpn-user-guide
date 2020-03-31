@@ -1,6 +1,6 @@
-# Rotating Site\-to\-Site VPN Tunnel Endpoint Certificates<a name="roate-vpn-certificate"></a>
+# Rotating Site\-to\-Site VPN tunnel endpoint certificates<a name="roate-vpn-certificate"></a>
 
-You can rotate the certificates on the tunnel endpoints on the AWS side by using the Amazon VPC console\. When a tunnel endpoint’s certificate is close to expiration, AWS automatically rotates the certificate using the service\-linked role\. For more information, see [Permissions Granted by the Service\-Linked Role](vpn-service-linked-roles.md#service-linked-role-permissions)\.
+You can rotate the certificates on the tunnel endpoints on the AWS side by using the Amazon VPC console\. When a tunnel endpoint’s certificate is close to expiration, AWS automatically rotates the certificate using the service\-linked role\. For more information, see [Permissions granted by the service\-linked role](vpn-service-linked-roles.md#service-linked-role-permissions)\.
 
 **To rotate the Site\-to\-Site VPN tunnel endpoint certificate using the console**
 

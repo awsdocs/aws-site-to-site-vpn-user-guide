@@ -1,9 +1,9 @@
-# Deleting a Site\-to\-Site VPN Connection<a name="delete-vpn"></a>
+# Deleting a Site\-to\-Site VPN connection<a name="delete-vpn"></a>
 
 If you no longer need a AWS Site\-to\-Site VPN connection, you can delete it\.
 
 **Important**  
-If you delete your Site\-to\-Site VPN connection and then create a new one, you have to download new configuration information and have your network administrator reconfigure the customer gateway\.
+If you delete your Site\-to\-Site VPN connection and then create a new one, you have to download a new configuration file and reconfigure the customer gateway device\.
 
 **To delete a Site\-to\-Site VPN connection using the console**
 

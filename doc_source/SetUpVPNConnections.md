@@ -1,26 +1,41 @@
-# Getting Started<a name="SetUpVPNConnections"></a>
+# Getting started<a name="SetUpVPNConnections"></a>
 
-Use the following procedures to manually set up the AWS Site\-to\-Site VPN connection with a virtual private gateway\. Alternatively, you can let the VPC creation wizard take care of many of these steps for you\. For more information about using the VPC creation wizard to set up the virtual private gateway, see [Scenario 3: VPC with Public and Private Subnets and AWS Site\-to\-Site VPN Access](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Scenario3.html) or [ Scenario 4: VPC with a Private Subnet Only and AWS Site\-to\-Site VPN Access](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Scenario4.html) in the *Amazon VPC User Guide*\.
+Use the following procedures to manually set up the AWS Site\-to\-Site VPN connection\. You can create a Site\-to\-Site VPN connection with either a virtual private gateway or a transit gateway as the target gateway\. 
 
 To set up a Site\-to\-Site VPN connection, complete the following steps:
-+ Step 1: [Create a Customer Gateway](#vpn-create-cgw)
-+ Step 2: [Create a Virtual Private Gateway](#vpn-create-vpg)
-+ Step 3: [Enable Route Propagation in Your Route Table](#vpn-configure-routing)
-+ Step 4: [Update Your Security Group ](#vpn-configure-security-groups)
-+ Step 5: [Create a Site\-to\-Site VPN Connection and Configure the Customer Gateway Device](#vpn-create-vpn-connection)
++ [Prerequisites](#vpn-prerequisites)
++ Step 1: [Create a customer gateway](#vpn-create-cgw)
++ Step 2: [Create a target gateway](#vpn-create-target-gateway)
++ Step 3: [Configure routing](#vpn-configure-route-tables)
++ Step 4: [Update your security group ](#vpn-configure-security-groups)
++ Step 5: [Create a Site\-to\-Site VPN connection](#vpn-create-vpn-connection)
++ Step 6: [Download the configuration file](#vpn-download-config)
++ Step 7: [Configure the customer gateway device](#vpn-configure-customer-gateway-device)
 
 These procedures assume that you have a VPC with one or more subnets\.
 
-For steps to create a Site\-to\-Site VPN connection on a transit gateway, see [Creating a Transit Gateway VPN Attachment](create-tgw-vpn-attachment.md)\.
+For steps to create a Site\-to\-Site VPN connection on a transit gateway, see [Creating a transit gateway VPN attachment](create-tgw-vpn-attachment.md)\.
 
-## Create a Customer Gateway<a name="vpn-create-cgw"></a>
+## Prerequisites<a name="vpn-prerequisites"></a>
 
-A customer gateway provides information to AWS about your customer gateway device or software application\. For more information, see [Customer Gateway](how_it_works.md#CustomerGateway)\.
+You need the following information to set up and configure the components of a Site\-to\-Site VPN connection\.
 
-If you plan to use a private certificate to authenticate your VPN, create a private certificate from a subordinate CA using AWS Certificate Manager Private Certificate Authority\. For information about creating a private certificate, see [Creating and Managing a Private CA](https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaCreatingManagingCA.html) in the *AWS Certificate Manager Private Certificate Authority User Guide*\.
+
+| Item | Information | 
+| --- | --- | 
+| Customer gateway device | The physical or software device on your side of the VPN connection\. You need the vendor \(for example, Cisco\), platform \(for example, ISR Series Routers\), and software version \(for example, IOS 12\.4\)\. | 
+| Customer gateway | To create the customer gateway resource in AWS, you need the following information:[\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/vpn/latest/s2svpn/SetUpVPNConnections.html)For more information, see [Customer gateway options for your Site\-to\-Site VPN connection](cgw-options.md)\. | 
+|  \(Optional\) The ASN for the AWS side of the BGP session  |  You specify this when you create a virtual private gateway or transit gateway\. If you do not specify a value, the default ASN applies\. For more information, see [Virtual private gateway](how_it_works.md#VPNGateway)\.  | 
+| VPN connection | To create the VPN connection, you need the following information:[\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/vpn/latest/s2svpn/SetUpVPNConnections.html) | 
+
+## Create a customer gateway<a name="vpn-create-cgw"></a>
+
+A customer gateway provides information to AWS about your customer gateway device or software application\. For more information, see [Customer gateway](how_it_works.md#CustomerGateway)\.
+
+If you plan to use a private certificate to authenticate your VPN, create a private certificate from a subordinate CA using AWS Certificate Manager Private Certificate Authority\. For information about creating a private certificate, see [Creating and managing a private CA](https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaCreatingManagingCA.html) in the *AWS Certificate Manager Private Certificate Authority User Guide*\.
 
 **Note**  
-You must specify either an IP address, or an Amazon Resource Name of the private certificate\.
+You must specify either an IP address, or the Amazon Resource Name of the private certificate\.
 
 **To create a customer gateway using the console**
 
@@ -32,9 +47,7 @@ You must specify either an IP address, or an Amazon Resource Name of the private
    + \(Optional\) For **Name**, enter a name for your customer gateway\. Doing so creates a tag with a key of `Name` and the value that you specify\.
    + For **Routing**, select the routing type\.
    + For dynamic routing, for **BGP ASN**, enter the Border Gateway Protocol \(BGP\) Autonomous System Number \(ASN\)\.
-   + \(Optional\) For **IP Address**, type the static, internet\-routable IP address for your customer gateway device\. If your customer gateway is behind a NAT device that's enabled for NAT\-T, use the public IP address of the NAT device\.
-**Note**  
-This is optional when you use a private certificate for VPN connections to a virtual private gateway \(VGW\)\.
+   + \(Optional\) For **IP Address**, enter the static, internet\-routable IP address for your customer gateway device\. If your customer gateway is behind a NAT device that's enabled for NAT\-T, use the public IP address of the NAT device\.
    + \(Optional\) If you want to use a private certificate, for **Certificate ARN**, choose the Amazon Resource Name of the private certificate\.
 
 **To create a customer gateway using the command line or API**
@@ -42,9 +55,13 @@ This is optional when you use a private certificate for VPN connections to a vir
 + [create\-customer\-gateway](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-customer-gateway.html) \(AWS CLI\)
 + [New\-EC2CustomerGateway](https://docs.aws.amazon.com/powershell/latest/reference/items/New-EC2CustomerGateway.html) \(AWS Tools for Windows PowerShell\)
 
-## Create a Virtual Private Gateway<a name="vpn-create-vpg"></a>
+## Create a target gateway<a name="vpn-create-target-gateway"></a>
 
-When you create a virtual private gateway, you can optionally specify the private Autonomous System Number \(ASN\) for the Amazon side of the gateway\. The ASN must be different from the BGP ASN specified for the customer gateway\.
+To establish a VPN connection between your VPC and your on\-premises network, you must create a target gateway on the AWS side of the connection\. The target gateway can be a virtual private gateway or a transit gateway\. 
+
+### Create a virtual private gateway<a name="vpn-create-vpg"></a>
+
+When you create a virtual private gateway, you can optionally specify the private Autonomous System Number \(ASN\) for the Amazon side of the gateway\. This ASN must be different from the BGP ASN that you specified for the customer gateway\.
 
 After you create a virtual private gateway, you must attach it to your VPC\.
 
@@ -72,14 +89,22 @@ After you create a virtual private gateway, you must attach it to your VPC\.
 + [attach\-vpn\-gateway](https://docs.aws.amazon.com/cli/latest/reference/ec2/attach-vpn-gateway.html) \(AWS CLI\)
 + [Add\-EC2VpnGateway](https://docs.aws.amazon.com/powershell/latest/reference/items/Add-EC2VpnGateway.html) \(AWS Tools for Windows PowerShell\)
 
-## Enable Route Propagation in Your Route Table<a name="vpn-configure-routing"></a>
+### Create a transit gateway<a name="vpn-create-tgw"></a>
 
-To enable instances in your VPC to reach your customer gateway, you must configure your route table to include the routes used by your Site\-to\-Site VPN connection and point them to your virtual private gateway\. You can enable route propagation for your route table to automatically propagate those routes to the table for you\.
+For more information about creating a transit gateway, see [Transit gateways](https://docs.aws.amazon.com/vpc/latest/tgw/tgw-transit-gateways.html) in *Amazon VPC Transit Gateways*\.
+
+## Configure routing<a name="vpn-configure-route-tables"></a>
+
+To enable instances in your VPC to reach your customer gateway, you must configure your route table to include the routes used by your Site\-to\-Site VPN connection and point them to your virtual private gateway or transit gateway\.
+
+### \(Virtual private gateway\) Enable route propagation in your route table<a name="vpn-configure-routing"></a>
+
+You can enable route propagation for your route table to automatically propagate Site\-to\-Site VPN routes\.
 
 For static routing, the static IP prefixes that you specify for your VPN configuration are propagated to the route table when the status of the Site\-to\-Site VPN connection is `UP`\. Similarly, for dynamic routing, the BGP\-advertised routes from your customer gateway are propagated to the route table when the status of the Site\-to\-Site VPN connection is `UP`\.
 
 **Note**  
-If your connection is interrupted, any propagated routes in your route table are not automatically removed\. You may have to disable route propagation to remove the propagated routes; for example, if you want traffic to fail over to a static route\.
+If your connection is interrupted but the VPN connection remains UP, any propagated routes that are in your route table are not automatically removed\. Keep this in mind if, for example, you want traffic to fail over to a static route\. In that case, you might have to disable route propagation to remove the propagated routes\.
 
 **To enable route propagation using the console**
 
@@ -106,7 +131,27 @@ For static routing, if you do not enable route propagation, you must manually en
 + [disable\-vgw\-route\-propagation](https://docs.aws.amazon.com/cli/latest/reference/ec2/disable-vgw-route-propagation.html) \(AWS CLI\)
 + [Disable\-EC2VgwRoutePropagation](https://docs.aws.amazon.com/powershell/latest/reference/items/Disable-EC2VgwRoutePropagation.html) \(AWS Tools for Windows PowerShell\)
 
-## Update Your Security Group<a name="vpn-configure-security-groups"></a>
+### \(Transit gateway\) Add a route to your route table<a name="vpn-configure-tgw-routes"></a>
+
+If you enabled route table propagation for your transit gateway, the routes for the VPN attachment are propagated to the transit gateway route table\. For more information, see [Routing](https://docs.aws.amazon.com/vpc/latest/tgw/how-transit-gateways-work.html#tgw-routing-overview) in *Amazon VPC Transit Gateways*\.
+
+If you attach a VPC to your transit gateway and you want to enable resources in the VPC to reach your customer gateway, you must add a route to your subnet route table to point to the transit gateway\.
+
+**To add a route to a VPC route table**
+
+1. On the navigation pane, choose **Route Tables**\.
+
+1. Choose the route table that is associated with your VPC\.
+
+1. Choose the **Routes** tab, then choose **Edit routes**\.
+
+1. Choose **Add route**\.
+
+1. In the **Destination** column, enter the destination IP address range\. For **Target**, choose the transit gateway\.
+
+1. Choose **Save routes**, and then choose **Close**\.
+
+## Update your security group<a name="vpn-configure-security-groups"></a>
 
 To allow access to instances in your VPC from your network, you must update your security group rules to enable inbound SSH, RDP, and ICMP access\.
 
@@ -114,72 +159,70 @@ To allow access to instances in your VPC from your network, you must update your
 
 1. In the navigation pane, choose **Security Groups**, and then select the default security group for the VPC\.
 
-1. On the **Inbound** tab in the details pane, add rules that allow inbound SSH, RDP, and ICMP access from your network, and then choose **Save**\. For more information about adding inbound rules, see [Adding, Removing, and Updating Rules](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html#AddRemoveRules) in the *Amazon VPC User Guide\.*
+1. On the **Inbound** tab in the details pane, add rules that allow inbound SSH, RDP, and ICMP access from your network, and then choose **Save**\. For more information about adding inbound rules, see [Adding, removing, and updating rules](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html#AddRemoveRules) in the *Amazon VPC User Guide\.*
 
-For more information about working with security groups using the AWS CLI, see [Security Groups for Your VPC](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html) in the *Amazon VPC User Guide*\.
+For more information about working with security groups using the AWS CLI, see [Security groups for your VPC](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html) in the *Amazon VPC User Guide*\.
 
-## Create a Site\-to\-Site VPN Connection and Configure the Customer Gateway Device<a name="vpn-create-vpn-connection"></a>
+## Create a Site\-to\-Site VPN connection<a name="vpn-create-vpn-connection"></a>
 
-After you create the Site\-to\-Site VPN connection, download the configuration information and use it to configure the customer gateway device or software application\.
+Create the Site\-to\-Site VPN connection using the customer gateway and the virtual private gateway or transit gateway that you created earlier\.
 
-**Important**  
-The configuration file is an example only and might not match your intended VPN connection settings\. For example, it specifies the minimum requirements of IKE version 1, AES128, SHA1, and DH Group 2 in most AWS Regions, and IKE version 1, AES128, SHA2, and DH Group 14 in the AWS GovCloud Regions\. It also specifies pre\-shared keys for [authentication](vpn-tunnel-authentication-options.md)\. You must modify the example configuration file to take advantage of IKE version 2, AES256, SHA256, other DH groups such as 2, 14\-18, 22, 23, and 24, and private certificates\.   
-If you specified custom tunnel options when creating or modifying your Site\-to\-Site VPN connection, modify the example configuration file to match the custom settings for your tunnels\.
-
-**To create a Site\-to\-Site VPN connection and configure the customer gateway**
+**To create a Site\-to\-Site VPN connection**
 
 1. In the navigation pane, choose **Site\-to\-Site VPN Connections**, **Create VPN Connection**\.
 
-1. Complete the following information, and then choose **Create VPN Connection**:
-   + \(Optional\) For **Name tag**, enter a name for your Site\-to\-Site VPN connection\. Doing so creates a tag with a key of `Name` and the value that you specify\.
-   + Select the virtual private gateway that you created earlier\.
-   + Select the customer gateway that you created earlier\.
-   + Select one of the routing options based on whether your VPN router supports Border Gateway Protocol \(BGP\):
-     + If your VPN router supports BGP, choose **Dynamic \(requires BGP\)**\.
-     + If your VPN router does not support BGP, choose **Static**\. For **Static IP Prefixes**, specify each IP prefix for the private network of your Site\-to\-Site VPN connection\.
-   + Under **Tunnel Options**, you can optionally specify the following information for each tunnel:
-     + A size /30 CIDR block from the `169.254.0.0/16` range for the inside tunnel IP addresses\.
-     + The IKE pre\-shared key \(PSK\)\. The following versions are supported: IKEv1 or IKEv2\.
-     + Advanced tunnel information, which includes the encryption algorithms for phases 1 and 2 of the IKE negotiations, the integrity algorithms for phases 1 and 2 of the IKE negotiations, the Diffie\-Hellman groups for phases 1 and 2 of the IKE negotiations, the IKE version, the phase 1 and 2 lifetimes, the rekey margin time, the rekey fuzz, the replay window size, and the dead peer detection interval\.
+1. \(Optional\) For **Name tag**, enter a name for your Site\-to\-Site VPN connection\. Doing so creates a tag with a key of `Name` and the value that you specify\.
 
-     For more information about these options, see [Site\-to\-Site VPN Tunnel Options for Your Site\-to\-Site VPN Connection](VPNTunnels.md)\.
+1. For **Target Gateway Type**, choose either **Virtual Private Gateway** or **Transit Gateway**\. Then, choose the virtual private gateway or transit gateway that you created earlier\.
 
-   It may take a few minutes to create the Site\-to\-Site VPN connection\. When it's ready, select the connection and choose **Download Configuration**\.
+1. For **Customer Gateway ID**, select the customer gateway that you created earlier\.
 
-1. In the **Download Configuration** dialog box, select the vendor, platform, and software that corresponds to your customer gateway device or software, and then choose **Yes, Download**\. 
+1. Select one of the routing options based on whether your customer gateway device supports Border Gateway Protocol \(BGP\):
+   + If your customer gateway device supports BGP, choose **Dynamic \(requires BGP\)**\.
+   + If your customer gateway device does not support BGP, choose **Static**\. For **Static IP Prefixes**, specify each IP prefix for the private network of your Site\-to\-Site VPN connection\.
+
+1. \(Optional\) For **Tunnel Options**, you can specify the following information for each tunnel:
+   + A size /30 CIDR block from the `169.254.0.0/16` range for the inside tunnel IP addresses\.
+   + The IKE pre\-shared key \(PSK\)\. The following versions are supported: IKEv1 or IKEv2\.
+   + Advanced tunnel information, which includes the following:
+     + Encryption algorithms for phases 1 and 2 of the IKE negotiations
+     + Integrity algorithms for phases 1 and 2 of the IKE negotiations
+     + Diffie\-Hellman groups for phases 1 and 2 of the IKE negotiations
+     + IKE version
+     + Phase 1 and 2 lifetimes
+     + Rekey margin time
+     + Rekey fuzz
+     + Replay window size
+     + Dead peer detection interval
+
+   For more information about these options, see [Site\-to\-Site VPN tunnel options for your Site\-to\-Site VPN connection](VPNTunnels.md)\.
+
+1. Choose **Create VPN Connection**\. It might take a few minutes to create the Site\-to\-Site VPN connection\.
 
 **To create a Site\-to\-Site VPN connection using the command line or API**
 + [CreateVpnConnection](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-CreateVpnConnection.html) \(Amazon EC2 Query API\)
 + [create\-vpn\-connection](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-vpn-connection.html) \(AWS CLI\)
 + [New\-EC2VpnConnection](https://docs.aws.amazon.com/powershell/latest/reference/items/New-EC2VpnConnection.html) \(AWS Tools for Windows PowerShell\)
 
-## Configure the Customer Gateway Device<a name="vpn-configure-customer-gateway-device"></a>
+## Download the configuration file<a name="vpn-download-config"></a>
 
-Give the configuration file that you downloaded to your network administrator, along with this guide: [AWS Site\-to\-Site VPN Network Administrator Guide](https://docs.aws.amazon.com/vpc/latest/adminguide/)\. The network administrator configures the customer gateway device with the settings that match the customer gateway\. After the network administrator configures the customer gateway device, the Site\-to\-Site VPN connection is operational\.
+After you create the Site\-to\-Site VPN connection, download the configuration information and use it to configure the customer gateway device or software application\.
 
-## Editing Static Routes for a Site\-to\-Site VPN Connection<a name="vpn-edit-static-routes"></a>
+**Important**  
+The configuration file is an example only and might not match your intended VPN connection settings\. For example, it specifies the minimum requirements of IKE version 1, AES128, SHA1, and DH Group 2 in most AWS Regions, and IKE version 1, AES128, SHA2, and DH Group 14 in the AWS GovCloud Regions\. It also specifies pre\-shared keys for [authentication](vpn-tunnel-authentication-options.md)\. You must modify the example configuration file to take advantage of IKE version 2, AES256, SHA256, other DH groups such as 2, 14\-18, 22, 23, and 24, and private certificates\.   
+If you specified custom tunnel options when creating or modifying your Site\-to\-Site VPN connection, modify the example configuration file to match the custom settings for your tunnels\.  
+The file also contains the value for the outside IP address for the virtual private gateway\. This value is static unless you recreate the VPN connection in AWS\.
 
-For static routing, you can add, modify, or remove the static routes for your VPN configuration\. 
-
-**To add, modify, or remove a static route**
+**To download the configuration file**
 
 1. Open the Amazon VPC console at [https://console\.aws\.amazon\.com/vpc/](https://console.aws.amazon.com/vpc/)\.
 
 1. In the navigation pane, choose **Site\-to\-Site VPN Connections**\.
 
-1. Choose **Static Routes**, **Edit**\. 
+1. Select your VPN connection and choose **Download Configuration**\.
 
-1. Modify your existing static IP prefixes, or choose **Remove** to delete them\. Choose **Add Another Rule** to add a new IP prefix to your configuration\. When you are done, choose **Save**\.
+1. Select the vendor, platform, and software that corresponds to your customer gateway device or software\. If your device is not listed, choose **Generic**\. Choose **Download**\.
 
-**Note**  
-If you have not enabled route propagation for your route table, you must manually update the routes in your route table to reflect the updated static IP prefixes in your Site\-to\-Site VPN connection\. For more information, see [Enable Route Propagation in Your Route Table](#vpn-configure-routing)\.
+## Configure the customer gateway device<a name="vpn-configure-customer-gateway-device"></a>
 
-**To add a static route using the command line or API**
-+ [CreateVpnConnectionRoute](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-CreateVpnConnectionRoute.html) \(Amazon EC2 Query API\)
-+ [create\-vpn\-connection\-route](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-vpn-connection-route.html) \(AWS CLI\)
-+ [New\-EC2VpnConnectionRoute](https://docs.aws.amazon.com/powershell/latest/reference/items/New-EC2VpnConnectionRoute.html) \(AWS Tools for Windows PowerShell\)
-
-**To delete a static route using the command line or API**
-+ [DeleteVpnConnectionRoute](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DeleteVpnConnectionRoute.html) \(Amazon EC2 Query API\)
-+ [delete\-vpn\-connection\-route](https://docs.aws.amazon.com/cli/latest/reference/ec2/delete-vpn-connection-route.html) \(AWS CLI\)
-+ [Remove\-EC2VpnConnectionRoute](https://docs.aws.amazon.com/powershell/latest/reference/items/Remove-EC2VpnConnectionRoute.html) \(AWS Tools for Windows PowerShell\)
+Use the configuration file to configure your customer gateway device\. The customer gateway device is the physical or software appliance on your side of the Site\-to\-Site VPN connection\. For more information, see [Your customer gateway device](your-cgw.md)\.

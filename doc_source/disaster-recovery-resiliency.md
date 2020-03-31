@@ -6,13 +6,13 @@ For more information about AWS Regions and Availability Zones, see [AWS Global I
 
 In addition to the AWS global infrastructure, Site\-to\-Site VPN offers features to help support your data resiliency and backup needs\.
 
-## Two Tunnels per VPN Connection<a name="resiliancy-tunnels"></a>
+## Two tunnels per VPN connection<a name="resiliancy-tunnels"></a>
 
 A Site\-to\-Site VPN connection has two tunnels to provide increased availability to your VPC\. If there's a device failure within AWS, your VPN connection automatically fails over to the second tunnel so that your access isn't interrupted\. From time to time, AWS also performs routine maintenance on your virtual private gateway, which may briefly disable one of the two tunnels of your VPN connection\. Your VPN connection automatically fails over to the second tunnel while this maintenance is performed\. When you configure your customer gateway, it's therefore important that you configure both tunnels\.
 
 ## Redundancy<a name="resiliancy-redundancy"></a>
 
 To protect against a loss of connectivity in case your customer gateway becomes unavailable, you can set up a second Site\-to\-Site VPN connection\. For more information, see the following topics:
-+ [Using Redundant Site\-to\-Site VPN Connections to Provide Failover](VPNConnections.md)
-+ [Single Data Center HA Network Connectivity](https://aws.amazon.com/answers/networking/aws-single-data-center-ha-network-connectivity/)
-+ [Multiple Data Center HA Network Connectivity](https://aws.amazon.com/answers/networking/aws-multiple-data-center-ha-network-connectivity/)
++ [Using redundant Site\-to\-Site VPN connections to provide failover](vpn-redundant-connection.md)
++ [Single data center HA network connectivity](https://aws.amazon.com/answers/networking/aws-single-data-center-ha-network-connectivity/)
++ [Multiple data center HA network connectivity](https://aws.amazon.com/answers/networking/aws-multiple-data-center-ha-network-connectivity/)
