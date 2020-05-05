@@ -205,7 +205,7 @@ Run the updated script in a command prompt window on your Windows server\. \(The
 
 When you are done, go to [2\.4: Configure the Windows firewall](#cgw-win2012-firewall)\.
 
-For more information about the netsh parameters, see [Netsh AdvFirewall Consec Commands](http://technet.microsoft.com/en-us/library/dd736198%28v=ws.10%29.aspx) in the *Microsoft TechNet Library*\.
+For more information about the netsh parameters, see [Netsh AdvFirewall Consec Commands](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd736198(v=ws.10)?redirectedfrom=MSDN#BKMK_2_set) in the *Microsoft TechNet Library*\.
 
 ### Option 2: Use the Windows server user interface<a name="cgw-win2012-ui"></a>
 

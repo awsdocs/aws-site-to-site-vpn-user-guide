@@ -201,7 +201,7 @@ Run the updated script in a command prompt window\. \(The ^ enables you to cut a
 
 When you are done, go to [2\.4: Configure the Windows firewall](#ConfigureFirewall)\.
 
-For more information about the netsh parameters, see [Netsh AdvFirewall Consec Commands](http://technet.microsoft.com/en-us/library/dd736198%28v=ws.10%29.aspx#BKMK_2_set) in the *Microsoft TechNet Library*\.
+For more information about the netsh parameters, see [Netsh AdvFirewall Consec Commands](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd736198(v=ws.10)?redirectedfrom=MSDN#BKMK_2_set) in the *Microsoft TechNet Library*\.
 
 ### Option 2: Use the Windows server user interface<a name="WindowsUI"></a>
 

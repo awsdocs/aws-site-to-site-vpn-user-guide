@@ -5,11 +5,10 @@ Your AWS account has the following quotas, formerly referred to as limits, relat
 + Virtual private gateways per Region: 5
 
   You can attach only one virtual private gateway to a VPC at a time\. 
-+ Routes advertised to a Site\-to\-Site VPN connection from a customer gateway device: 100
-  Routes (dynamic BGP/propagated) advertised to a Site\-to\-Site VPN connection (toward a virtual private gateway or transit gateway) from a customer gateway device: 100
- 
++ Dynamic routes advertised from a customer gateway device to a Site\-to\-Site VPN connection \(on a transit gateway or virtual private gateway\): 100
+
   This quota cannot be increased\.
-+ Routes advertised by a Site\-to\-Site VPN connection to a customer gateway device: 1000
++ Routes advertised from a Site\-to\-Site VPN connection to a customer gateway device: 1000
 
   This quota cannot be increased\.
 + Site\-to\-Site VPN connections per Region: 50

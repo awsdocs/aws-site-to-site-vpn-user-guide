@@ -9,17 +9,30 @@
 ## Example configuration files<a name="cgw-static-routing-example-files"></a>
 
 You can download [static\-routing\-examples\.zip](samples/static-routing-examples.zip) to view example configuration files for the following customer gateway devices:
-+ Cisco ASA device running Cisco ASA 8\.2\+
-+ Cisco ASA device running Cisco ASA 9\.7\.1\+
-+ Cisco IOS device running Cisco IOS
++ Cisco ASA running Cisco ASA 8\.2\+
++ Cisco ASA running Cisco ASA 9\.7\.1\+
++ Cisco IOS running Cisco IOS
++ Cisco Meraki MX Series running 9\.0\+
++ Citrix Netscaler CloudBridge running NS 11\+
++ Cyberoam CR15iNG running V 10\.6\.5 MR\-1
++ F5 Networks BIG\-IP running v12\.0\.0\+
++ Fortinet Fortigate 40\+ Series running FortiOS 4\.0\+
 + Generic configuration for static routing
-+ SonicWALL device running SonicOS 5\.9 or 6\.2
-+ Netgate pfSense device running OS 2\.2\.5 or later
++ H3C MSR800 running version 5\.20
++ IIJ SEIL/B1 running SEIL/B1 3\.70\+
++ Mikrotik RouterOS running 6\.36
++ Openswan running 2\.6\.38\+
++ pfSense running OS 2\.2\.5\+
++ SonicWALLrunning SonicOS 5\.9 or 6\.2
++ Strongswan Ubuntu 16\.04 running Strongswan 5\.5\.1\+
++ WatchGuard XTM, Firebox running Fireware OS 11\.11\.4
++ Zyxel Zywall running Zywall 4\.20\+
 
 The files use placeholder values for some components\. For example, they use:
 + Example values for the VPN connection ID and virtual private gateway ID
-+ Placeholders for the AWS endpoints \(*AWS\_ENDPOINT\_1* and *AWS\_ENDPOINT\_2*\)
-+ The IP address for the internet\-routable external interface on the customer gateway device \(*YOUR\_UPLINK\_ADDRESS*\)
++ Placeholders for the remote \(outside\) IP address AWS endpoints \(*AWS\_ENDPOINT\_1* and *AWS\_ENDPOINT\_2*\)
++ A placeholder for the IP address for the internet\-routable external interface on the customer gateway device \(*your\-cgw\-ip\-address*\)
++ Example values for the tunnel inside IP addresses\.
 
 In addition to providing placeholder values, the files specify the minimum requirements of IKE version 1, AES128, SHA1, and DH Group 2 in most AWS Regions\. They also specify pre\-shared keys for [authentication](vpn-tunnel-authentication-options.md)\. You must modify the example configuration files to take advantage of IKE version 2, AES256, SHA256, other DH groups such as 2, 14\-18, 22, 23, and 24, and private certificates\. 
 

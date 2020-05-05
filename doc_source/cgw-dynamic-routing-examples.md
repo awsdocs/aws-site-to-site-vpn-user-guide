@@ -10,27 +10,37 @@
 ## Example configuration files<a name="cgw-static-routing-example-files"></a>
 
 You can download [dynamic\-routing\-examples\.zip](samples/dynamic-routing-examples.zip) to view example configuration files for the following customer gateway devices:
-+ Cisco ASA device running Cisco ASA 9\.7\.1\+
-+ Cisco IOS device running Cisco IOS 12\.4\+
-+ SonicWALL device running SonicOS 5\.9 or 6\.2
++ Barracuda NextGen Firewall F\-series running 6\.2\+
++ Cisco ASA running Cisco ASA 9\.7\.1\+
++ Cisco IOS running Cisco IOS 12\.4\+
++ F5 Networks BIG\-IP running v12\.0\.0\+
 + Fortinet Fortigate 40\+
 + Generic configuration for dynamic routing
-+ Juniper J\-Series device running JunOS 9\.5\+
-+ Juniper SRX device running JunOS 11\.0\+
-+ Juniper SSG or Netscreen series device running Juniper ScreenOS 6\.1\+
-+ Palo Alto Networks device running PANOS 4\.1\.2\+
-+ Yamaha RT107e, RTX1200, RTX1210, RTX1500, RTX3000, or SRT100 device
++ H3C MSR800 running version 5\.20
++ IIJ SEIL/B1 running SEIL/B1 3\.70\+
++ Juniper J\-Series running JunOS 9\.5\+
++ Juniper SRX running JunOS 11\.0\+
++ Juniper SSG or Netscreen series running Juniper ScreenOS 6\.1\+
++ Mikrotik RouterOS running 6\.36
++ Palo Alto Networks running PANOS 4\.1\.2\+
++ SonicWALL running SonicOS 5\.9 or 6\.2
++ Sophos ASG running V8\.300\+
++ Vyatta running Network OS 6\.5\+
++ WatchGuard XTM, Firebox running Fireware OS 11\.12\.2\+
++ Yamaha RT107e, RTX1200, RTX1210, RTX1500, RTX3000, or SRT100
++ Zyxel ZyWALL running ZLD 4\.3\+
 
 The files use placeholder values for some components\. For example, they use:
 + Example values for the VPN connection ID and virtual private gateway ID
-+ Placeholders for the AWS endpoints \(*AWS\_ENDPOINT\_1* and *AWS\_ENDPOINT\_2*\)
-+ The IP address for the Internet\-routable external interface on the customer gateway device \(*YOUR\_UPLINK\_ADDRESS*\), and the BGP ASN \(*YOUR\_BGP\_ASN*\)
++ Placeholders for the remote \(outside\) IP address AWS endpoints \(*AWS\_ENDPOINT\_1* and *AWS\_ENDPOINT\_2*\)
++ Placeholders for the IP address for the internet\-routable external interface on the customer gateway device \(*your\-cgw\-ip\-address*\), and the BGP ASN\.
++ Example values for the tunnel inside IP addresses\.
 
 In addition to providing placeholder values, the files specify the minimum requirements of IKE version 1, AES128, SHA1, and DH Group 2 in most AWS Regions\. They also specify pre\-shared keys for [authentication](vpn-tunnel-authentication-options.md)\. You must modify the example configuration files to take advantage of IKE version 2, AES256, SHA256, other DH groups such as 2, 14\-18, 22, 23, and 24, and private certificates\. 
 
 The following diagram provides an overview of the different components that are configured on the customer gateway device\. It includes example values for the tunnel interface IP addresses\.
 
-![\[Customer gateway device with static routing\]](http://docs.aws.amazon.com/vpn/latest/s2svpn/images/cgw-bgp.png)
+![\[Customer gateway device with dynamic routing\]](http://docs.aws.amazon.com/vpn/latest/s2svpn/images/cgw-bgp.png)
 
 To download a configuration file with values that are specific to your VPN connection configuration, you must use the Amazon VPC console\. For more information, see [Download the configuration file](SetUpVPNConnections.md#vpn-download-config)\.
 

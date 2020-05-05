@@ -1,4 +1,4 @@
-# Compliance validation for AWS Site\-to\-Site VPN<a name="SERVICENAME-compliance"></a>
+# Compliance validation for AWS Site\-to\-Site VPN<a name="site-to-site-vpn-compliance"></a>
 
 Third\-party auditors assess the security and compliance of AWS Site\-to\-Site VPN as part of multiple AWS compliance programs\. These include SOC, PCI, FedRAMP, HIPAA, and others\.
 
