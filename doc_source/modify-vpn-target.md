@@ -6,6 +6,8 @@ You can modify the target gateway of AWS Site\-to\-Site VPN connection\. The fol
 + An existing transit gateway to another transit gateway
 + An existing transit gateway to a virtual private gateway
 
+After you modify the target gateway, your Site\-to\-Site VPN connection will be temporarily unavailable for a brief period while we provision the new endpoints\.
+
 The following tasks help you complete the migration to a new gateway\. 
 
 **Topics**
@@ -39,7 +41,7 @@ Keep a copy of the static route before you delete it\. You will need to add back
 
 1. In the navigation pane, choose **Route Tables**, and then select the route table\.
 
-1. In the **Routes** tab, choose **Edit**, and then choose **Remove** for the static route to the virtual private gateway\.\.
+1. In the **Routes** tab, choose **Edit**, and then choose **Remove** for the static route to the virtual private gateway\.
 
 1. Choose **Save** when you are done\.
 

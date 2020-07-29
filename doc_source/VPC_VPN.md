@@ -30,6 +30,9 @@ A Site\-to\-Site VPN connection has the following limitations\.
 + IPv6 traffic is not supported\.
 + An AWS VPN connection does not support Path MTU Discovery\.
 
+In addition, take the following into consideration when you use Site\-to\-Site VPN\.
++ When connecting your VPCs to a common on\-premises network, we recommend that you use non\-overlapping CIDR blocks for your networks\.
+
 ## Pricing<a name="pricing"></a>
 
 For information about pricing, see [VPN pricing](https://aws.amazon.com/vpn/pricing/)\.

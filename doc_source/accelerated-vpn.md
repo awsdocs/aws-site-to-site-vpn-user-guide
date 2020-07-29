@@ -4,23 +4,27 @@ You can optionally enable acceleration for your Site\-to\-Site VPN connection\. 
 
 When you create an accelerated VPN connection, we create and manage two accelerators on your behalf, one for each VPN tunnel\.
 
-Acceleration is only supported for Site\-to\-Site VPN connections that are attached to a transit gateway\. Virtual private gateways do not support accelerated VPN connections\.
-
-Accelerated VPN connections are supported in the following AWS Regions: US East \(N\. Virginia\), US East \(Ohio\), US West \(Oregon\), US West \(N\. California\), Europe \(Ireland\), Europe \(Frankfurt\), Europe \(London\), Europe \(Paris\), Asia Pacific \(Singapore\), Asia Pacific \(Tokyo\), Asia Pacific \(Sydney\), Asia Pacific \(Seoul\), Asia Pacific \(Mumbai\), and Canada \(Central\)\.
+Accelerated VPN connections are supported in the following AWS Regions: US East \(N\. Virginia\), US East \(Ohio\), US West \(Oregon\), US West \(N\. California\), Europe \(Ireland\), Europe \(Frankfurt\), Europe \(London\), Europe \(Paris\), Asia Pacific \(Singapore\), Asia Pacific \(Tokyo\), Asia Pacific \(Sydney\), Asia Pacific \(Seoul\), and Asia Pacific \(Mumbai\)\.
 
 **Topics**
 + [Enabling acceleration](#accelerated-vpn-enabling)
++ [Rules and restrictions](#accelerated-vpn-rules)
 + [Pricing](#accelerated-vpn-pricing)
 
 ## Enabling acceleration<a name="accelerated-vpn-enabling"></a>
 
-By default, when you create a Site\-to\-Site VPN connection, acceleration is disabled\. You can optionally enable acceleration when you create a new Site\-to\-Site VPN attachment on a transit gateway\. For more information, see [Creating a transit gateway VPN attachment](create-tgw-vpn-attachment.md)\.
-
-You cannot enable or disable acceleration for an existing Site\-to\-Site VPN connection\. Instead, you can create a new Site\-to\-Site VPN connection with acceleration enabled or disabled as needed\. Then, configure your customer gateway device to use the new Site\-to\-Site VPN connection and delete the old Site\-to\-Site VPN connection\. 
-
-NAT\-traversal \(NAT\-T\) is required for an accelerated VPN connection and is enabled by default\.
+By default, when you create a Site\-to\-Site VPN connection, acceleration is disabled\. You can optionally enable acceleration when you create a new Site\-to\-Site VPN attachment on a transit gateway\. For more information and steps, see [Creating a transit gateway VPN attachment](create-tgw-vpn-attachment.md)\.
 
 Accelerated VPN connections use a separate pool of IP addresses for the tunnel endpoint IP addresses\. The IP addresses for the two VPN tunnels are selected from two separate [network zones](https://docs.aws.amazon.com/global-accelerator/latest/dg/introduction-components.html)\.
+
+## Rules and restrictions<a name="accelerated-vpn-rules"></a>
+
+To use an accelerated VPN connection, the following rules apply:
++ Acceleration is only supported for Site\-to\-Site VPN connections that are attached to a transit gateway\. Virtual private gateways do not support accelerated VPN connections\.
++ You cannot enable or disable acceleration for an existing Site\-to\-Site VPN connection\. Instead, you can create a new Site\-to\-Site VPN connection with acceleration enabled or disabled as needed\. Then, configure your customer gateway device to use the new Site\-to\-Site VPN connection and delete the old Site\-to\-Site VPN connection\. 
++ NAT\-traversal \(NAT\-T\) is required for an accelerated VPN connection and is enabled by default\.
++ IKE rekeys for accelerated VPN tunnels must be initiated from the customer gateway device to keep the tunnels up\.
++ Site\-to\-Site VPN connections that use certificate\-based authentication might not be compatible with AWS Global Accelerator, due to limited support for packet fragmentation in Global Accelerator\. For more information, see [How AWS Global Accelerator works](https://docs.aws.amazon.com/global-accelerator/latest/dg/introduction-how-it-works.html)\. If you require an accelerated VPN connection that uses certificate\-based authentication, then your customer gateway device must support IKE fragmentation\. Otherwise, do not enable your VPN for acceleration\.
 
 ## Pricing<a name="accelerated-vpn-pricing"></a>
 

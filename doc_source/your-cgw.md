@@ -54,7 +54,7 @@ The VPN tunnel comes up when traffic is generated from your side of the VPN conn
 
 |  Requirement  |  RFC |  Comments | 
 | --- | --- | --- | 
-|  Establish IKE security association   ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/vpn/latest/s2svpn/images/IKE.png)   |  [RFC 2409](http://tools.ietf.org/html/rfc2409)  [RFC 7296](https://tools.ietf.org/html/rfc7296)  | The IKE security association is established first between the virtual private gateway and the customer gateway device using a pre\-shared key or a private certificate that uses AWS Certificate Manager Private Certificate Authority as the authenticator\. When established, IKE negotiates an ephemeral key to secure future IKE messages\. There must be complete agreement among the parameters, including encryption and authentication parameters\.When you create a VPN connection in AWS, you can specify your own pre\-shared key for each tunnel, or you can let AWS generate one for you\. Alternatively, you can specify the private certificate using AWS Certificate Manager Private Certificate Authority to use for your customer gateway device\. For more information, about configuring VPN tunnels see [Site\-to\-Site VPN tunnel options for your Site\-to\-Site VPN connection](VPNTunnels.md)\.The following versions are supported: IKEv1 and IKEv2\.We support Main mode only with IKEv1\. | 
+|  Establish IKE security association   ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/vpn/latest/s2svpn/images/IKE.png)   |  [RFC 2409](http://tools.ietf.org/html/rfc2409)  [RFC 7296](https://tools.ietf.org/html/rfc7296)  | The IKE security association is established first between the virtual private gateway and the customer gateway device using a pre\-shared key or a private certificate that uses AWS Certificate Manager Private Certificate Authority as the authenticator\. When established, IKE negotiates an ephemeral key to secure future IKE messages\. There must be complete agreement among the parameters, including encryption and authentication parameters\.When you create a VPN connection in AWS, you can specify your own pre\-shared key for each tunnel, or you can let AWS generate one for you\. Alternatively, you can specify the private certificate using AWS Certificate Manager Private Certificate Authority to use for your customer gateway device\. For more information, about configuring VPN tunnels see [Tunnel options for your Site\-to\-Site VPN connection](VPNTunnels.md)\.The following versions are supported: IKEv1 and IKEv2\.We support Main mode only with IKEv1\. The Site\-to\-Site VPN service is a route\-based solution\. If you are using a policy\-based configuration, you must limit your configuration to a single security association \(SA\)\. | 
 |  Establish IPsec security associations in Tunnel mode  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/vpn/latest/s2svpn/images/IPsec.png)   |   [RFC 4301](http://tools.ietf.org/html/rfc4301)   |  Using the IKE ephemeral key, keys are established between the virtual private gateway and the customer gateway device to form an IPsec security association \(SA\)\. Traffic between gateways is encrypted and decrypted using this SA\. The ephemeral keys used to encrypt traffic within the IPsec SA are automatically rotated by IKE on a regular basis to ensure confidentiality of communications\.  | 
 |  Use the AES 128\-bit encryption or AES 256\-bit encryption function  |   [RFC 3602](http://tools.ietf.org/html/rfc3602)   |  The encryption function is used to ensure privacy for both IKE and IPsec security associations\.  | 
 |  Use the SHA\-1 or SHA\-2 \(256\) hashing function  |   [RFC 2404](http://tools.ietf.org/html/rfc2404)   |  This hashing function is used to authenticate both IKE and IPsec security associations\.  | 
@@ -83,25 +83,29 @@ You must have an internet\-routable IP address to use as the endpoint for the IP
 
 **Inbound \(from the internet\)**  
 
-|  | 
-| --- |
+| 
+| 
 |  Input rule I1  | 
+| --- |
 |  Source IP  |  Virtual Private Gateway 1  | 
 |  Dest IP  |  Customer Gateway  | 
 |  Protocol  |  UDP  | 
 |  Source port  |  500  | 
 |  Destination  |  500  | 
 |  Input rule I2  | 
+| --- |
 |  Source IP  |  Virtual Private Gateway 2  | 
 |  Dest IP  |  Customer Gateway  | 
 |  Protocol  |  UDP  | 
 |  Source port  |  500  | 
 |  Destination port  |  500  | 
 |  Input rule I3  | 
+| --- |
 |  Source IP  |  Virtual Private Gateway 1  | 
 |  Dest IP  |  Customer Gateway  | 
 |  Protocol  |  IP 50 \(ESP\)  | 
 |  Input rule I4  | 
+| --- |
 |  Source IP  |  Virtual Private Gateway 2  | 
 |  Dest IP  |  Customer Gateway  | 
 |  Protocol  |  IP 50 \(ESP\)  | 
@@ -109,25 +113,29 @@ You must have an internet\-routable IP address to use as the endpoint for the IP
 
 **Outbound \(to the internet\)**  
 
-|  | 
-| --- |
+| 
+| 
 |  Output rule O1  | 
+| --- |
 |  Source IP  |  Customer Gateway  | 
 |  Dest IP  |  Virtual Private Gateway 1  | 
 |  Protocol  |  UDP  | 
 |  Source port  |  500  | 
 |  Destination port  |  500  | 
 |  Output rule O2  | 
+| --- |
 |  Source IP  |  Customer Gateway  | 
 |  Dest IP  |  Virtual Private Gateway 2  | 
 |  Protocol  |  UDP  | 
 |  Source port  |  500  | 
 |  Destination port  |  500  | 
 |  Output rule O3  | 
+| --- |
 |  Source IP  |  Customer Gateway  | 
 |  Dest IP  |  Virtual Private Gateway 1  | 
 |  Protocol  |  IP 50 \(ESP\)   | 
 |  Output rule O4  | 
+| --- |
 |  Source IP  |  Customer Gateway  | 
 |  Dest IP  |  Virtual Private Gateway 2  | 
 |  Protocol  |  IP 50 \(ESP\)  | 

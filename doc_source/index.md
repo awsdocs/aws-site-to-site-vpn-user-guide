@@ -17,7 +17,7 @@ Amazon's trademarks and trade dress may not be used in
 + [What is AWS Site-to-Site VPN?](VPC_VPN.md)
 + [How AWS Site-to-Site VPN works](how_it_works.md)
    + [Site-to-Site VPN categories](vpn-categories.md)
-   + [Site-to-Site VPN tunnel options for your Site-to-Site VPN connection](VPNTunnels.md)
+   + [Tunnel options for your Site-to-Site VPN connection](VPNTunnels.md)
    + [Site-to-Site VPN tunnel authentication options](vpn-tunnel-authentication-options.md)
    + [Customer gateway options for your Site-to-Site VPN connection](cgw-options.md)
    + [Accelerated Site-to-Site VPN connections](accelerated-vpn.md)

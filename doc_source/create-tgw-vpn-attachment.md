@@ -26,7 +26,7 @@ To create a VPN attachment on a transit gateway, you must specify the customer g
 
    If you enable acceleration, we create two accelerators that are used by your VPN connection\. Additional charges apply\.
 
-1. For **Tunnel Options**, see [Site\-to\-Site VPN tunnel options for your Site\-to\-Site VPN connection](VPNTunnels.md)\.
+1. For **Tunnel Options**, see [Tunnel options for your Site\-to\-Site VPN connection](VPNTunnels.md)\.
 
 1. Choose **Create VPN Connection**\.
 

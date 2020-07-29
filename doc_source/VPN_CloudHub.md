@@ -16,7 +16,7 @@ For this scenario, do the following:
 
 1. Create multiple customer gateways, each with the public IP address of the gateway\. You must use a unique Border Gateway Protocol \(BGP\) Autonomous System Number \(ASN\) for each customer gateway\. 
 
-1. Create a Site\-to\-Site VPN connection from each customer gateway to the common virtual private gateway\. 
+1. Create a dynamically routed Site\-to\-Site VPN connection from each customer gateway to the common virtual private gateway\. 
 
 1. Configure the customer gateway devices to advertise a site\-specific prefix \(such as 10\.0\.0\.0/24, 10\.0\.1\.0/24\) to the virtual private gateway\. These routing advertisements are received and re\-advertised to each BGP peer, enabling each site to send data to and receive data from the other sites\. This is done using the network statements in the VPN configuration files for the Site\-to\-Site VPN connection\. The network statements differ slightly depending on the type of router you use\.
 

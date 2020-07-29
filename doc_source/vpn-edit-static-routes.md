@@ -1,6 +1,6 @@
 # Editing static routes for a Site\-to\-Site VPN connection<a name="vpn-edit-static-routes"></a>
 
-For a Site\-to\-Site VPN connection that's configured for static routing, you can add, modify, or remove the static routes for your VPN configuration\. 
+For a Site\-to\-Site VPN connection on a virtual private gateway that's configured for static routing, you can add, modify, or remove the static routes for your VPN configuration\. 
 
 **To add, modify, or remove a static route**
 
@@ -14,6 +14,8 @@ For a Site\-to\-Site VPN connection that's configured for static routing, you ca
 
 **Note**  
 If you have not enabled route propagation for your route table, you must manually update the routes in your route table to reflect the updated static IP prefixes in your Site\-to\-Site VPN connection\. For more information, see [\(Virtual private gateway\) Enable route propagation in your route table](SetUpVPNConnections.md#vpn-configure-routing)\.
+
+For a Site\-to\-Site VPN connection on a transit gateway, you add, modify, or remove the static routes in the transit gateway route table\. For more information, see [Transit gateway route tables](https://docs.aws.amazon.com/vpc/latest/tgw/tgw-route-tables.html)\.
 
 **To add a static route using the command line or API**
 + [CreateVpnConnectionRoute](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-CreateVpnConnectionRoute.html) \(Amazon EC2 Query API\)

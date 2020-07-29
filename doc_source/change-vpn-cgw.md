@@ -2,7 +2,9 @@
 
 You can change the customer gateway of your Site\-to\-Site VPN connection by using the Amazon VPC console or a command line tool\. 
 
-**To identify the Site\-to\-Site VPN category using the console**
+After you change the customer gateway, your Site\-to\-Site VPN connection will be temporarily unavailable for a brief period while we provision the new endpoints\.
+
+**To change the customer gateway using the console**
 
 1. Open the Amazon VPC console at [https://console\.aws\.amazon\.com/vpc/](https://console.aws.amazon.com/vpc/)\.
 

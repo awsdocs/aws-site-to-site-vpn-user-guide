@@ -1,16 +1,16 @@
 # How AWS Site\-to\-Site VPN works<a name="how_it_works"></a>
 
-## Components of your Site\-to\-Site VPN<a name="VPN"></a>
+## Site\-to\-Site VPN Components<a name="VPN"></a>
 
-A Site\-to\-Site VPN connection offers two VPN tunnels between a virtual private gateway or a transit gateway on the AWS side, and a customer gateway on the remote \(on\-premises\) side\.
+A Site\-to\-Site VPN connection offers two VPN tunnels between a virtual private gateway or a transit gateway on the AWS side, and a customer gateway \(which represents a VPN device\) on the remote \(on\-premises\) side\.
 
 A Site\-to\-Site VPN connection consists of the following components\. For more information about Site\-to\-Site VPN quotas, see [Site\-to\-Site VPN quotas](vpn-limits.md)\.
 
 **Topics**
 + [Virtual private gateway](#VPNGateway)
 + [Transit gateway](#Transit-Gateway)
-+ [Customer gateway](#CustomerGateway)
 + [Customer gateway device](#CustomerGatewayDevice)
++ [Customer gateway](#CustomerGateway)
 
 ### Virtual private gateway<a name="VPNGateway"></a>
 
@@ -31,16 +31,16 @@ A transit gateway is a transit hub that you can use to interconnect your virtual
 
 You can modify the target gateway of a Site\-to\-Site VPN connection from a virtual private gateway to a transit gateway\. For more information, see [Modifying a Site\-to\-Site VPN connection's target gateway](modify-vpn-target.md)\.
 
+### Customer gateway device<a name="CustomerGatewayDevice"></a>
+
+A *customer gateway device* is a physical device or software application on your side of the Site\-to\-Site VPN connection\. You configure the device to work with the Site\-to\-Site VPN connection\. For more information, see [Your customer gateway device](your-cgw.md)\.
+
 ### Customer gateway<a name="CustomerGateway"></a>
 
-A *customer gateway* is a resource in AWS that provides information to AWS about your [Customer gateway device](#CustomerGatewayDevice)\. For information about customer gateway options, see [Customer gateway options for your Site\-to\-Site VPN connection](cgw-options.md)\.
+A *customer gateway* is a resource that you create in AWS that represents the customer gateway device in your on\-premises network\. When you create a customer gateway, you provide information about your device to AWS\. For more information, see [Customer gateway options for your Site\-to\-Site VPN connection](cgw-options.md)\.
 
 To use Amazon VPC with a Site\-to\-Site VPN connection, you or your network administrator must also configure the customer gateway device or application in your remote network\. When you create the Site\-to\-Site VPN connection, we provide you with the required configuration information and your network administrator typically performs this configuration\. For information about the customer gateway requirements and configuration, see [Your customer gateway device](your-cgw.md)\.
 
 The VPN tunnel comes up when traffic is generated from your side of the Site\-to\-Site VPN connection\. The virtual private gateway is not the initiator; your customer gateway must initiate the tunnels\. If your Site\-to\-Site VPN connection experiences a period of idle time \(usually 10 seconds, depending on your configuration\), the tunnel may go down\. To prevent this, you can use a network monitoring tool to generate keepalive pings; for example, by using IP SLA\. 
 
 VPN endpoints support rekey and can start renegotiations when phase 1 is about to expire if the customer gateway device hasn't sent any renegotiation traffic\.
-
-### Customer gateway device<a name="CustomerGatewayDevice"></a>
-
-A *customer gateway device* is a physical device or software application on your side of the Site\-to\-Site VPN connection\. For more information about configuring your customer gateway device, see [Your customer gateway device](your-cgw.md)\.

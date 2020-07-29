@@ -15,10 +15,10 @@ When you modify a VPN tunnel, connectivity over the tunnel is interrupted for up
 
 1. For **VPN Tunnel Outside IP Address**, choose the tunnel endpoint IP of the VPN tunnel that you're modifying options for\.
 
-1. Choose or enter new values for the tunnel options\. For more information, see [Site\-to\-Site VPN tunnel options for your Site\-to\-Site VPN connection](VPNTunnels.md)\.
+1. Choose or enter new values for the tunnel options\. For more information, see [Tunnel options for your Site\-to\-Site VPN connection](VPNTunnels.md)\.
 
 1. Choose **Save**\.
 
 **To modify the VPN tunnel options using the command line or API**
-+ [modify\-vpn\-tunnel\-options](https://docs.aws.amazon.com/cli/latest/reference/ec2/modify-vpn-tunnel-options.html) \(AWS CLI\)
-+ [ModifyVpnTunnelOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyVpnTunnelOptions.html) \(Amazon EC2 Query API\)
++  \(AWS CLI\) Use [describe\-vpn\-connections](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-vpn-connections.html) to view the current tunnel options, and [modify\-vpn\-tunnel\-options](https://docs.aws.amazon.com/cli/latest/reference/ec2/modify-vpn-tunnel-options.html) to modify the tunnel options\.
++ \(Amazon EC2 Query API\) Use [DescribeVpnConnections](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpnConnections.html) to view the current tunnel options, and [ModifyVpnTunnelOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyVpnTunnelOptions.html) to modify the tunnel options\.

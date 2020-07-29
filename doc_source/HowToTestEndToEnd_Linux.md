@@ -28,7 +28,7 @@ Before you begin, make sure of the following:
 
 1. After the instance is running, get its private IP address \(for example, `10.0.0.4`\)\. The Amazon EC2 console displays the address as part of the instance's details\.
 
-1. From a computer in your network that is behind the customer gateway, use the `ping` command with the instance's private IP address\. A successful response is similar to the following:
+1. From a computer in your network that is behind the customer gateway device, use the `ping` command with the instance's private IP address\. A successful response is similar to the following:
 
    ```
    ping 10.0.0.4
@@ -48,4 +48,6 @@ Before you begin, make sure of the following:
    Minimum = 0ms, Maximum = 0ms, Average = 0ms
    ```
 
-You can now use SSH or RDP to connect to your instances in the VPC\. For more information about how to connect to a Linux instance, see [Connect to your Linux instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html#EC2_ConnectToInstance_Linux) in the *Amazon EC2 User Guide for Linux Instances*\. For more information about how to connect to a Windows instance, see [Connect to your Windows instance](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/EC2Win_GetStarted.html#EC2Win_ConnectToInstanceWindows) in the *Amazon EC2 User Guide for Windows Instances*\. 
+To test tunnel failover, you can temporarily disable one of the tunnels on your customer gateway device, and repeat the above step\. You cannot disable a tunnel on the AWS side of the VPN connection\.
+
+You can use SSH or RDP to connect to your instances in the VPC\. For more information about how to connect to a Linux instance, see [Connect to your Linux instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html#EC2_ConnectToInstance_Linux) in the *Amazon EC2 User Guide for Linux Instances*\. For more information about how to connect to a Windows instance, see [Connect to your Windows instance](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/EC2Win_GetStarted.html#EC2Win_ConnectToInstanceWindows) in the *Amazon EC2 User Guide for Windows Instances*\. 

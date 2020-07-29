@@ -1,4 +1,4 @@
-# Site\-to\-Site VPN tunnel options for your Site\-to\-Site VPN connection<a name="VPNTunnels"></a>
+# Tunnel options for your Site\-to\-Site VPN connection<a name="VPNTunnels"></a>
 
 You use a Site\-to\-Site VPN connection to connect your remote network to a VPC\. Each Site\-to\-Site VPN connection has two tunnels, with each tunnel using a unique virtual private gateway public IP address\. It is important to configure both tunnels for redundancy\. When one tunnel becomes unavailable \(for example, down for maintenance\), network traffic is automatically routed to the available tunnel for that specific Site\-to\-Site VPN connection\.
 
@@ -29,4 +29,6 @@ The following table describes the tunnel options that you can configure\.
 | Rekey margin time \(seconds\) |  The margin time in seconds before the phase 2 lifetime expires, during which the AWS side of the VPN connection performs an IKE rekey\.  You can specify a number between 60 and half of the value of the phase 2 lifetime seconds\. The exact time of the rekey is randomly selected based on the value for rekey fuzz\.  | 540 \(9 minutes\) | 
 | Replay window size packets |  The number of packets in an IKE replay window\.  You can specify a value between 64 and 2048\.  | 1024 | 
 
-You can modify tunnel options after you create the Site\-to\-Site VPN connection\. You cannot configure tunnel options for an AWS Classic VPN connection\.
+You can specify the tunnel options when you create a Site\-to\-Site VPN connection, or you can modify the tunnel options for an existing VPN connection\. You cannot configure tunnel options for an AWS Classic VPN connection\. For more information, see the following topics:
++ [Create a Site\-to\-Site VPN connection](SetUpVPNConnections.md#vpn-create-vpn-connection)
++ [Modifying Site\-to\-Site VPN tunnel options](modify-vpn-tunnel-options.md)

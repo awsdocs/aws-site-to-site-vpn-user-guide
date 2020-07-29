@@ -195,7 +195,7 @@ Create the Site\-to\-Site VPN connection using the customer gateway and the virt
      + Replay window size
      + Dead peer detection interval
 
-   For more information about these options, see [Site\-to\-Site VPN tunnel options for your Site\-to\-Site VPN connection](VPNTunnels.md)\.
+   For more information about these options, see [Tunnel options for your Site\-to\-Site VPN connection](VPNTunnels.md)\.
 
 1. Choose **Create VPN Connection**\. It might take a few minutes to create the Site\-to\-Site VPN connection\.
 
