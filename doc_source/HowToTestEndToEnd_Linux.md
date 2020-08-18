@@ -6,7 +6,7 @@ Before you begin, make sure of the following:
 + Use an AMI that responds to ping requests\. We recommend that you use one of the Amazon Linux AMIs\.
 + Configure any security group or network ACL in your VPC that filters traffic to the instance to allow inbound and outbound ICMP traffic\.
 + If you are using instances running Windows Server, connect to the instance and enable inbound ICMPv4 on the Windows firewall in order to ping the instance\.
-+ \(Static routing\) Ensure that the customer gateway device has a static route to your VPC, and that your VPN connection has a VPN connection has a static route so that traffic can get back to your customer gateway device\.
++ \(Static routing\) Ensure that the customer gateway device has a static route to your VPC, and that your VPN connection has a static route so that traffic can get back to your customer gateway device\.
 + \(Dynamic routing\) Ensure that the BGP status on your customer gateway device is established\. It takes approximately 30 seconds for a BGP peering session to be established\. Ensure that routes are advertised with BGP correctly and showing in the subnet route table, so that traffic can get back to your customer gateway\. Make sure that both tunnels are configured with BGP routing\.
 + Ensure that you have configured routing in your subnet route tables for the VPN connection\.
 
