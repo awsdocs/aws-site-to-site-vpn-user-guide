@@ -175,7 +175,7 @@ Next, create a VPN community on your Check Point gateway, to which you add the n
 
 1. In the category pane, choose **Encryption**\. In the **Encryption Method** section, choose **IKEv1 for IPv4 and IKEv2 for IPv6**\. In the **Encryption Suite** section, choose **Custom**, **Custom Encryption**\.
 **Note**  
-You must select the **IKEv1 for IPv4 and IKEv2 for IPv6** option for IKEv1 functionality\. This is the correct option even though IKEv2 and IPv6 are currently not supported\. 
+You must select the **IKEv1 for IPv4 and IKEv2 for IPv6** option for IKEv1 functionality\.
 
 1. In the dialog box, configure the encryption properties as follows, and then choose **OK** when you're done:
    + IKE Security Association \(Phase 1\) Properties:

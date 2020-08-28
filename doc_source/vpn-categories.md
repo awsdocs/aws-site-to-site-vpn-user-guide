@@ -10,5 +10,6 @@ Your Site\-to\-Site VPN connection is either an AWS Classic VPN connection or an
 + Configurable tunnel options
 + Custom private ASN for the Amazon side of a BGP session
 + Private Certificate from a subordinate CA from AWS Certificate Manager Private Certificate Authority
++ Support for IPv6 traffic
 
 For information about identifying and migrating your connection, see [Identifying a Site\-to\-Site VPN connection](identify-vpn.md) and [Migrating from AWS Classic VPN to AWS VPN](aws-vpn-migrate.md)\.

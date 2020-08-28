@@ -4,6 +4,9 @@ The following table describes the AWS Site\-to\-Site VPN User Guide updates\.
 
 | Change | Description | Date | 
 | --- |--- |--- |
+| [VPN tunnel initiation](https://docs.aws.amazon.com/vpn/latest/s2svpn/initiate-vpn-tunnels) | You can configure your VPN tunnels so that AWS brings up the tunnels\. | August 27, 2020 | 
+| [Additional security algorithms](https://docs.aws.amazon.com/vpn/latest/s2svpn/VPNTunnels.html) | You can apply additional security algorithms to your VPN tunnels\. | August 14, 2020 | 
+| [IPv6 support](https://docs.aws.amazon.com/vpn/latest/s2svpn/how_it_works.html#ipv4-ipv6-support) | Your VPN tunnels can support IPv6 traffic inside the tunnels\. | August 12, 2020 | 
 | [Merge AWS Site\-to\-Site VPN guides](https://docs.aws.amazon.com/vpn/latest/s2svpn/your-cgw.html) | This release merges the contents of the AWS Site\-to\-Site VPN Network Administrator Guide into this guide\.  | March 31, 2020 | 
 | [Accelerated AWS Site\-to\-Site VPN connections](https://docs.aws.amazon.com/vpn/latest/s2svpn/accelerated-vpn.html) | You can enable acceleration for your AWS Site\-to\-Site VPN connection\. | December 3, 2019 | 
 | [Modify AWS Site\-to\-Site VPN tunnel options](https://docs.aws.amazon.com/vpn/latest/s2svpn/VPNTunnels.html) | You can modify the options for a VPN tunnel in a AWS Site\-to\-Site VPN connection\. You can also configure additional tunnel options\. | August 29, 2019 | 

@@ -181,8 +181,17 @@ Create the Site\-to\-Site VPN connection using the customer gateway and the virt
    + If your customer gateway device supports BGP, choose **Dynamic \(requires BGP\)**\.
    + If your customer gateway device does not support BGP, choose **Static**\. For **Static IP Prefixes**, specify each IP prefix for the private network of your Site\-to\-Site VPN connection\.
 
+1. \(Optional\) For **Tunnel Inside IP Version**, specify whether the VPN tunnels support IPv4 or IPv6 traffic\. IPv6 traffic is only supported for VPN connections on a transit gateway\.
+
+1. \(Optional\) For **Local IPv4 Network CIDR**, specify the IPv4 CIDR range on the customer gateway \(on\-premises\) side that is allowed to communicate over the VPN tunnels\. The default is `0.0.0.0/0`\.
+
+   For **Remote IPv4 Network CIDR**, specify the IPv4 CIDR range on the AWS side that is allowed to communicate over the VPN tunnels\. The default is `0.0.0.0/0`\.
+
+   If you specified **IPv6** for **Tunnel Inside IP Version**, then specify the IPv6 CIDR ranges on the customer gateway side and AWS side that are allowed to communicate over the VPN tunnels\. The default for both ranges is `::/0`\.
+
 1. \(Optional\) For **Tunnel Options**, you can specify the following information for each tunnel:
-   + A size /30 CIDR block from the `169.254.0.0/16` range for the inside tunnel IP addresses\.
+   + A size /30 IPv4 CIDR block from the `169.254.0.0/16` range for the inside tunnel IPv4 addresses\.
+   + If you specified **IPv6** for **Tunnel Inside IP Version**, a /126 IPv6 CIDR block from the `fd00::/8` range for the inside tunnel IPv6 addresses\.
    + The IKE pre\-shared key \(PSK\)\. The following versions are supported: IKEv1 or IKEv2\.
    + Advanced tunnel information, which includes the following:
      + Encryption algorithms for phases 1 and 2 of the IKE negotiations
@@ -194,6 +203,8 @@ Create the Site\-to\-Site VPN connection using the customer gateway and the virt
      + Rekey fuzz
      + Replay window size
      + Dead peer detection interval
+     + Dead peer detection timeout action
+     + Startup action
 
    For more information about these options, see [Tunnel options for your Site\-to\-Site VPN connection](VPNTunnels.md)\.
 
@@ -209,7 +220,7 @@ Create the Site\-to\-Site VPN connection using the customer gateway and the virt
 After you create the Site\-to\-Site VPN connection, download the configuration information and use it to configure the customer gateway device or software application\.
 
 **Important**  
-The configuration file is an example only and might not match your intended VPN connection settings\. For example, it specifies the minimum requirements of IKE version 1, AES128, SHA1, and DH Group 2 in most AWS Regions, and IKE version 1, AES128, SHA2, and DH Group 14 in the AWS GovCloud Regions\. It also specifies pre\-shared keys for [authentication](vpn-tunnel-authentication-options.md)\. You must modify the example configuration file to take advantage of IKE version 2, AES256, SHA256, other DH groups such as 2, 14\-18, 22, 23, and 24, and private certificates\.   
+The configuration file is an example only and might not match your intended VPN connection settings\. For example, it specifies the minimum requirements of IKE version 1, AES128, SHA1, and DH group 2 in most AWS Regions, and IKE version 1, AES128, SHA2, and DH group 14 in the AWS GovCloud Regions\. It also specifies pre\-shared keys for [authentication](vpn-tunnel-authentication-options.md)\. You must modify the example configuration file to take advantage of IKE version 2, additional security algorithms and DH groups, and private certificates\.   
 If you specified custom tunnel options when creating or modifying your Site\-to\-Site VPN connection, modify the example configuration file to match the custom settings for your tunnels\.  
 The file also contains the value for the outside IP address for the virtual private gateway\. This value is static unless you recreate the VPN connection in AWS\.
 

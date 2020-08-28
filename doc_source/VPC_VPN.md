@@ -27,7 +27,7 @@ You can create, access, and manage your Site\-to\-Site VPN resources using any o
 ## Site\-to\-Site VPN limitations<a name="site-to-site-limitations"></a>
 
 A Site\-to\-Site VPN connection has the following limitations\.
-+ IPv6 traffic is not supported\.
++ IPv6 traffic is not supported for VPN connections on a virtual private gateway\.
 + An AWS VPN connection does not support Path MTU Discovery\.
 
 In addition, take the following into consideration when you use Site\-to\-Site VPN\.

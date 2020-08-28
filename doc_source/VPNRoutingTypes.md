@@ -10,6 +10,7 @@ There are quotas on the number of routes that you can add to a route table\. For
 + [Static and dynamic routing](#vpn-static-dynamic)
 + [Route tables and VPN route priority](#vpn-route-priority)
 + [Routing during VPN tunnel endpoint updates](#routing-vpn-tunnel-updates)
++ [IPv4 and IPv6 traffic](ipv4-ipv6.md)
 
 ## Static and dynamic routing<a name="vpn-static-dynamic"></a>
 
@@ -38,7 +39,7 @@ For example, the following route table has a static route to an internet gateway
 | 172\.31\.0\.0/24 | vgw\-11223344556677889 \(propagated\) | 
 | 172\.31\.0\.0/24 | igw\-12345678901234567 \(static\) | 
 
-Only IP prefixes that are known to the virtual private gateway, whether through BGP advertisements or a static route entry, can receive traffic from your VPC\. The virtual private gateway does not route any other traffic destined outside of received BGP advertisements, static route entries, or its attached VPC CIDR\.
+Only IP prefixes that are known to the virtual private gateway, whether through BGP advertisements or a static route entry, can receive traffic from your VPC\. The virtual private gateway does not route any other traffic destined outside of received BGP advertisements, static route entries, or its attached VPC CIDR\. Virtual private gateways do not support IPv6 traffic\.
 
 When a virtual private gateway receives routing information, it uses path selection to determine how to route traffic\. Longest prefix match applies\. If the prefixes are the same, then the virtual private gateway prioritizes routes as follows, from most preferred to least preferred: 
 + BGP propagated routes from an AWS Direct Connect connection 
@@ -51,7 +52,13 @@ We do not recommend using AS PATH prepending, to ensure that both tunnels have e
 
 Route priority is affected during [VPN tunnel endpoint updates](#routing-vpn-tunnel-updates)\.
 
-We recommend advertising more specific BGP routes to influence routing decisions in the virtual private gateway\.
+For a Site\-to\-Site VPN connection on a virtual private gateway, AWS selects one of the two redundant tunnels as the primary egress path\. This selection may change at times, and we strongly recommend that you configure both tunnels for high availability\.
+
+For Site\-to\-Site VPN connections that use BGP, the primary tunnel can be identified by the multi\-exit discriminator \(MED\) value\. We recommend advertising more specific BGP routes to influence routing decisions\. 
+
+For Site\-to\-Site VPN connections that use static routing, the primary tunnel can be identified by traffic statistics or metrics\. 
+
+To use both tunnels, we recommend exploring Equal Cost Multipath \(ECMP\), which is supported for Site\-to\-Site VPN connections on a transit gateway\. For more information, see [Transit gateways](https://docs.aws.amazon.com/vpc/latest/tgw/tgw-transit-gateways.html) in *Amazon VPC Transit Gateways*\.
 
 ## Routing during VPN tunnel endpoint updates<a name="routing-vpn-tunnel-updates"></a>
 

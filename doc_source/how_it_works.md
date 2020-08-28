@@ -35,12 +35,14 @@ You can modify the target gateway of a Site\-to\-Site VPN connection from a virt
 
 A *customer gateway device* is a physical device or software application on your side of the Site\-to\-Site VPN connection\. You configure the device to work with the Site\-to\-Site VPN connection\. For more information, see [Your customer gateway device](your-cgw.md)\.
 
+By default, your customer gateway device must bring up the tunnels for your Site\-to\-Site VPN connection by generating traffic and initiating the Internet Key Exchange \(IKE\) negotiation process\. You can configure your Site\-to\-Site VPN connection to specify that AWS must initiate the IKE negotiation process instead\. For more information, see [Site\-to\-Site VPN tunnel initiation options](initiate-vpn-tunnels.md)\.
+
 ### Customer gateway<a name="CustomerGateway"></a>
 
 A *customer gateway* is a resource that you create in AWS that represents the customer gateway device in your on\-premises network\. When you create a customer gateway, you provide information about your device to AWS\. For more information, see [Customer gateway options for your Site\-to\-Site VPN connection](cgw-options.md)\.
 
 To use Amazon VPC with a Site\-to\-Site VPN connection, you or your network administrator must also configure the customer gateway device or application in your remote network\. When you create the Site\-to\-Site VPN connection, we provide you with the required configuration information and your network administrator typically performs this configuration\. For information about the customer gateway requirements and configuration, see [Your customer gateway device](your-cgw.md)\.
 
-The VPN tunnel comes up when traffic is generated from your side of the Site\-to\-Site VPN connection\. The virtual private gateway is not the initiator; your customer gateway must initiate the tunnels\. If your Site\-to\-Site VPN connection experiences a period of idle time \(usually 10 seconds, depending on your configuration\), the tunnel may go down\. To prevent this, you can use a network monitoring tool to generate keepalive pings; for example, by using IP SLA\. 
+## IPv4 and IPv6 support<a name="ipv4-ipv6-support"></a>
 
-VPN endpoints support rekey and can start renegotiations when phase 1 is about to expire if the customer gateway device hasn't sent any renegotiation traffic\.
+Your Site\-to\-Site VPN connection on a transit gateway can support either IPv4 traffic or IPv6 traffic inside the VPN tunnels\. For more information, see [IPv4 and IPv6 traffic](ipv4-ipv6.md)\. 
