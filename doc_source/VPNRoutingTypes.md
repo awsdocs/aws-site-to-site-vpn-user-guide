@@ -47,7 +47,7 @@ When a virtual private gateway receives routing information, it uses path select
 + BGP propagated routes from a Site\-to\-Site VPN connection
 + For matching prefixes where each Site\-to\-Site VPN connection uses BGP, the AS PATH is compared and the prefix with the shortest AS PATH is preferred\.
 **Note**  
-We do not recommend using AS PATH prepending, to ensure that both tunnels have equal AS PATH\.
+We do not recommend using AS PATH prepending, to ensure that both tunnels have equal AS PATH. AWS Managed VPN does not support Equal Cost Multi Path (ECMP) for egress data path in the case of multiple AWS Managed VPN tunnels terminating on the same VGW\.
 + When the AS PATHs are the same length and if the first AS in the AS\_SEQUENCE is the same across multiple paths, multi\-exit discriminators \(MEDs\) are compared\. The path with the lowest MED value is preferred\.
 
 Route priority is affected during [VPN tunnel endpoint updates](#routing-vpn-tunnel-updates)\.
