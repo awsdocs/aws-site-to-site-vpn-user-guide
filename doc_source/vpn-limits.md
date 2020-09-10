@@ -8,9 +8,11 @@ Your AWS account has the following quotas, formerly referred to as limits, relat
 + Dynamic routes advertised from a customer gateway device to a Site\-to\-Site VPN connection \(on a transit gateway or virtual private gateway\): 100
 
   This quota cannot be increased\.
-+ Routes advertised from a Site\-to\-Site VPN connection to a customer gateway device: 1000
++ Routes advertised from a Site\-to\-Site VPN connection to a customer gateway device: 1,000
 
-  This quota cannot be increased\.
+  For VPN connections on a virtual private gateway, advertised route sources include VPC routes, other VPN routes, and routes from AWS Direct Connect virtual interfaces\. For VPN connections on a transit gateway, advertised routes come from the route table that's associated with the VPN attachment\.
+
+  This quota cannot be increased\. 
 + Site\-to\-Site VPN connections per Region: 50
 + Site\-to\-Site VPN connections per virtual private gateway: 10
 
