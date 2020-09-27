@@ -47,7 +47,7 @@ When a virtual private gateway receives routing information, it uses path select
 + BGP propagated routes from a Site\-to\-Site VPN connection
 + For matching prefixes where each Site\-to\-Site VPN connection uses BGP, the AS PATH is compared and the prefix with the shortest AS PATH is preferred\.
 **Note**  
-We do not recommend using AS PATH prepending, to ensure that both tunnels have equal AS PATH\.
+We do not recommend using AS PATH prepending, to ensure that both tunnels have equal AS PATH\. This helps to ensure that the multi\-exit discriminator \(MED\) value that we set on a tunnel during [VPN tunnel endpoint updates](#routing-vpn-tunnel-updates) is used to determine tunnel priority\.
 + When the AS PATHs are the same length and if the first AS in the AS\_SEQUENCE is the same across multiple paths, multi\-exit discriminators \(MEDs\) are compared\. The path with the lowest MED value is preferred\.
 
 Route priority is affected during [VPN tunnel endpoint updates](#routing-vpn-tunnel-updates)\.
@@ -58,7 +58,7 @@ For Site\-to\-Site VPN connections that use BGP, the primary tunnel can be ident
 
 For Site\-to\-Site VPN connections that use static routing, the primary tunnel can be identified by traffic statistics or metrics\. 
 
-To use both tunnels, we recommend exploring Equal Cost Multipath \(ECMP\), which is supported for Site\-to\-Site VPN connections on a transit gateway\. For more information, see [Transit gateways](https://docs.aws.amazon.com/vpc/latest/tgw/tgw-transit-gateways.html) in *Amazon VPC Transit Gateways*\.
+To use both tunnels, we recommend exploring Equal Cost Multipath \(ECMP\), which is supported for Site\-to\-Site VPN connections on a transit gateway\. For more information, see [Transit gateways](https://docs.aws.amazon.com/vpc/latest/tgw/tgw-transit-gateways.html) in *Amazon VPC Transit Gateways*\. ECMP is not supported for Site\-to\-Site VPN connections on a virtual private gateway\.
 
 ## Routing during VPN tunnel endpoint updates<a name="routing-vpn-tunnel-updates"></a>
 
