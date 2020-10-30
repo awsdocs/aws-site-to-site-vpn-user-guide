@@ -8,7 +8,7 @@ In addition to the AWS global infrastructure, Site\-to\-Site VPN offers features
 
 ## Two tunnels per VPN connection<a name="resiliancy-tunnels"></a>
 
-A Site\-to\-Site VPN connection has two tunnels to provide increased availability to your VPC\. If there's a device failure within AWS, your VPN connection automatically fails over to the second tunnel so that your access isn't interrupted\. From time to time, AWS also performs routine maintenance on your virtual private gateway, which may briefly disable one of the two tunnels of your VPN connection\. Your VPN connection automatically fails over to the second tunnel while this maintenance is performed\. When you configure your customer gateway, it's therefore important that you configure both tunnels\.
+A Site\-to\-Site VPN connection has two tunnels to provide increased availability to your VPC\. If there's a device failure within AWS, your VPN connection automatically fails over to the second tunnel so that your access isn't interrupted\. From time to time, AWS also performs routine maintenance on your VPN connection, which may briefly disable one of the two tunnels of your VPN connection\. For more information, see [Site\-to\-Site VPN tunnel endpoint replacements](endpoint-replacements.md)\. When you configure your customer gateway, it's therefore important that you configure both tunnels\.
 
 ## Redundancy<a name="resiliancy-redundancy"></a>
 

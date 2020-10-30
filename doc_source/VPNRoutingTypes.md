@@ -14,7 +14,7 @@ There are quotas on the number of routes that you can add to a route table\. For
 
 ## Static and dynamic routing<a name="vpn-static-dynamic"></a>
 
-The type of routing that you select can depend on the make and model of your customer gateway device\. If your customer gateway device supports Border Gateway Protocol \(BGP\), specify dynamic routing when you configure your Site\-to\-Site VPN connection\. If your customer gateway device does not support BGP, specify static routing\. For a list of static and dynamic routing devices that have been tested with Site\-to\-Site VPN, see [Customer gateway devices that we've tested](your-cgw.md#DevicesTested)\.
+The type of routing that you select can depend on the make and model of your customer gateway device\. If your customer gateway device supports Border Gateway Protocol \(BGP\), specify dynamic routing when you configure your Site\-to\-Site VPN connection\. If your customer gateway device does not support BGP, specify static routing\.
 
 If you use a device that supports BGP advertising, you don't specify static routes to the Site\-to\-Site VPN connection because the device uses BGP to advertise its routes to the virtual private gateway\. If you use a device that doesn't support BGP advertising, you must select static routing and enter the routes \(IP prefixes\) for your network that should be communicated to the virtual private gateway\. 
 
@@ -52,17 +52,17 @@ We do not recommend using AS PATH prepending, to ensure that both tunnels have e
 
 Route priority is affected during [VPN tunnel endpoint updates](#routing-vpn-tunnel-updates)\.
 
-For a Site\-to\-Site VPN connection on a virtual private gateway, AWS selects one of the two redundant tunnels as the primary egress path\. This selection may change at times, and we strongly recommend that you configure both tunnels for high availability\.
+On a Site\-to\-Site VPN connection, AWS selects one of the two redundant tunnels as the primary egress path\. This selection may change at times, and we strongly recommend that you configure both tunnels for high availability, and allow asymmetric routing\. 
+
+For a virtual private gateway, one tunnel across all Site\-to\-Site VPN connections on the gateway will be selected\. To use more than one tunnel, we recommend exploring Equal Cost Multipath \(ECMP\), which is supported for Site\-to\-Site VPN connections on a transit gateway\. For more information, see [Transit gateways](https://docs.aws.amazon.com/vpc/latest/tgw/tgw-transit-gateways.html) in *Amazon VPC Transit Gateways*\. ECMP is not supported for Site\-to\-Site VPN connections on a virtual private gateway\.
 
 For Site\-to\-Site VPN connections that use BGP, the primary tunnel can be identified by the multi\-exit discriminator \(MED\) value\. We recommend advertising more specific BGP routes to influence routing decisions\. 
 
 For Site\-to\-Site VPN connections that use static routing, the primary tunnel can be identified by traffic statistics or metrics\. 
 
-To use both tunnels, we recommend exploring Equal Cost Multipath \(ECMP\), which is supported for Site\-to\-Site VPN connections on a transit gateway\. For more information, see [Transit gateways](https://docs.aws.amazon.com/vpc/latest/tgw/tgw-transit-gateways.html) in *Amazon VPC Transit Gateways*\. ECMP is not supported for Site\-to\-Site VPN connections on a virtual private gateway\.
-
 ## Routing during VPN tunnel endpoint updates<a name="routing-vpn-tunnel-updates"></a>
 
-A Site\-to\-Site VPN connection consists of two VPN tunnels between a customer gateway device and a virtual private gateway or a transit gateway\. We recommend that you configure both tunnels for redundancy\. Your VPN connection may experience a brief loss of redundancy when we perform tunnel endpoint updates on one of the two tunnels\. Tunnel endpoint updates can occur for several reasons, including health reasons, software upgrades, and retirement of underlying hardware\. 
+A Site\-to\-Site VPN connection consists of two VPN tunnels between a customer gateway device and a virtual private gateway or a transit gateway\. We recommend that you configure both tunnels for redundancy\. From time to time, AWS also performs routine maintenance on your VPN connection, which might briefly disable one of the two tunnels of your VPN connection\. For more information, see [Tunnel endpoint replacement notifications](monitoring-vpn-health-events.md#tunnel-replacement-notifications)\.
 
 When we perform updates on one VPN tunnel, we set a lower outbound multi\-exit discriminator \(MED\) value on the other tunnel\. If you have configured your customer gateway device to use both tunnels, your VPN connection uses the other \(up\) tunnel during the tunnel endpoint update process\.
 

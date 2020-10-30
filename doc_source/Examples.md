@@ -36,4 +36,4 @@ You can also use this scenario to create Site\-to\-Site VPN connections to multi
 
 ![\[Multiple Site-to-Site VPN connections with a transit gateway\]](http://docs.aws.amazon.com/vpn/latest/s2svpn/images/branch-off-transit-gateway.png)
 
-When you create multiple Site\-to\-Site VPN connections to a single VPC, you can configure a second customer gateway to create a redundant connection to the same external location\. 
+When you create multiple Site\-to\-Site VPN connections to a single transit gateway, you can configure a second customer gateway to create a redundant connection to the same external location\. 

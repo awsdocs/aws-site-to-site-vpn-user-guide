@@ -2,7 +2,7 @@
 
 A *customer gateway device* is a physical or software appliance that you own or manage in your on\-premises network \(on your side of a Site\-to\-Site VPN connection\)\. You or your network administrator must configure the device to work with the Site\-to\-Site VPN connection\. 
 
-The following diagram shows your network, the customer gateway device, the VPN connection that goes to a virtual private gateway \(which is attached to your VPC\)\. The two lines between the customer gateway device and virtual private gateway represent the tunnels for the VPN connection\. If there's a device failure within AWS, your VPN connection automatically fails over to the second tunnel so that your access isn't interrupted\. From time to time, AWS also performs routine maintenance on the virtual private gateway, which might briefly disable one of the two tunnels of your VPN connection\. Your VPN connection automatically fails over to the second tunnel while this maintenance is performed\. When you configure your customer gateway device, it's therefore important that you configure both tunnels\.
+The following diagram shows your network, the customer gateway device, the VPN connection that goes to a virtual private gateway \(which is attached to your VPC\)\. The two lines between the customer gateway device and virtual private gateway represent the tunnels for the VPN connection\. If there's a device failure within AWS, your VPN connection automatically fails over to the second tunnel so that your access isn't interrupted\. From time to time, AWS also performs routine maintenance on the VPN connection which might briefly disable one of the two tunnels of your VPN connection\. For more information, see [Site\-to\-Site VPN tunnel endpoint replacements](endpoint-replacements.md)\. When you configure your customer gateway device, it's therefore important that you configure both tunnels\.
 
 ![\[High-level customer gateway overview\]](http://docs.aws.amazon.com/vpn/latest/s2svpn/images/cgw-high-level.png)
 
@@ -10,9 +10,9 @@ For the steps to set up a VPN connection, see [Getting started](SetUpVPNConnecti
 
 After you create the VPN connection, [download the configuration file](SetUpVPNConnections.md#vpn-download-config) from the Amazon VPC console, which contains information specific to your VPN connection\. Use this information to configure your customer gateway device\. In some cases, device\-specific configuration files are available for devices that we've tested\. Otherwise, you can download the generic configuration file\.
 
-## Customer gateway devices that we've tested<a name="DevicesTested"></a>
+## Example configuration files<a name="example-configuration-files"></a>
 
-Your customer gateway device can be a physical or software appliance\. We've tested and provided configuration information for the following devices:
+Your customer gateway device can be a physical or software appliance\. The following are examples of some devices that have device\-specific configuration files in the Amazon VPC console\.
 + Check Point Security Gateway running R77\.10 \(or later\) software
 + Cisco ASA running Cisco ASA 8\.2 \(or later\) software
 + Cisco IOS running Cisco IOS 12\.4 \(or later\) software
@@ -31,9 +31,11 @@ Your customer gateway device can be a physical or software appliance\. We've tes
 
 If you have one of these devices, but configure it for IPsec in a different way than presented in the configuration file, you can change our suggested configuration to match your needs\.
 
+You can also find software VPN appliances on the [AWS Marketplace](https://aws.amazon.com/marketplace/search/results/ref=brs_navgno_search_box?searchTerms=vpn)\.
+
 ## Requirements for your customer gateway device<a name="CGRequirements"></a>
 
-If you have a device that isn't in the preceding list of tested devices, this section describes the requirements that the device must meet for you to use it to establish a Site\-to\-Site VPN connection\.
+If you have a device that isn't in the preceding list of examples, this section describes the requirements that the device must meet for you to use it to establish a Site\-to\-Site VPN connection\.
 
 There are four main parts to the configuration of your customer gateway device\. The following symbols represent each part of the configuration\.
 

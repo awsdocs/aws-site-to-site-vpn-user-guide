@@ -4,13 +4,13 @@ After you create the AWS Site\-to\-Site VPN connection and configure the custome
 
 Before you begin, make sure of the following:
 + Use an AMI that responds to ping requests\. We recommend that you use one of the Amazon Linux AMIs\.
-+ Configure any security group or network ACL in your VPC that filters traffic to the instance to allow inbound and outbound ICMP traffic\.
++ Configure any security group or network ACL in your VPC that filters traffic to the instance to allow inbound and outbound ICMP traffic\. This enables the instance to receive `ping` requests\.
 + If you are using instances running Windows Server, connect to the instance and enable inbound ICMPv4 on the Windows firewall in order to ping the instance\.
 + \(Static routing\) Ensure that the customer gateway device has a static route to your VPC, and that your VPN connection has a static route so that traffic can get back to your customer gateway device\.
 + \(Dynamic routing\) Ensure that the BGP status on your customer gateway device is established\. It takes approximately 30 seconds for a BGP peering session to be established\. Ensure that routes are advertised with BGP correctly and showing in the subnet route table, so that traffic can get back to your customer gateway\. Make sure that both tunnels are configured with BGP routing\.
 + Ensure that you have configured routing in your subnet route tables for the VPN connection\.
 
-**To test end\-to\-end connectivity**
+**To test connectivity**
 
 1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
 
@@ -48,6 +48,8 @@ Before you begin, make sure of the following:
    Minimum = 0ms, Maximum = 0ms, Average = 0ms
    ```
 
-To test tunnel failover, you can temporarily disable one of the tunnels on your customer gateway device, and repeat the above step\. You cannot disable a tunnel on the AWS side of the VPN connection\.
+   To test tunnel failover, you can temporarily disable one of the tunnels on your customer gateway device, and repeat the above step\. You cannot disable a tunnel on the AWS side of the VPN connection\.
 
-You can use SSH or RDP to connect to your instances in the VPC\. For more information about how to connect to a Linux instance, see [Connect to your Linux instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html#EC2_ConnectToInstance_Linux) in the *Amazon EC2 User Guide for Linux Instances*\. For more information about how to connect to a Windows instance, see [Connect to your Windows instance](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/EC2Win_GetStarted.html#EC2Win_ConnectToInstanceWindows) in the *Amazon EC2 User Guide for Windows Instances*\. 
+To test the connection from AWS to your on\-premises network, you can use SSH or RDP to connect to your instance from your network\. You can then run the `ping` command with the private IP address of another computer in your network, to verify that both sides of the connection can initiate and receive requests\.
+
+For more information about how to connect to a Linux instance, see [Connect to your Linux instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html#EC2_ConnectToInstance_Linux) in the *Amazon EC2 User Guide for Linux Instances*\. For more information about how to connect to a Windows instance, see [Connect to your Windows instance](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/EC2Win_GetStarted.html#EC2Win_ConnectToInstanceWindows) in the *Amazon EC2 User Guide for Windows Instances*\.
