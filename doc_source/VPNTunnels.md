@@ -27,7 +27,7 @@ The IKE versions that are permitted for the VPN tunnel\. You can specify one or 
 Default: `ikev1`, `ikev2`
 
 **Inside tunnel IPv4 CIDR**  
-The range of inside IPv4 addresses for the VPN tunnel\. You can specify a size /30 CIDR block from the `169.254.0.0/16` range\. The CIDR block must be unique across all Site\-to\-Site VPN connections that use the same virtual private gateway\.  
+The range of inside \(internal\) IPv4 addresses for the VPN tunnel\. You can specify a size /30 CIDR block from the `169.254.0.0/16` range\. The CIDR block must be unique across all Site\-to\-Site VPN connections that use the same virtual private gateway\.  
 The following CIDR blocks are reserved and cannot be used:   
 + `169.254.0.0/30`
 + `169.254.1.0/30`
@@ -39,7 +39,7 @@ The following CIDR blocks are reserved and cannot be used:
 Default: A size /30 IPv4 CIDR block from the `169.254.0.0/16` range\.
 
 **Inside tunnel IPv6 CIDR**  
-\(IPv6 VPN connections only\) The range of inside IPv6 addresses for the VPN tunnel\. You can specify a size /126 CIDR block from the local `fd00::/8` range\. The CIDR block must be unique across all Site\-to\-Site VPN connections that use the same transit gateway\.  
+\(IPv6 VPN connections only\) The range of inside \(internal\) IPv6 addresses for the VPN tunnel\. You can specify a size /126 CIDR block from the local `fd00::/8` range\. The CIDR block must be unique across all Site\-to\-Site VPN connections that use the same transit gateway\.  
 Default: A size /126 IPv6 CIDR block from the local `fd00::/8` range\.
 
 **Phase 1 Diffie\-Hellman \(DH\) group numbers**  
