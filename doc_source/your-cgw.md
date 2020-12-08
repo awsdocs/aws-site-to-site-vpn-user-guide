@@ -18,6 +18,7 @@ Your customer gateway device can be a physical or software appliance\. The follo
 + Cisco IOS running Cisco IOS 12\.4 \(or later\) software
 + SonicWALL running SonicOS 5\.9 \(or later\) software
 + Fortinet Fortigate 40\+ Series running FortiOS 4\.0 \(or later\) software 
++ Hillstone Networks E-series running StoneOS 5.5R7\(or later\) software 
 + Juniper J\-Series running JunOS 9\.5 \(or later\) software
 + Juniper SRX running JunOS 11\.0 \(or later\) software
 + Juniper SSG running ScreenOS 6\.1, or 6\.2 \(or later\) software
