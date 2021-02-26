@@ -18,7 +18,7 @@ The following rules and limitations apply:
 + IKE initiation from the AWS side of the VPN connection is supported for IKEv2 only\.
 + If your customer gateway device is behind a firewall or other device using Network Address Translation \(NAT\), it must have an identity \(IDr\) configured\. For more information about IDr, see [RFC 7296](https://tools.ietf.org/html/rfc7296)\.
 
-If you do not configure IKE initiation from the AWS side for your VPN tunnel and the VPN connection experiences a period of idle time \(usually 10 seconds, depending on your configuration\), the tunnel might go down\. To prevent this, you can use a network monitoring tool to generate keepalive pings, for example, by using IP SLA\. 
+If you do not configure IKE initiation from the AWS side for your VPN tunnel and the VPN connection experiences a period of idle time \(usually 10 seconds, depending on your configuration\), the tunnel might go down\. To prevent this, you can use a network monitoring tool to generate keepalive pings\. 
 
 ## Working with VPN tunnel initiation options<a name="working-with-ike-initiation-options"></a>
 

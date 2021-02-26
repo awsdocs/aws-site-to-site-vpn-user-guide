@@ -1,13 +1,13 @@
 # Example customer gateway device configurations for dynamic routing \(BGP\)<a name="cgw-dynamic-routing-examples"></a>
 
 **Topics**
-+ [Example configuration files](#cgw-static-routing-example-files)
++ [Example configuration files](#cgw-dynamic-routing-example-files)
 + [User interface procedures for dynamic routing](#cgw-dynamic-routing-example-interface)
 + [Additional information for Cisco devices](#cgw-dynamic-routing-examples-cisco)
 + [Additional information for Juniper devices](#cgw-dynamic-routing-examples-juniper)
 + [Testing](#cgw-dynamic-routing-example-testing)
 
-## Example configuration files<a name="cgw-static-routing-example-files"></a>
+## Example configuration files<a name="cgw-dynamic-routing-example-files"></a>
 
 You can download [dynamic\-routing\-examples\.zip](samples/dynamic-routing-examples.zip) to view example configuration files for the following customer gateway devices:
 + Barracuda NextGen Firewall F\-series running 6\.2\+

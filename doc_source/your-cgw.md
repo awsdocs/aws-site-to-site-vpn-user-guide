@@ -29,7 +29,9 @@ Your customer gateway device can be a physical or software appliance\. The follo
 + Microsoft Windows Server 2012 R2 \(or later\) software 
 + Zyxel Zywall Series 4\.20 \(or later\) software for statically routed VPN connections, or 4\.30 \(or later\) software for dynamically routed VPN connections
 
-If you have one of these devices, but configure it for IPsec in a different way than presented in the configuration file, you can change our suggested configuration to match your needs\.
+If you have one of these devices, but configure it for IPsec in a different way than presented in the configuration file, you can change our suggested configuration to match your needs\. You can get sample configuration files from either of the following:
++ Static configuration: [Example configuration files](cgw-static-routing-examples.md#cgw-static-routing-example-files)
++ Dynamic configuration: [Example configuration files](cgw-dynamic-routing-examples.md#cgw-dynamic-routing-example-files)
 
 You can also find software VPN appliances on the [AWS Marketplace](https://aws.amazon.com/marketplace/search/results/ref=brs_navgno_search_box?searchTerms=vpn)\.
 

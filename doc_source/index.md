@@ -1,7 +1,7 @@
 # AWS Site-to-Site VPN User Guide
 
 -----
-*****Copyright &copy; 2020 Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
+*****Copyright &copy; 2021 Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
 
 -----
 Amazon's trademarks and trade dress may not be used in 
@@ -62,7 +62,6 @@ Amazon's trademarks and trade dress may not be used in
    + [Identity and access management for AWS Site-to-Site VPN](vpn-authentication-access-control.md)
       + [AWS Site-to-Site VPN service-linked role](vpn-service-linked-roles.md)
    + [Logging and monitoring](logging-monitoring.md)
-   + [Compliance validation for AWS Site-to-Site VPN](site-to-site-vpn-compliance.md)
    + [Resilience in AWS Site-to-Site VPN](disaster-recovery-resiliency.md)
    + [Infrastructure security in AWS Site-to-Site VPN](infrastructure-security.md)
 + [Monitoring your Site-to-Site VPN connection](monitoring-overview-vpn.md)

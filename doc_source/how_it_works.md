@@ -6,6 +6,8 @@ A Site\-to\-Site VPN connection offers two VPN tunnels between a virtual private
 
 A Site\-to\-Site VPN connection consists of the following components\. For more information about Site\-to\-Site VPN quotas, see [Site\-to\-Site VPN quotas](vpn-limits.md)\.
 
+
+
 **Topics**
 + [Virtual private gateway](#VPNGateway)
 + [Transit gateway](#Transit-Gateway)

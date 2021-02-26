@@ -14,6 +14,5 @@ The following topics show you how to configure specific components of Site\-to\-
 + [Data protection in AWS Site\-to\-Site VPN](data-protection.md)
 + [Identity and access management for AWS Site\-to\-Site VPN](vpn-authentication-access-control.md)
 + [Logging and monitoring](logging-monitoring.md)
-+ [Compliance validation for AWS Site\-to\-Site VPN](site-to-site-vpn-compliance.md)
 + [Resilience in AWS Site\-to\-Site VPN](disaster-recovery-resiliency.md)
 + [Infrastructure security in AWS Site\-to\-Site VPN](infrastructure-security.md)

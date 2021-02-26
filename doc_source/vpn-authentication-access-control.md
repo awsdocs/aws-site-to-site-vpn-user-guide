@@ -37,12 +37,12 @@ The following are the supported condition keys:
 | ec2:GatewayType | The gateway type for the VPN endpoint on the AWS side of the VPN connection\. | VGW, TGW | String | 
 | ec2:IKEVersions | The internet key exchange \(IKE\) versions that are permitted for the VPN tunnel\. | ikev1, ikev2 | String | 
 | ec2:InsideTunnelCidr | The range of inside IP addresses for the VPN tunnel\. | See [Tunnel options for your Site\-to\-Site VPN connection](VPNTunnels.md)  | String | 
-| ec2:Phase1DHGroupNumbers | The Diffie\-Hellman groups that are permitted for the VPN tunnel for the phase 1 IKE negotiations\. | 2, 14, 15, 16, 17, 18, 22, 23, 24 | Numeric | 
+| ec2:Phase1DHGroupNumbers | The Diffie\-Hellman groups that are permitted for the VPN tunnel for the phase 1 IKE negotiations\. | 2, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24 | Numeric | 
 | ec2:Phase2DHGroupNumbers | The Diffie\-Hellman groups that are permitted for the VPN tunnel for the phase 2 IKE negotiations\. | 2, 5, 14, 15, 16, 17, 18, 22, 23, 24 | Numeric | 
-| ec2:Phase1EncryptionAlgorithms | The encryption algorithms that are permitted for the VPN tunnel for the phase 1 IKE negotiations\. | AES128, AES256 | String | 
+| ec2:Phase1EncryptionAlgorithms | The encryption algorithms that are permitted for the VPN tunnel for the phase 1 IKE negotiations\. | AES128, AES256, AES128\-GCM\-16, AES256\-GCM\-16 | String | 
 | ec2:Phase2EncryptionAlgorithms | The encryption algorithms that are permitted for the VPN tunnel for the phase 2 IKE negotiations\. | AES128, AES256 | String | 
 | ec2:Phase1IntegrityAlgorithms | The integrity algorithms that are permitted for the VPN tunnel for the phase 1 IKE negotiations\. | SHA1, SHA2\-256 | String | 
-| ec2:Phase2IntegrityAlgorithms | The integrity algorithms that are permitted for the VPN tunnel for the phase 2 IKE negotiations\. | SHA1, SHA2\-256 | String | 
+| ec2:Phase2IntegrityAlgorithms | The integrity algorithms that are permitted for the VPN tunnel for the phase 2 IKE negotiations\. | SHA1, SHA2\-384, SHA2\-256, SHA2\-512 | String | 
 | ec2:Phase1LifetimeSeconds | The lifetime in seconds for phase 1 of the IKE negotiation\. | An integer between 900 and 28,800 | Numeric | 
 | ec2:Phase2LifetimeSeconds | The lifetime in seconds for phase 2 of the IKE negotiation\. | An integer between 900 and 3,600 | Numeric | 
 | ec2:PresharedKeys | The pre\-shared key \(PSK\) to establish the initial IKE security association between the virtual private gateway and customer gateway\. | See [Tunnel options for your Site\-to\-Site VPN connection](VPNTunnels.md)  | String | 
