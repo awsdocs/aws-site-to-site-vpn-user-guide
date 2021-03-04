@@ -14,5 +14,5 @@ A Site\-to\-Site VPN connection has two tunnels to provide increased availabilit
 
 To protect against a loss of connectivity in case your customer gateway becomes unavailable, you can set up a second Site\-to\-Site VPN connection\. For more information, see the following topics:
 + [Using redundant Site\-to\-Site VPN connections to provide failover](vpn-redundant-connection.md)
-+ [Single data center HA network connectivity](https://aws.amazon.com/answers/networking/aws-single-data-center-ha-network-connectivity/)
-+ [Multiple data center HA network connectivity](https://aws.amazon.com/answers/networking/aws-multiple-data-center-ha-network-connectivity/)
++ [Amazon Virtual Private Cloud Connectivity Options](https://d1.awsstatic.com/whitepapers/aws-amazon-vpc-connectivity-options.pdf/)
++ [Building a Scalable andSecure Multi-VPC AWSNetwork Infrastructure](https://d1.awsstatic.com/whitepapers/building-a-scalable-and-secure-multi-vpc-aws-network-infrastructure.pdf/)
