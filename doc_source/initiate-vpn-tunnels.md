@@ -15,7 +15,7 @@ You can configure the IKE initiation options for one or both of the VPN tunnels 
 The following rules and limitations apply:
 + To initiate IKE negotiation, AWS requires the public IP address of your customer gateway device\. If you configured certificate\-based authentication for your VPN connection and you did not specify an IP address when you created the customer gateway resource in AWS, you must create a new customer gateway and specify the IP address\. Then, modify the VPN connection and specify the new customer gateway\. For more information, see [Changing the customer gateway for a Site\-to\-Site VPN connection](change-vpn-cgw.md)\.
 + You cannot configure IKE initiation options for an AWS Classic VPN connection\.
-+ IKE initiation from the AWS side of the VPN connection is supported for IKEv2 only\.
++ IKE initiation \(startup action\) from the AWS side of the VPN connection is supported for IKEv2 only\.
 + If your customer gateway device is behind a firewall or other device using Network Address Translation \(NAT\), it must have an identity \(IDr\) configured\. For more information about IDr, see [RFC 7296](https://tools.ietf.org/html/rfc7296)\.
 
 If you do not configure IKE initiation from the AWS side for your VPN tunnel and the VPN connection experiences a period of idle time \(usually 10 seconds, depending on your configuration\), the tunnel might go down\. To prevent this, you can use a network monitoring tool to generate keepalive pings\. 

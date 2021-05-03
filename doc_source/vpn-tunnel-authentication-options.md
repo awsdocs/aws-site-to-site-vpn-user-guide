@@ -8,7 +8,7 @@ A pre\-shared key is the default authentication option\.
 
 A pre\-shared key is a Site\-to\-Site VPN tunnel option that you can specify when you create a Site\-to\-Site VPN tunnel\.
 
-A pre\-shared key is a string that you enter when you configure your customer gateway device\. If you do not specify a string, we auto\-generate one for you\.
+A pre\-shared key is a string that you enter when you configure your customer gateway device\. If you do not specify a string, we auto\-generate one for you\. For more information, see [Your customer gateway device](your-cgw.md)\.
 
 ## Private certificate from AWS Certificate Manager Private Certificate Authority<a name="certificate"></a>
 
