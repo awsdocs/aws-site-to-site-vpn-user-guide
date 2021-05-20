@@ -65,6 +65,9 @@ Default: ::/0
 The DH group numbers that are permitted for the VPN tunnel for phase 1 of the IKE negotiations\. You can specify one or more of the default values\.  
 Default: 2, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24
 
+**Note**  
+GovCloud regions have a minimum requirement of AES128, SHA2 and Diffie\-Hellman \(DH\) Group 14. 
+
 **Phase 2 Diffie\-Hellman \(DH\) group numbers**  
 The DH group numbers that are permitted for the VPN tunnel for phase 2 of the IKE negotiations\. You can specify one or more of the default values\.  
 Default: 2, 5, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24
