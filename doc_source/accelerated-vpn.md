@@ -4,12 +4,7 @@ You can optionally enable acceleration for your Site\-to\-Site VPN connection\. 
 
 When you create an accelerated VPN connection, we create and manage two accelerators on your behalf, one for each VPN tunnel\. You cannot view or manage these accelerators yourself by using the AWS Global Accelerator console or APIs\.
 
-Accelerated VPN connections are supported in the following AWS Regions: US East \(N\. Virginia\), US East \(Ohio\), US West \(Oregon\), US West \(N\. California\), Europe \(Ireland\), Europe \(Frankfurt\), Europe \(London\), Europe \(Paris\), Asia Pacific \(Singapore\), Asia Pacific \(Tokyo\), Asia Pacific \(Sydney\), Asia Pacific \(Seoul\), and Asia Pacific \(Mumbai\)\.
-
-**Topics**
-+ [Enabling acceleration](#accelerated-vpn-enabling)
-+ [Rules and restrictions](#accelerated-vpn-rules)
-+ [Pricing](#accelerated-vpn-pricing)
+For information about the AWS Regions that support Accelerated VPN connections, see the [AWS Accelerated Site\-to\-Site VPN FAQs](https://aws.amazon.com/vpn/faqs/)\.
 
 ## Enabling acceleration<a name="accelerated-vpn-enabling"></a>
 

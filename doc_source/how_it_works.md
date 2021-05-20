@@ -6,6 +6,8 @@ A Site\-to\-Site VPN connection offers two VPN tunnels between a virtual private
 
 A Site\-to\-Site VPN connection consists of the following components\. For more information about Site\-to\-Site VPN quotas, see [Site\-to\-Site VPN quotas](vpn-limits.md)\.
 
+
+
 **Topics**
 + [Virtual private gateway](#VPNGateway)
 + [Transit gateway](#Transit-Gateway)
@@ -21,7 +23,7 @@ A *virtual private gateway* is the VPN concentrator on the Amazon side of the Si
 When you create a virtual private gateway, you can specify the private Autonomous System Number \(ASN\) for the Amazon side of the gateway\. If you don't specify an ASN, the virtual private gateway is created with the default ASN \(64512\)\. You cannot change the ASN after you've created the virtual private gateway\. To check the ASN for your virtual private gateway, view its details in the **Virtual Private Gateways** screen in the Amazon VPC console, or use the [describe\-vpn\-gateways](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-vpn-gateways.html) AWS CLI command\.
 
 **Note**  
-If you create your virtual private gateway before 2018\-06\-30, the default ASN is 17493 in the Asia Pacific \(Singapore\) region, 10124 in the Asia Pacific \(Tokyo\) region, 9059 in the Europe \(Ireland\) region, and 7224 in all other regions\. 
+If you created your virtual private gateway before 2018\-06\-30, the default ASN is 17493 in the Asia Pacific \(Singapore\) region, 10124 in the Asia Pacific \(Tokyo\) region, 9059 in the Europe \(Ireland\) region, and 7224 in all other regions\. 
 
 ### Transit gateway<a name="Transit-Gateway"></a>
 

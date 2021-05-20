@@ -14,7 +14,7 @@ The following metrics are available for your VPN tunnels\.
 
 | Metric | Description | 
 | --- | --- | 
-|  `TunnelState`  |  The state of the tunnel\. For static VPNs, 0 indicates DOWN and 1 indicates UP\. For BGP VPNs, 1 indicates ESTABLISHED and 0 is used for all other states\.  Units: Boolean  | 
+|  `TunnelState`  |  The state of the tunnels\. For static VPNs, 0 indicates DOWN and 1 indicates UP\. For BGP VPNs, 1 indicates ESTABLISHED and 0 is used for all other states\. For both types of VPNs, values between 0 and 1 indicate at least one tunnel is not UP\. Units: Fractional value between 0 and 1   | 
 |  `TunnelDataIn`  |  The bytes received on the AWS side of the connection through the VPN tunnel\. Each metric data point represents the number of bytes received after the previous data point\. Use the Sum statistic to show the total number of bytes received during the period\. This metric counts the data after decryption\. Units: Bytes  | 
 |  `TunnelDataOut`  |  The bytes sent from the AWS side of the connection through the VPN tunnel\. Each metric data point represents the number of bytes sent after the previous data point\. Use the Sum statistic to show the total number of bytes sent during the period\. This metric counts the data before encryption\. Units: Bytes  | 
 
@@ -69,7 +69,9 @@ For example, you can create an alarm that monitors the state of a VPN tunnel and
 
 1. Choose **Next**\.
 
-1. For **Whenever**, choose **Lower/Equal** \(**<=**\) and enter `0`\. Under **Additional configuration**, enter **3** for the datapoints to alarm\. Choose **Next**\.
+1. Do one of the following, and then under **Additional configuration**, enter **3** for the datapoints to alarm\. Choose **Next**\.
+   + To monitor when both tunnels are down, for **Whenever**, choose **Lower/Equal** \(**<=**\) , and then enter **0\.5**\.
+   + To monitor the DOWN state for either tunnel, for **Whenever**, choose **Lower \(<\)**, and then enter **1**\.
 
 1. Under **Select an SNS topic**, select an existing notification list or create a new one\. Choose **Next**\.
 
@@ -95,7 +97,7 @@ You can create an alarm that monitors the state of the Site\-to\-Site VPN connec
 
    Alternatively, if you've configured your Site\-to\-Site VPN connection so that both tunnels are up, you can specify a statistic of **Minimum** to send a notification when at least one tunnel is down\.
 
-1. For **Whenever**, choose **Lower/Equal** \(**<=**\) and enter `0` \(or `0.5` for when at least one tunnel is down\)\. Choose **Next**\.
+1. For **Whenever**, choose **Lower/Equal** \(**<=**\) and enter **0** \(or **0\.5** for when at least one tunnel is down\)\. Choose **Next**\.
 
 1. Under **Select an SNS topic**, select an existing notification list or choose **New list** to create a new one\. Choose **Next**\.
 
@@ -121,7 +123,7 @@ You can also create alarms that monitor the amount of traffic coming in or leavi
 
 1. For **Period**, select **15 minutes**\.
 
-1. For **Whenever**, choose **Greater/Equal**\(**>=**\) and enter `5000000`\. Choose **Next**\.
+1. For **Whenever**, choose **Greater/Equal**\(**>=**\) and enter **5000000**\. Choose **Next**\.
 
 1. Under **Select an SNS topic**, select an existing notification list or choose **New list** to create a new one\. Choose **Next**\.
 

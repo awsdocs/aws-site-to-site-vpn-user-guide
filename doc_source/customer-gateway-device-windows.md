@@ -99,7 +99,7 @@ The pre\-shared key that is used to establish the IPsec VPN connection between `
 
 We suggest that you configure both tunnels as part of the VPN connection\. Each tunnel connects to a separate VPN concentrator on the Amazon side of the VPN connection\. Although only one tunnel at a time is up, the second tunnel automatically establishes itself if the first tunnel goes down\. Having redundant tunnels ensure continuous availability in the case of a device failure\. Because only one tunnel is available at a time, the Amazon VPC console indicates that one tunnel is down\. This is expected behavior, so there's no action required from you\. 
 
-With two tunnels configured, if a device failure occurs within AWS, your VPN connection automatically fails over to the second tunnel of the AWS virtual private gateway within a matter of minutes\. When you configure your customer gateway device, it's important that you configure both tunnels\.
+With two tunnels configured, if a device failure occurs within AWS, your VPN connection automatically fails over to the second tunnel of the virtual private gateway within a matter of minutes\. When you configure your customer gateway device, it's important that you configure both tunnels\.
 
 **Note**  
 From time to time, AWS performs routine maintenance on the virtual private gateway\. This maintenance might disable one of the two tunnels of your VPN connection for a brief period of time\. Your VPN connection automatically fails over to the second tunnel while we perform this maintenance\.

@@ -11,7 +11,7 @@ Your AWS account has the following quotas, formerly referred to as limits, relat
 + Site\-to\-Site VPN connections per virtual private gateway: 10
 
 ## Routes<a name="vpn-quotas-routes"></a>
-+ Dynamic routes advertised from a customer gateway device to a Site\-to\-Site VPN connection \(on a transit gateway or virtual private gateway\): 100
++ Dynamic routes advertised from a customer gateway device to a Site\-to\-Site VPN connection on a virtual private gateway: 100
 
   This quota cannot be increased\.
 + Routes advertised from a Site\-to\-Site VPN connection on a virtual private gateway to a customer gateway device: 1,000
@@ -19,11 +19,10 @@ Your AWS account has the following quotas, formerly referred to as limits, relat
   Advertised route sources include VPC routes, other VPN routes, and routes from AWS Direct Connect virtual interfaces\.
 
   This quota cannot be increased\.
-+ Routes advertised from a Site\-to\-Site VPN connection on a transit gateway to a customer gateway device: 1,000
++ Dynamic routes advertised from a customer gateway device to a Site\-to\-Site VPN connection on a transit gateway: 1,000
++ Routes advertised from a Site\-to\-Site VPN connection on a transit gateway to a customer gateway device: 5,000
 
   Advertised routes come from the route table that's associated with the VPN attachment\.
-
-  This quota cannot be increased\.
 
 ## Bandwidth and throughput<a name="vpn-quotas-bandwidth"></a>
 + Maximum bandwidth per VPN tunnel: 1\.25 Gbps

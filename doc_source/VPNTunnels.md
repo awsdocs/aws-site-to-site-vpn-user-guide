@@ -8,6 +8,9 @@ The following diagram shows the two tunnels of the Site\-to\-Site VPN connection
 
 When you create a Site\-to\-Site VPN connection, you download a configuration file specific to your customer gateway device that contains information for configuring the device, including information for configuring each tunnel\. You can optionally specify some of the tunnel options yourself when you create the Site\-to\-Site VPN connection\. Otherwise, AWS provides default values\.
 
+**Note**  
+Site\-to\-Site VPN tunnel endpoints evaluate proposals from your customer gateway starting with the lowest configured value from the list below, regardless of the proposal order from the customer gateway\. You can use the `modify-vpn-connection-options` command to restrict the list of options AWS endpoints will accept\. For more information, see [modify\-vpn\-connection\-options](https://docs.aws.amazon.com/cli/latest/reference/ec2/modify-vpn-connection-options.html) in *Amazon EC2 Command Line Reference*\.
+
 The following are the tunnel options that you can configure\.
 
 **Dead peer detection \(DPD\) timeout**  
@@ -42,6 +45,22 @@ Default: A size /30 IPv4 CIDR block from the `169.254.0.0/16` range\.
 \(IPv6 VPN connections only\) The range of inside \(internal\) IPv6 addresses for the VPN tunnel\. You can specify a size /126 CIDR block from the local `fd00::/8` range\. The CIDR block must be unique across all Site\-to\-Site VPN connections that use the same transit gateway\.  
 Default: A size /126 IPv6 CIDR block from the local `fd00::/8` range\.
 
+**Local IPv4 Network CIDR**  
+\(IPv4 VPN connection only\) The IPv4 CIDR range on the customer gateway \(on\-premises\) side that is allowed to communicate over the VPN tunnels\.  
+Default: 0\.0\.0\.0/0
+
+**Remote IPv4 Network CIDR**  
+\(IPv4 VPN connection only\) The IPv4 CIDR range on the AWS side that is allowed to communicate over the VPN tunnels\.   
+Default: 0\.0\.0\.0/0
+
+**Local IPv6 Network CIDR**  
+\(IPv6 VPN connection only\) The IPv6 CIDR range on the customer gateway \(on\-premises\) side that is allowed to communicate over the VPN tunnels\.  
+Default: ::/0
+
+**Remote IPv6 Network CIDR**  
+\(IPv6 VPN connection only\) The IPv6 CIDR range on the AWS side that is allowed to communicate over the VPN tunnels\.   
+Default: ::/0
+
 **Phase 1 Diffie\-Hellman \(DH\) group numbers**  
 The DH group numbers that are permitted for the VPN tunnel for phase 1 of the IKE negotiations\. You can specify one or more of the default values\.  
 Default: 2, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24
@@ -67,10 +86,12 @@ The integrity algorithms that are permitted for the VPN tunnel for phase 2 of th
 Default: SHA\-1, SHA2\-256, SHA2\-384, SHA2\-512
 
 **Phase 1 lifetime**  
+AWS initiate re\-keys with the timing values set in the Phase 1 lifetime and Phase 2 lifetime fields\. If such lifetimes are different than the negotiated handshake values, this may interrupt tunnel connectivity\.
 The lifetime in seconds for phase 1 of the IKE negotiations\. You can specify a number between 900 and 28,800\.  
 Default: 28,800 \(8 hours\)
 
 **Phase 2 lifetime**  
+AWS initiate re\-keys with the timing values set in the Phase 1 lifetime and Phase 2 lifetime fields\. If such lifetimes are different than the negotiated handshake values, this may interrupt tunnel connectivity\.
 The lifetime in seconds for phase 2 of the IKE negotiations\. You can specify a number between 900 and 3,600\. The number that you specify must be less than the number of seconds for the phase 1 lifetime\.  
 Default: 3,600 \(1 hour\)
 
