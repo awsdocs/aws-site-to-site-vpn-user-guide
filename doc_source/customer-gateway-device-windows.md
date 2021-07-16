@@ -1,6 +1,6 @@
 # Configuring Windows Server as a customer gateway device<a name="customer-gateway-device-windows"></a>
 
-You can configure your server running Windows Server as a customer gateway device for your VPC\. Use the following process whether you are running Windows Server on an EC2 instance in a VPC, or on your own server\. The following procedures apply to Windows Server 2012 R2 and later\.
+You can configure a server running Windows Server as a customer gateway device for your VPC\. Use the following process whether you are running Windows Server on an EC2 instance in a VPC, or on your own server\. The following procedures apply to Windows Server 2012 R2 and later\.
 
 **Topics**
 + [Configuring your Windows instance](#cgw-device-windows-server-configure-instance)
@@ -83,7 +83,7 @@ Preshared key:               xCjNLsLoCmKsakwcdoR9yX6GsEXAMPLE
 ```
 
 `Local Tunnel Endpoint`  
-The IP address for the customer gateway—in this case, your Windows Server—that terminates the VPN connection on your network's side\. If your customer gateway device is an EC2 instance, this is the instance's private IP address\. 
+The IP address that you specified for the customer gateway when you created the VPN connection\.
 
 `Remote Tunnel Endpoint`  
 One of two IP addresses for the virtual private gateway that terminates the VPN connection on the AWS side of the connection\.
@@ -217,7 +217,7 @@ For more information about the netsh parameters, see [Netsh AdvFirewall Consec C
 
 ### Option 2: Use the Windows Server user interface<a name="cgw-device-windows-server-ui"></a>
 
-You can also use the Windows Server user interface to set up the VPN tunnel\. This section guides you through the steps\.
+You can also use the Windows Server user interface to set up the VPN tunnel\.
 
 **Important**  
 You can't enable master key perfect forward secrecy \(PFS\) using the Windows Server user interface\. You must enable PFS using the command line, as described in [Enable master key perfect forward secrecy](#cgw-device-windows-server-enable-pfs)\.
@@ -273,7 +273,7 @@ If you are repeating this procedure for Tunnel 2, be sure to select the pre\-sha
 
 1. On the **Profile** page, select all three check boxes: **Domain**, **Private**, and **Public**\. Choose **Next**\.
 
-1. On the **Name** page, enter a name for your connection rule; for example, `VPN to AWS Tunnel 1`, and then choose **Finish**\.
+1. On the **Name** page, enter a name for your connection rule; for example, `VPN to Tunnel 1`, and then choose **Finish**\.
 
 Repeat the preceding procedure, specifying the data for Tunnel 2 from your configuration file\. 
 

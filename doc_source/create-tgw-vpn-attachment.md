@@ -18,7 +18,7 @@ To create a VPN attachment on a transit gateway, you must specify the customer g
      If your customer gateway is behind a network address translation \(NAT\) device that's enabled for NAT traversal \(NAT\-T\), use the public IP address of your NAT device, and adjust your firewall rules to unblock UDP port 4500\.
    + To create a customer gateway, choose **New**\. 
 
-     For **IP Address**, enter a static public IP address\. For **BGP ASN**, enter the Border Gateway Protocol \(BGP\) Autonomous System Number \(ASN\) of your customer gateway\. For **Certificate ARN**, choose the ARN of your private certificate \(if using certificate\-based authentication\)\.
+     For **IP Address**, enter a static public IP address\. For **BGP ASN**, enter the Border Gateway Protocol \(BGP\) Autonomous System Number \(ASN\) of your customer gateway\. See [Customer gateway options for your Site\-to\-Site VPN connection](cgw-options.md) for more information\. For **Certificate ARN**, choose the ARN of your private certificate \(if using certificate\-based authentication\)\.
 
      For **Routing options**, choose whether to use **Dynamic** or **Static**\.
 

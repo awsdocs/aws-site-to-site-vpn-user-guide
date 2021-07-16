@@ -7,6 +7,8 @@ Your AWS account has the following quotas, formerly referred to as limits, relat
 + Virtual private gateways per Region: 5
 
   You can attach only one virtual private gateway to a VPC at a time\. To connect the same Site\-to\-Site VPN connection to multiple VPCs, we recommend that you explore using a transit gateway instead\. For more information, see [Transit gateways](https://docs.aws.amazon.com/vpc/latest/tgw/tgw-transit-gateways.html) in *Amazon VPC Transit Gateways*\.
+**Note**  
+Site\-to\-Site VPN connections on a transit gateway are subject to the total transit gateway attachments limit\. See [Transit gateway quotas](https://docs.aws.amazon.com/vpc/latest/tgw/transit-gateway-quotas.html) for more information\.
 + Site\-to\-Site VPN connections per Region: 50
 + Site\-to\-Site VPN connections per virtual private gateway: 10
 
@@ -25,10 +27,12 @@ Your AWS account has the following quotas, formerly referred to as limits, relat
   Advertised routes come from the route table that's associated with the VPN attachment\.
 
 ## Bandwidth and throughput<a name="vpn-quotas-bandwidth"></a>
-+ Maximum bandwidth per VPN tunnel: 1\.25 Gbps
++ Maximum bandwidth per VPN tunnel: up to 1\.25 Gbps
 
   This quota cannot be increased\. For Site\-to\-Site VPN connections on a transit gateway, you can use ECMP to get higher VPN bandwidth by aggregating multiple VPN tunnels\. To use ECMP, the VPN connection must be configured for dynamic routing\. ECMP is not supported on VPN connections that use static routing\. For more information, see [Transit gateways](https://docs.aws.amazon.com/vpc/latest/tgw/tgw-transit-gateways.html)\.
-+ Maximum packets per second \(PPS\) per VPN tunnel: 140,000
+**Note**  
+There are many factors that can affect realized bandwidth through a Site\-to\-Site VPN connection, including but not limited to: packet size, traffic mix \(TCP/UDP\), shaping or throttling policies on intermediate networks, Internet weather, and/or specific application requirements\. 
++ Maximum packets per second \(PPS\) per VPN tunnel: up to 140,000
 
 ## Maximum transmission unit \(MTU\)<a name="vpn-quotas-mtu"></a>
 + You must set the MTU of the logical interface for your customer gateway device to 1399 bytes\. For more information, see [Requirements for your customer gateway device](your-cgw.md#CGRequirements)\. 

@@ -110,7 +110,7 @@ If your connection is interrupted but the VPN connection remains UP, any propaga
 
 1. In the navigation pane, choose **Route Tables**, and then select the route table that's associated with the subnet\. By default, this is the main route table for the VPC\.
 
-1. On the **Route Propagation** tab in the details pane, choose **Edit**, select the virtual private gateway that you created in the previous procedure, and then choose **Save**\.
+1. On the **Route Propagation** tab in the details pane, choose **Edit route propagation**, select the virtual private gateway that you created in the previous procedure, and then choose **Save**\.
 
 **Note**  
 For static routing, if you do not enable route propagation, you must manually enter the static routes used by your Site\-to\-Site VPN connection\. To do this, select your route table, choose **Routes**, **Edit**\. For **Destination**, add the static route used by your Site\-to\-Site VPN connection\. For **Target**, select the virtual private gateway ID, and choose **Save**\.
@@ -119,7 +119,7 @@ For static routing, if you do not enable route propagation, you must manually en
 
 1. In the navigation pane, choose **Route Tables**, and then select the route table that's associated with the subnet\.
 
-1. Choose **Route Propagation**, **Edit**\. Clear the **Propagate** check box for the virtual private gateway, and choose **Save**\.
+1. Choose **Route Propagation**, **Edit route propagation**\. Clear the **Propagate** check box for the virtual private gateway, and choose **Save**\.
 
 **To enable route propagation using the command line or API**
 + [EnableVgwRoutePropagation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-EnableVgwRoutePropagation.html) \(Amazon EC2 Query API\)

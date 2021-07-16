@@ -4,7 +4,7 @@ You can optionally enable acceleration for your Site\-to\-Site VPN connection\. 
 
 When you create an accelerated VPN connection, we create and manage two accelerators on your behalf, one for each VPN tunnel\. You cannot view or manage these accelerators yourself by using the AWS Global Accelerator console or APIs\.
 
-For information about the AWS Regions that support Accelerated VPN connections, see the [AWS Accelerated Site\-to\-Site VPN FAQs](https://aws.amazon.com/vpn/faqs/)\.
+For information about the AWS Regions that support Accelerated VPN connections, see the [AWS Accelerated Site\-to\-Site VPN FAQs](http://aws.amazon.com/vpn/faqs/)\.
 
 ## Enabling acceleration<a name="accelerated-vpn-enabling"></a>
 

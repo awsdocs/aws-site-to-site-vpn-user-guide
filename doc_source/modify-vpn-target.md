@@ -80,10 +80,10 @@ After you migrate to the new gateway, you might need to modify your VPC route ta
 | --- | --- | --- | 
 | Virtual private gateway with propagated routes | Transit gateway | Add a route that points to the transit gateway ID\. | 
 | Virtual private gateway with propagated routes | Virtual private gateway with propagated routes | There is no action required\. | 
-| Virtual gateway with propagated routes | Virtual private gateway with static route | Add an entry that contains the new virtual private gateway ID\. | 
-| Virtual gateway with static routes | Transit gateway | Update the VPC route table and change the entry that contains to the virtual private gateway ID to the transit gateway ID\. | 
-| Virtual gateway with static routes | Virtual private gateway with static routes | Update the entry that points to the virtual private gateway ID to be the new virtual private gateway ID\. | 
-| Virtual gateway with static routes | Virtual private gateway with propagated routes | Delete the entry that contains the virtual private gateway ID\. | 
+| Virtual private gateway with propagated routes | Virtual private gateway with static route | Add an entry that contains the new virtual private gateway ID\. | 
+| Virtual private gateway with static routes | Transit gateway | Update the VPC route table and change the entry that contains to the virtual private gateway ID to the transit gateway ID\. | 
+| Virtual private gateway with static routes | Virtual private gateway with static routes | Update the entry that points to the virtual private gateway ID to be the new virtual private gateway ID\. | 
+| Virtual private gateway with static routes | Virtual private gateway with propagated routes | Delete the entry that contains the virtual private gateway ID\. | 
 | Transit Gateway | Virtual private gateway with static routes | Update the entry that contains the transit gateway to the virtual private gateway ID\. | 
 | Transit Gateway | Virtual private gateway with propagated routes | Delete the entry that contains the transit gateway ID\. | 
 | Transit Gateway | Transit Gateway | Update the entry that contains the transit gateway ID to the new transit gateway ID\. | 
@@ -97,4 +97,4 @@ After you migrate to the new gateway, you might need to modify your VPC route ta
 
 ## Step 6: Update the customer gateway ASN \(required when the new gateway has a different ASN from the old gateway\)<a name="step-update-customer-gateway-asn"></a>
 
- When the new gateway has a different ASN from the old gateway, you must update the ASN on your customer gateway device to point to the new ASN\. 
+ When the new gateway has a different ASN from the old gateway, you must update the ASN on your customer gateway device to point to the new ASN\. See [Customer gateway options for your Site\-to\-Site VPN connection](cgw-options.md) for more information\.

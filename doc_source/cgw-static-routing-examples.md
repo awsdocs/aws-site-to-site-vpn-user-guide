@@ -274,11 +274,11 @@ The following procedure demonstrates how to configure the VPN tunnels on the Son
    + **Policy Type**: Choose **Tunnel Interface**\.
    + **Authentication Method**: Choose **IKE using Preshared Secret**\.
    + **Name**: Enter a name for the VPN policy\. We recommend that you use the name of the VPN ID, as provided in the configuration file\.
-   + **IPsec Primary Gateway Name or Address**: Enter the IP address of the virtual private gateway \(AWS endpoint\) as provided in the configuration file \(for example, `72.21.209.193`\)\.
+   + **IPsec Primary Gateway Name or Address**: Enter the IP address of the virtual private gateway as provided in the configuration file \(for example, `72.21.209.193`\)\.
    + **IPsec Secondary Gateway Name or Address**: Leave the default value\.
    + **Shared Secret**: Enter the pre\-shared key as provided in the configuration file, and enter it again in **Confirm Shared Secret**\.
    + **Local IKE ID**: Enter the IPv4 address of the customer gateway \(the SonicWALL device\)\. 
-   + **Peer IKE ID**: Enter the IPv4 address of the virtual private gateway \(AWS endpoint\)\.
+   + **Peer IKE ID**: Enter the IPv4 address of the virtual private gateway\.
 
 1. On the **Network** tab, complete the following information:
    + Under **Local Networks**, choose **Any address**\. We recommend this option to prevent connectivity issues from your local network\. 

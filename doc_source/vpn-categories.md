@@ -3,7 +3,8 @@
 Your Site\-to\-Site VPN connection is either an AWS Classic VPN connection or an AWS VPN connection\. Any new Site\-to\-Site VPN connection that you create is an AWS VPN connection\. The following features are supported on AWS VPN connections only:
 + Internet Key Exchange version 2 \(IKEv2\)
 + NAT traversal
-+ 4\-byte ASN \(in addition to 2\-byte ASN\)
++ 4\-byte ASN in the range of 1 – 2147483647 for Virtual Private Gateway \(VGW\) configuration\. See [Customer gateway options for your Site\-to\-Site VPN connection](cgw-options.md) for more information\.
++ 2\-byte ASN for Customer Gateway \(CGW\) in the range of 1 – 65535\. See [Customer gateway options for your Site\-to\-Site VPN connection](cgw-options.md) for more information\.
 + CloudWatch metrics
 + Reusable IP addresses for your customer gateways
 + Additional encryption options; including AES 256\-bit encryption, SHA\-2 hashing, and additional Diffie\-Hellman groups

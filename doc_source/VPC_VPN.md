@@ -37,4 +37,4 @@ In addition, take the following into consideration when you use Site\-to\-Site V
 
 ## Pricing<a name="pricing"></a>
 
-For information about pricing, see [VPN pricing](https://aws.amazon.com/vpn/pricing/)\.
+For information about pricing, see [AWS VPN pricing](http://aws.amazon.com/vpn/pricing/)\.

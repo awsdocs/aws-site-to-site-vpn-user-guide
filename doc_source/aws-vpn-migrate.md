@@ -37,14 +37,14 @@ During this procedure, connectivity over the current Site\-to\-Site VPN connecti
 
 1. \(Optional\) Create test VPC and attach the virtual private gateway to the test VPC\. Change the encryption domain/source destination addresses as required, and test connectivity from a host in your local network to a test instance in the test VPC\.
 
-1. If you are using route propagation for your route table, choose **Route Tables** in the navigation pane\. Select the route table for your VPC, and choose **Route Propagation**, **Edit**\. Clear the check box for the old virtual private gateway and choose **Save**\.
+1. If you are using route propagation for your route table, choose **Route Tables** in the navigation pane\. Select the route table for your VPC, and choose **Route Propagation**, **Edit route propagation**\. Clear the check box for the old virtual private gateway and choose **Save**\.
 **Note**  
 From this step onwards, connectivity is interrupted until the new virtual private gateway is attached and the new Site\-to\-Site VPN connection is active\.
 
 1. In the navigation pane, choose **Virtual Private Gateways**\. Select the old virtual private gateway and choose **Actions**, **Detach from VPC**, **Yes, Detach**\. Select the new virtual private gateway, and choose **Actions**, **Attach to VPC**\. Specify the VPC for your Site\-to\-Site VPN connection, and choose **Yes, Attach**\. 
 
 1. In the navigation pane, choose **Route Tables**\. Select the route table for your VPC and do one of the following: 
-   + If you are using route propagation, choose **Route Propagation**, **Edit**\. Select the new virtual private gateway that's attached to the VPC and choose **Save**\.
+   + If you are using route propagation, choose **Route Propagation**, **Edit route propagation**\. Choose the check box for the new virtual private gateway that's attached to the VPC and choose **Save**\.
    + If you are using static routes, choose **Routes**, **Edit**\. Modify the route to point to the new virtual private gateway, and choose **Save**\.
 
 1. Enable the new tunnels on your customer gateway device and disable the old tunnels\. To bring the tunnel up, you must initiate the connection from your local network\.
