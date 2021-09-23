@@ -8,39 +8,22 @@
 
 ## Example configuration files<a name="cgw-static-routing-example-files"></a>
 
-You can download [static\-routing\-examples\.zip](samples/static-routing-examples.zip) to view example configuration files for the following customer gateway devices:
-+ Cisco ASA running Cisco ASA 8\.2\+
-+ Cisco ASA running Cisco ASA 9\.7\.1\+
-+ Cisco IOS running Cisco IOS
-+ Cisco Meraki MX Series running 9\.0\+
-+ Citrix Netscaler CloudBridge running NS 11\+
-+ Cyberoam CR15iNG running V 10\.6\.5 MR\-1
-+ F5 Networks BIG\-IP running v12\.0\.0\+
-+ Fortinet Fortigate 40\+ Series running FortiOS 4\.0\+
-+ Generic configuration for static routing
-+ H3C MSR800 running version 5\.20
-+ IIJ SEIL/B1 running SEIL/B1 3\.70\+
-+ Mikrotik RouterOS running 6\.36
-+ Openswan running 2\.6\.38\+
-+ pfSense running OS 2\.2\.5\+
-+ SonicWALLrunning SonicOS 5\.9 or 6\.2
-+ Strongswan Ubuntu 16\.04 running Strongswan 5\.5\.1\+
-+ WatchGuard XTM, Firebox running Fireware OS 11\.11\.4
-+ Zyxel Zywall running Zywall 4\.20\+
+To download a sample configuration file with values specific to your Site\-to\-Site VPN connection configuration, use the Amazon VPC console, the AWS command line or the Amazon EC2 API\. For more information, see [Download the configuration file](SetUpVPNConnections.md#vpn-download-config)\.
+
+You can also download generic example configuration files for static routing that do not include values specific to your Site\-to\-Site VPN connection configuration: [static\-routing\-examples\.zip](samples/static-routing-examples.zip) 
 
 The files use placeholder values for some components\. For example, they use:
-+ Example values for the VPN connection ID and virtual private gateway ID
++ Example values for the VPN connection ID, customer gateway ID and virtual private gateway ID
 + Placeholders for the remote \(outside\) IP address AWS endpoints \(*AWS\_ENDPOINT\_1* and *AWS\_ENDPOINT\_2*\)
 + A placeholder for the IP address for the internet\-routable external interface on the customer gateway device \(*your\-cgw\-ip\-address*\)
++ A placeholder for the pre\-shared key value \(pre\-shared\-key\)
 + Example values for the tunnel inside IP addresses\.
 
-In addition to providing placeholder values, the files specify the minimum requirements of IKE version 1, AES128, SHA1, and DH Group 2 in most AWS Regions\. They also specify pre\-shared keys for [authentication](vpn-tunnel-authentication-options.md)\. You must modify the example configuration files to take advantage of IKE version 2, AES256, SHA256, other DH groups such as 2, 14\-18, 22, 23, and 24, and private certificates\. 
+In addition to providing placeholder values, the files specify the minimum requirements for a Site\-to\-Site VPN connection of AES128, SHA1, and Diffie\-Hellman group 2 in most AWS Regions, and AES128, SHA2, and Diffie\-Hellman group 14 in the AWS GovCloud Regions\. They also specify pre\-shared keys for [authentication](vpn-tunnel-authentication-options.md)\. You must modify the example configuration file to take advantage of additional security algorithms, Diffie\-Hellman groups, private certificates, and IPv6 traffic\. 
 
 The following diagram provides an overview of the different components that are configured on the customer gateway device\. It includes example values for the tunnel interface IP addresses\.
 
 ![\[Customer gateway device with static routing\]](http://docs.aws.amazon.com/vpn/latest/s2svpn/images/cgw-static-routing.png)
-
-To download a configuration file with values that are specific to your VPN connection configuration, use the Amazon VPC console\. For more information, see [Download the configuration file](SetUpVPNConnections.md#vpn-download-config)\.
 
 ## User interface procedures for static routing<a name="cgw-static-routing-example-interface"></a>
 

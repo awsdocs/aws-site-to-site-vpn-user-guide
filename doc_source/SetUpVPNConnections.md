@@ -71,7 +71,7 @@ After you create a virtual private gateway, you must attach it to your VPC\.
 
 1. \(Optional\) Enter a name for your virtual private gateway\. Doing so creates a tag with a key of `Name` and the value that you specify\.
 
-1. For **ASN**, leave the default selection to use the default Amazon ASN\. Otherwise, choose **Custom ASN** and enter a value\. For a 16\-bit ASN, the value must be in the 64512 to 65534 range\. For a 32\-bit ASN, the value must be in the 4200000000 to 4294967294 range\. 
+1. For **ASN**, keep the default selection to use the default Amazon ASN\. Otherwise, choose **Custom ASN** and enter a value\. For a 16\-bit ASN, the value must be in the 64512 to 65534 range\. For a 32\-bit ASN, the value must be in the 4200000000 to 4294967294 range\. 
 
 1. Choose **Create Virtual Private Gateway**\.
 
@@ -113,7 +113,7 @@ If your connection is interrupted but the VPN connection remains UP, any propaga
 1. On the **Route Propagation** tab in the details pane, choose **Edit route propagation**, select the virtual private gateway that you created in the previous procedure, and then choose **Save**\.
 
 **Note**  
-For static routing, if you do not enable route propagation, you must manually enter the static routes used by your Site\-to\-Site VPN connection\. To do this, select your route table, choose **Routes**, **Edit**\. For **Destination**, add the static route used by your Site\-to\-Site VPN connection\. For **Target**, select the virtual private gateway ID, and choose **Save**\.
+If you do not enable route propagation, you must manually enter the static routes used by your Site\-to\-Site VPN connection\. To do this, select your route table, choose **Routes**, **Edit**\. For **Destination**, add the static route used by your Site\-to\-Site VPN connection\. For **Target**, select the virtual private gateway ID, and choose **Save**\.
 
 **To disable route propagation using the console**
 
@@ -217,14 +217,13 @@ Create the Site\-to\-Site VPN connection using the customer gateway and the virt
 
 ## Download the configuration file<a name="vpn-download-config"></a>
 
-After you create the Site\-to\-Site VPN connection, download the configuration information and use it to configure the customer gateway device or software application\.
+After you create the Site\-to\-Site VPN connection, you can download a sample configuration file to use for configuring the customer gateway device\.
 
 **Important**  
-The configuration file is an example only and might not match your intended VPN connection settings\. For example, it specifies the minimum requirements of IKE version 1, AES128, SHA1, and DH group 2 in most AWS Regions, and IKE version 1, AES128, SHA2, and DH group 14 in the AWS GovCloud Regions\. It also specifies pre\-shared keys for [authentication](vpn-tunnel-authentication-options.md)\. You must modify the example configuration file to take advantage of IKE version 2, additional security algorithms and DH groups, and private certificates\.   
-If you specified custom tunnel options when creating or modifying your Site\-to\-Site VPN connection, modify the example configuration file to match the custom settings for your tunnels\.  
-The file also contains the value for the outside IP address for the virtual private gateway\. This value is static unless you recreate the VPN connection in AWS\.
+The configuration file is an example only and might not match your intended Site\-to\-Site VPN connection settings entirely\. It specifies the minimum requirements for a Site\-to\-Site VPN connection of AES128, SHA1, and Diffie\-Hellman group 2 in most AWS Regions, and AES128, SHA2, and Diffie\-Hellman group 14 in the AWS GovCloud Regions\. It also specifies pre\-shared keys for authentication\. You must modify the example configuration file to take advantage of additional security algorithms, Diffie\-Hellman groups, private certificates, and IPv6 traffic\.   
+We have introduced IKEv2 support in the configuration files for many popular customer gateway devices and will continue to add additional files over time\. This list will be updated as more example configuration files are added\. See [Your customer gateway device](your-cgw.md) for a complete list of configuration files with IKEv2 support\.
 
-**To download the configuration file**
+**To download the configuration file from the AWS Management Console**
 
 1. Open the Amazon VPC console at [https://console\.aws\.amazon\.com/vpc/](https://console.aws.amazon.com/vpc/)\.
 
@@ -232,8 +231,16 @@ The file also contains the value for the outside IP address for the virtual priv
 
 1. Select your VPN connection and choose **Download Configuration**\.
 
-1. Select the vendor, platform, and software that corresponds to your customer gateway device or software\. If your device is not listed, choose **Generic**\. Choose **Download**\.
+1. Select the `vendor`, `platform`, `software` and `IKE version` that correspond to your customer gateway device\. If your device is not listed, choose `Generic`\.
+
+1. Choose **Download**\.
+
+**To download a sample configuration file using the AWS command line or API**
++ [GetVpnConnectionDeviceTypes](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-GetVpnConnectionDeviceTypes.html) \(Amazon EC2 Query API\)
++ [GetVpnConnectionDeviceSampleConfiguration](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-GetVpnConnectionDeviceSampleConfiguration.html) \(Amazon EC2 Query API\)
++ [get\-vpn\-connection\-device\-types](https://docs.aws.amazon.com/cli/latest/reference/ec2/get-vpn-connection-device-types.html) \(AWS CLI\)
++ [get\-vpn\-connection\-device\-sample\-configuration](https://docs.aws.amazon.com/cli/latest/reference/ec2/get-vpn-connection-device-sample-configuration.html) \(AWS CLI\)
 
 ## Configure the customer gateway device<a name="vpn-configure-customer-gateway-device"></a>
 
-Use the configuration file to configure your customer gateway device\. The customer gateway device is the physical or software appliance on your side of the Site\-to\-Site VPN connection\. For more information, see [Your customer gateway device](your-cgw.md)\.
+Use the sample configuration file to configure your customer gateway device\. The customer gateway device is the physical or software appliance on your side of the Site\-to\-Site VPN connection\. For more information, see [Your customer gateway device](your-cgw.md)\.

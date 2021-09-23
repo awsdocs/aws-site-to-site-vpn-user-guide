@@ -1,46 +1,55 @@
 # Site\-to\-Site VPN quotas<a name="vpn-limits"></a>
 
-Your AWS account has the following quotas, formerly referred to as limits, related to Site\-to\-Site VPN\. To request an increase, use the [limits form](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=)\.
+Your AWS account has the following quotas, formerly referred to as limits, related to Site\-to\-Site VPN\. Unless otherwise noted, each quota is Region\-specific\. You can request increases for some quotas, and other quotas cannot be increased\.
+
+To request a quota increase for an adjustable quota, choose **Yes** in the Client VPN quotas table\. For more information, see [Requesting a quota increase](https://docs.aws.amazon.com/servicequotas/latest/userguide/request-quota-increase.html) in the *Service Quotas User Guide*\.
 
 ## Site\-to\-Site VPN resources<a name="vpn-quotas-resources"></a>
-+ Customer gateways per Region: 50
-+ Virtual private gateways per Region: 5
 
-  You can attach only one virtual private gateway to a VPC at a time\. To connect the same Site\-to\-Site VPN connection to multiple VPCs, we recommend that you explore using a transit gateway instead\. For more information, see [Transit gateways](https://docs.aws.amazon.com/vpc/latest/tgw/tgw-transit-gateways.html) in *Amazon VPC Transit Gateways*\.
-**Note**  
-Site\-to\-Site VPN connections on a transit gateway are subject to the total transit gateway attachments limit\. See [Transit gateway quotas](https://docs.aws.amazon.com/vpc/latest/tgw/transit-gateway-quotas.html) for more information\.
-+ Site\-to\-Site VPN connections per Region: 50
-+ Site\-to\-Site VPN connections per virtual private gateway: 10
+
+| Name | Default | Adjustable | 
+| --- | --- | --- | 
+| Customer gateways per Region | 50 | [Yes](https://console.aws.amazon.com/servicequotas/home/services/ec2/quotas/L-4FB7FF5D) | 
+| Virtual private gateways per Region | 5 | [Yes](https://console.aws.amazon.com/servicequotas/home/services/ec2/quotas/L-7029FAB6) | 
+| Site\-to\-Site VPN connections per Region | 50 | [Yes](https://console.aws.amazon.com/servicequotas/home/services/ec2/quotas/L-3E6EC3A3) | 
+| Site\-to\-Site VPN connections per virtual private gateway | 10 | [Yes](https://console.aws.amazon.com/servicequotas/home/services/ec2/quotas/L-B91E5754) | 
+
+You can attach one virtual private gateway to a VPC at a time\. To connect the same Site\-to\-Site VPN connection to multiple VPCs, we recommend that you explore using a transit gateway instead\. For more information, see [Transit gateways](https://docs.aws.amazon.com/vpc/latest/tgw/tgw-transit-gateways.html) in *Amazon VPC Transit Gateways*\.
+
+Site\-to\-Site VPN connections on a transit gateway are subject to the total transit gateway attachments limit\. For more information, see [Transit gateway quotas](https://docs.aws.amazon.com/vpc/latest/tgw/transit-gateway-quotas.html)\.
 
 ## Routes<a name="vpn-quotas-routes"></a>
-+ Dynamic routes advertised from a customer gateway device to a Site\-to\-Site VPN connection on a virtual private gateway: 100
 
-  This quota cannot be increased\.
-+ Routes advertised from a Site\-to\-Site VPN connection on a virtual private gateway to a customer gateway device: 1,000
+Advertised route sources include VPC routes, other VPN routes, and routes from AWS Direct Connect virtual interfaces\. Advertised routes come from the route table that's associated with the VPN attachment\.
 
-  Advertised route sources include VPC routes, other VPN routes, and routes from AWS Direct Connect virtual interfaces\.
 
-  This quota cannot be increased\.
-+ Dynamic routes advertised from a customer gateway device to a Site\-to\-Site VPN connection on a transit gateway: 1,000
-+ Routes advertised from a Site\-to\-Site VPN connection on a transit gateway to a customer gateway device: 5,000
-
-  Advertised routes come from the route table that's associated with the VPN attachment\.
+| Name | Default | Adjustable | 
+| --- | --- | --- | 
+| Dynamic routes advertised from a customer gateway device to a Site\-to\-Site VPN connection on a virtual private gateway | 100 | No | 
+| Routes advertised from a Site\-to\-Site VPN connection on a virtual private gateway to a customer gateway device | 1,000 | No | 
+| Dynamic routes advertised from a customer gateway device to a Site\-to\-Site VPN connection on a transit gateway | 1,000 | No | 
+| Routes advertised from a Site\-to\-Site VPN connection on a transit gateway to a customer gateway device | 5,000 | No | 
 
 ## Bandwidth and throughput<a name="vpn-quotas-bandwidth"></a>
-+ Maximum bandwidth per VPN tunnel: up to 1\.25 Gbps
 
-  This quota cannot be increased\. For Site\-to\-Site VPN connections on a transit gateway, you can use ECMP to get higher VPN bandwidth by aggregating multiple VPN tunnels\. To use ECMP, the VPN connection must be configured for dynamic routing\. ECMP is not supported on VPN connections that use static routing\. For more information, see [Transit gateways](https://docs.aws.amazon.com/vpc/latest/tgw/tgw-transit-gateways.html)\.
-**Note**  
-There are many factors that can affect realized bandwidth through a Site\-to\-Site VPN connection, including but not limited to: packet size, traffic mix \(TCP/UDP\), shaping or throttling policies on intermediate networks, Internet weather, and/or specific application requirements\. 
-+ Maximum packets per second \(PPS\) per VPN tunnel: up to 140,000
+There are many factors that can affect realized bandwidth through a Site\-to\-Site VPN connection, including but not limited to: packet size, traffic mix \(TCP/UDP\), shaping or throttling policies on intermediate networks, internet weather, and specific application requirements\.
+
+
+| Name | Default | Adjustable | 
+| --- | --- | --- | 
+| Maximum bandwidth per VPN tunnel | Up to 1\.25 Gbps | No | 
+| Maximum packets per second \(PPS\) per VPN tunnel | Up to 140,000 | No | 
+
+For Site\-to\-Site VPN connections on a transit gateway, you can use ECMP to get higher VPN bandwidth by aggregating multiple VPN tunnels\. To use ECMP, the VPN connection must be configured for dynamic routing\. ECMP is not supported on VPN connections that use static routing\. For more information, see [Transit gateways](https://docs.aws.amazon.com/vpc/latest/tgw/tgw-transit-gateways.html)\.
 
 ## Maximum transmission unit \(MTU\)<a name="vpn-quotas-mtu"></a>
-+ You must set the MTU of the logical interface for your customer gateway device to 1399 bytes\. For more information, see [Requirements for your customer gateway device](your-cgw.md#CGRequirements)\. 
 
-  Jumbo frames are not supported\. For more information, see [Jumbo frames](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/network_mtu.html#jumbo_frame_instances) in the *Amazon EC2 User Guide for Linux Instances*\.
-+ We recommend that you set the maximum segment size \(MSS\) on your customer gateway device to 1359 when using the SHA2\-384 or SHA2\-512 hashing algorithms\.
+You must set the MTU of the logical interface for your customer gateway device to 1399 bytes\. For more information, see [Requirements for your customer gateway device](your-cgw.md#CGRequirements)\. 
 
-**Note**  
+Jumbo frames are not supported\. For more information, see [Jumbo frames](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/network_mtu.html#jumbo_frame_instances) in the *Amazon EC2 User Guide for Linux Instances*\.
+
+We recommend that you set the maximum segment size \(MSS\) on your customer gateway device to 1359 when using the SHA2\-384 or SHA2\-512 hashing algorithms\.
+
 A Site\-to\-Site VPN connection does not support Path MTU Discovery\.
 
 ## Additional quota resources<a name="vpn-quotas-additional"></a>

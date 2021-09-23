@@ -9,40 +9,22 @@
 
 ## Example configuration files<a name="cgw-dynamic-routing-example-files"></a>
 
-You can download [dynamic\-routing\-examples\.zip](samples/dynamic-routing-examples.zip) to view example configuration files for the following customer gateway devices:
-+ Barracuda NextGen Firewall F\-series running 6\.2\+
-+ Cisco ASA running Cisco ASA 9\.7\.1\+
-+ Cisco IOS running Cisco IOS 12\.4\+
-+ F5 Networks BIG\-IP running v12\.0\.0\+
-+ Fortinet Fortigate 40\+
-+ Generic configuration for dynamic routing
-+ H3C MSR800 running version 5\.20
-+ IIJ SEIL/B1 running SEIL/B1 3\.70\+
-+ Juniper J\-Series running JunOS 9\.5\+
-+ Juniper SRX running JunOS 11\.0\+
-+ Juniper SSG or Netscreen series running Juniper ScreenOS 6\.1\+
-+ Mikrotik RouterOS running 6\.36
-+ Palo Alto Networks running PANOS 4\.1\.2\+
-+ SonicWALL running SonicOS 5\.9 or 6\.2
-+ Sophos ASG running V8\.300\+
-+ Vyatta running Network OS 6\.5\+
-+ WatchGuard XTM, Firebox running Fireware OS 11\.12\.2\+
-+ Yamaha RT107e, RTX1200, RTX1210, RTX1500, RTX3000, or SRT100
-+ Zyxel ZyWALL running ZLD 4\.3\+
+To download a sample configuration file with values specific to your Site\-to\-Site VPN connection configuration, use the Amazon VPC console, the AWS command line or the Amazon EC2 API\. For more information, see [Download the configuration file](SetUpVPNConnections.md#vpn-download-config)\.
+
+You can also download generic example configuration files for dynamic routing that do not include values specific to your Site\-to\-Site VPN connection configuration: [dynamic\-routing\-examples\.zip](samples/dynamic-routing-examples.zip)
 
 The files use placeholder values for some components\. For example, they use:
-+ Example values for the VPN connection ID and virtual private gateway ID
++ Example values for the VPN connection ID, customer gateway ID and virtual private gateway ID
 + Placeholders for the remote \(outside\) IP address AWS endpoints \(*AWS\_ENDPOINT\_1* and *AWS\_ENDPOINT\_2*\)
-+ Placeholders for the IP address for the internet\-routable external interface on the customer gateway device \(*your\-cgw\-ip\-address*\), and the BGP ASN\.
++ A placeholder for the IP address for the internet\-routable external interface on the customer gateway device \(*your\-cgw\-ip\-address*\)
++ A placeholder for the pre\-shared key value \(pre\-shared\-key\)
 + Example values for the tunnel inside IP addresses\.
 
-In addition to providing placeholder values, the files specify the minimum requirements of IKE version 1, AES128, SHA1, and DH Group 2 in most AWS Regions\. They also specify pre\-shared keys for [authentication](vpn-tunnel-authentication-options.md)\. You must modify the example configuration files to take advantage of IKE version 2, AES256, SHA256, other DH groups such as 2, 14\-18, 22, 23, and 24, and private certificates\. 
+In addition to providing placeholder values, the files specify the minimum requirements for a Site\-to\-Site VPN connection of AES128, SHA1, and Diffie\-Hellman group 2 in most AWS Regions, and AES128, SHA2, and Diffie\-Hellman group 14 in the AWS GovCloud Regions\. They also specify pre\-shared keys for [authentication](vpn-tunnel-authentication-options.md)\. You must modify the example configuration file to take advantage of additional security algorithms, Diffie\-Hellman groups, private certificates, and IPv6 traffic\. 
 
 The following diagram provides an overview of the different components that are configured on the customer gateway device\. It includes example values for the tunnel interface IP addresses\.
 
 ![\[Customer gateway device with dynamic routing\]](http://docs.aws.amazon.com/vpn/latest/s2svpn/images/cgw-bgp.png)
-
-To download a configuration file with values that are specific to your VPN connection configuration, you must use the Amazon VPC console\. For more information, see [Download the configuration file](SetUpVPNConnections.md#vpn-download-config)\.
 
 ## User interface procedures for dynamic routing<a name="cgw-dynamic-routing-example-interface"></a>
 

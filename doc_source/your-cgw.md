@@ -2,38 +2,48 @@
 
 A *customer gateway device* is a physical or software appliance that you own or manage in your on\-premises network \(on your side of a Site\-to\-Site VPN connection\)\. You or your network administrator must configure the device to work with the Site\-to\-Site VPN connection\. 
 
-The following diagram shows your network, the customer gateway device, the VPN connection that goes to a virtual private gateway \(which is attached to your VPC\)\. The two lines between the customer gateway device and virtual private gateway represent the tunnels for the VPN connection\. If there's a device failure within AWS, your VPN connection automatically fails over to the second tunnel so that your access isn't interrupted\. From time to time, AWS also performs routine maintenance on the VPN connection which might briefly disable one of the two tunnels of your VPN connection\. For more information, see [Site\-to\-Site VPN tunnel endpoint replacements](endpoint-replacements.md)\. When you configure your customer gateway device, it's therefore important that you configure both tunnels\.
+The following diagram shows your network, the customer gateway device and the VPN connection that goes to a virtual private gateway \(which is attached to your VPC\)\. The two lines between the customer gateway device and virtual private gateway represent the tunnels for the VPN connection\. If there's a device failure within AWS, your VPN connection automatically fails over to the second tunnel so that your access isn't interrupted\. From time to time, AWS also performs routine maintenance on the VPN connection which might briefly disable one of the two tunnels of your VPN connection\. For more information, see [Site\-to\-Site VPN tunnel endpoint replacements](endpoint-replacements.md)\. When you configure your customer gateway device, it's therefore important that you configure both tunnels\.
 
 ![\[High-level customer gateway overview\]](http://docs.aws.amazon.com/vpn/latest/s2svpn/images/cgw-high-level.png)
 
 For the steps to set up a VPN connection, see [Getting started](SetUpVPNConnections.md)\. During this process, you create a customer gateway resource in AWS, which provides information to AWS about your device, for example, its public\-facing IP address\. For more information, see [Customer gateway options for your Site\-to\-Site VPN connection](cgw-options.md)\. The customer gateway resource in AWS does not configure or create the customer gateway device\. You must configure the device yourself\.
 
-After you create the VPN connection, [download the configuration file](SetUpVPNConnections.md#vpn-download-config) from the Amazon VPC console, which contains information specific to your VPN connection\. Use this information to configure your customer gateway device\. In some cases, device\-specific configuration files are available for devices that we've tested\. Otherwise, you can download the generic configuration file\.
+You can also find software VPN appliances on the [AWS Marketplace](https://aws.amazon.com/marketplace/search/results/ref=brs_navgno_search_box?searchTerms=vpn)\.
 
 ## Example configuration files<a name="example-configuration-files"></a>
 
-Your customer gateway device can be a physical or software appliance\. The following are examples of some devices that have device\-specific configuration files in the Amazon VPC console\.
-+ Check Point Security Gateway running R77\.10 \(or later\) software
-+ Cisco ASA running Cisco ASA 8\.2 \(or later\) software
-+ Cisco IOS running Cisco IOS 12\.4 \(or later\) software
-+ SonicWALL running SonicOS 5\.9 \(or later\) software
-+ Fortinet Fortigate 40\+ Series running FortiOS 4\.0 \(or later\) software 
-+ Juniper J\-Series running JunOS 9\.5 \(or later\) software
-+ Juniper SRX running JunOS 11\.0 \(or later\) software
-+ Juniper SSG running ScreenOS 6\.1, or 6\.2 \(or later\) software
-+ Juniper ISG running ScreenOS 6\.1, or 6\.2 \(or later\) software
-+ Netgate pfSense running OS 2\.2\.5 \(or later\) software\.
-+ Palo Alto Networks PANOS 4\.1\.2 \(or later\) software
-+ Yamaha RT107e, RTX1200, RTX1210, RTX1500, RTX3000 and SRT100 routers
-+ Microsoft Windows Server 2008 R2 \(or later\) software
-+ Microsoft Windows Server 2012 R2 \(or later\) software 
-+ Zyxel Zywall Series 4\.20 \(or later\) software for statically routed VPN connections, or 4\.30 \(or later\) software for dynamically routed VPN connections
+After you create the VPN connection, you additionally have the option to download an AWS\-provided sample configuration file from the Amazon VPC console, or by using the EC2 API\. See [Download the configuration file](SetUpVPNConnections.md#vpn-download-config) for more information\. You can also download \.zip files of sample configurations specifically for static vs\. dynamic routing:
 
-If you have one of these devices, but configure it for IPsec in a different way than presented in the configuration file, you can change our suggested configuration to match your needs\. You can get sample configuration files from either of the following:
+**Download \.zip files**
 + Static configuration: [Example configuration files](cgw-static-routing-examples.md#cgw-static-routing-example-files)
 + Dynamic configuration: [Example configuration files](cgw-dynamic-routing-examples.md#cgw-dynamic-routing-example-files)
 
-You can also find software VPN appliances on the [AWS Marketplace](https://aws.amazon.com/marketplace/search/results/ref=brs_navgno_search_box?searchTerms=vpn)\.
+The AWS\-provided sample configuration file contains information specific to your VPN connection which you can use to configure your customer gateway device\. These device\-specific configuration files are only available for devices that AWS has tested\. If your specific customer gateway device is not listed, you can download a generic configuration file to begin with\.
+
+The following table contains a list of devices which have an example configuration file available for download that has been updated to support IKEv2\. We have introduced IKEv2 support in the configuration files for many popular customer gateway devices and will continue to add additional files over time\. This list will be updated as more example configuration files are added\.
+
+**Important**  
+The configuration file is an example only and might not match your intended Site\-to\-Site VPN connection settings entirely\. It specifies the minimum requirements for a Site\-to\-Site VPN connection of AES128, SHA1, and Diffie\-Hellman group 2 in most AWS Regions, and AES128, SHA2, and Diffie\-Hellman group 14 in the AWS GovCloud Regions\. It also specifies pre\-shared keys for authentication\. You must modify the example configuration file to take advantage of additional security algorithms, Diffie\-Hellman groups, private certificates, and IPv6 traffic\. 
+
+**Note**  
+These device\-specific configuration files are provided by AWS on a best\-effort basis\. While they have been tested by AWS, this testing is limited\. If you are experiencing an issue with the configuration files, you might need to contact the specific vendor for additional support\.
+
+
+| Vendor | Platform | Software | 
+| --- | --- | --- | 
+|  Checkpoint  |  Gaia  |  R80\.10\+  | 
+|  Cisco Meraki  |  MX Series  |  15\.12\+ \(WebUI\)  | 
+|  Cisco Systems, Inc\.  |  ASA 5500 Series  |  ASA 9\.7\+ VTI  | 
+|  Cisco Systems, Inc\.  |  CSRv AMI  |  IOS 12\.4\+  | 
+|  Fortinet  |  Fortigate 40\+ Series  |  FortiOS 6\.4\.4\+ \(GUI\)  | 
+|  Juniper Networks, Inc\.  |  J\-Series Routers  |  JunOS 9\.5\+  | 
+|  Juniper Networks, Inc\.  |  SRX Routers  |  JunOS 11\.0\+  | 
+|  Mikrotik  |  RouterOS  |  6\.44\.3  | 
+|  Palo Alto Networks  |  PA Series  |  PANOS 7\.0\+  | 
+|  SonicWall  |  NSA, TZ  |  OS 6\.5  | 
+|  Sophos  |  Sophos Firewall  |  v19\+  | 
+|  Strongswan  |  Ubuntu 16\.04  |  Strongswan 5\.5\.1\+  | 
+|  Yamaha  |  RTX Routers  |  Rev\.10\.01\.16\+  | 
 
 ## Requirements for your customer gateway device<a name="CGRequirements"></a>
 
