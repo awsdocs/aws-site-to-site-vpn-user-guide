@@ -2,6 +2,9 @@
 
 When you troubleshoot the connectivity of a Yamaha customer gateway device, consider four things: IKE, IPsec, tunnel, and BGP\. You can troubleshoot these areas in any order, but we recommend that you start with IKE \(at the bottom of the network stack\) and move up\.
 
+**Note**  
+The `proxy ID` setting used in phase 2 of IKE is disabled by default on the Yamaha router\. This can cause problems connecting to Site\-to\-Site VPN\. If the `proxy ID` is not configured on your router, please see the AWS\-provided example configuration file for Yamaha to set properly\.
+
 ## IKE<a name="YamahaIKE"></a>
 
 Run the following command\. The response shows a customer gateway device with IKE configured correctly\.

@@ -30,7 +30,7 @@ The IKE versions that are permitted for the VPN tunnel\. You can specify one or 
 Default: `ikev1`, `ikev2`
 
 **Inside tunnel IPv4 CIDR**  
-The range of inside \(internal\) IPv4 addresses for the VPN tunnel\. You can specify a size /30 CIDR block from the `169.254.0.0/16` range\. The CIDR block must be unique across all Site\-to\-Site VPN connections that use the same virtual private gateway\.  
+The range of inside \(internal\) IPv4 addresses for the VPN tunnel\. You can specify a size /30 CIDR block from the `169.254.0.0/16` range\. The CIDR block must be unique across all Site\-to\-Site VPN connections that use the same virtual private gateway or transit gateway\.  
 The following CIDR blocks are reserved and cannot be used:   
 + `169.254.0.0/30`
 + `169.254.1.0/30`

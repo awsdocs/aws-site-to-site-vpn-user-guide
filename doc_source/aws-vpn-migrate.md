@@ -69,13 +69,14 @@ Alternatively, you can use this option to migrate your Site\-to\-Site VPN connec
 
 1. Open the Amazon VPC console at [https://console\.aws\.amazon\.com/vpc/](https://console.aws.amazon.com/vpc/)\.
 
-1. In the navigation pane, choose **Transit Gateways**, **Create Transit Gateway** and create a transit gateway using the default options\.
+1. In the navigation pane, choose **Transit Gateways**, **Create Transit Gateway** and create a transit gateway using the default options by choosing **Create Transit Gateway** once more\.
 
-1. In the navigation pane, choose **Transit Gateway Attachments**, **Create Transit Gateway Attachment**\. Specify the following information, and choose **Create attachment**\.
+1. In the navigation pane, choose **Transit Gateway Attachments**, **Create Transit Gateway Attachment**\. Specify the following information, and choose **Create Transit Gateway Attachment** once more\.
    + For **Transit Gateway ID**, choose the transit gateway you created\. 
-   + For **VPC ID**, choose the VPC to attach to the transit gateway\.
+   + For **Attachment type**, choose **VPC**\. 
+   + For **VPC ID**, choose the VPC to attach to the transit gateway, and select the required subnet options\.
 
-1. Choose **Create Transit Gateway Attachment** again, specify the following information, and choose **Create attachment**\.
+1. Choose **Create Transit Gateway Attachment** again, specify the following information, and choose **Create Transit Gateway Attachment** once more\.
    + For **Transit Gateway ID**, choose the transit gateway you created\.
    + For **Attachment type**, choose **VPN**\. 
    + For **Customer Gateway ID**, choose the customer gateway for your existing Site\-to\-Site VPN connection, and choose the required routing option\.

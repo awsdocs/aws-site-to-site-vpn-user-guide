@@ -1,8 +1,8 @@
 # Getting started<a name="SetUpVPNConnections"></a>
 
-Use the following procedures to manually set up the AWS Site\-to\-Site VPN connection\. You can create a Site\-to\-Site VPN connection with either a virtual private gateway or a transit gateway as the target gateway\. 
+Use the following procedure to set up an AWS Site\-to\-Site VPN connection\. During creation you will be asked to specify a virtual private gateway, a transit gateway or "Not Associated" for the target gateway type\. When a Site\-to\-Site VPN connection is created with "Not Associated" specified, you can choose the target gateway type at a later time or it can be used as a Site\-to\-Site VPN attachment for AWS Cloud WAN\. This procedure outlines creating a Site\-to\-Site VPN connection using a virtual private gateway and assumes that you have an existing VPC with one or more subnets\.
 
-To set up a Site\-to\-Site VPN connection, complete the following steps:
+To set up a Site\-to\-Site VPN connection using a virtual private gateway, complete the following steps:
 + [Prerequisites](#vpn-prerequisites)
 + Step 1: [Create a customer gateway](#vpn-create-cgw)
 + Step 2: [Create a target gateway](#vpn-create-target-gateway)
@@ -12,7 +12,7 @@ To set up a Site\-to\-Site VPN connection, complete the following steps:
 + Step 6: [Download the configuration file](#vpn-download-config)
 + Step 7: [Configure the customer gateway device](#vpn-configure-customer-gateway-device)
 
-These procedures assume that you have a VPC with one or more subnets\.
+For steps to create a Site\-to\-Site VPN connection for use with an AWS Cloud WAN, see [Creating an AWS Cloud WAN Site\-to\-Site VPN attachment](create-cwan-vpn-attachment.md)\.
 
 For steps to create a Site\-to\-Site VPN connection on a transit gateway, see [Creating a transit gateway VPN attachment](create-tgw-vpn-attachment.md)\.
 
@@ -224,6 +224,8 @@ The configuration file is an example only and might not match your intended Site
 We have introduced IKEv2 support in the configuration files for many popular customer gateway devices and will continue to add additional files over time\. This list will be updated as more example configuration files are added\. See [Your customer gateway device](your-cgw.md) for a complete list of configuration files with IKEv2 support\.
 
 **To download the configuration file from the AWS Management Console**
+**Note**  
+To properly load the Download Configuration screen from the AWS Management Console please ensure your IAM role or user has permission for the following two Amazon EC2 APIs: GetVpnConnectionDeviceTypes and GetVpnConnectionDeviceSampleConfiguration\.
 
 1. Open the Amazon VPC console at [https://console\.aws\.amazon\.com/vpc/](https://console.aws.amazon.com/vpc/)\.
 

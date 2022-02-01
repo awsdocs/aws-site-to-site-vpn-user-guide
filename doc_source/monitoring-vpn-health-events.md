@@ -14,4 +14,4 @@ When a tunnel endpoint replacement is complete, AWS sends the **Tunnel endpoint 
 
 ## Single tunnel VPN notifications<a name="single-tunnel-notifications"></a>
 
-A Site\-to\-Site VPN connection consists of two tunnels for redundancy\. We strongly recommend that you configure both tunnels for high availability\. If your VPN connection has one tunnel up but the other is down for more than one hour in a day, you receive a weekly **VPN single tunnel notification** through a AWS Personal Health Dashboard event\.
+A Site\-to\-Site VPN connection consists of two tunnels for redundancy\. We strongly recommend that you configure both tunnels for high availability\. If your VPN connection has one tunnel up but the other is down for more than one hour in a day, you receive a monthly **VPN single tunnel notification** through a AWS Personal Health Dashboard event\.
