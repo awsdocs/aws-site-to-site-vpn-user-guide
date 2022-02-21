@@ -33,7 +33,7 @@ The following are the supported condition keys:
 | Condition key | Description | Valid values | Type | 
 | --- | --- | --- | --- | 
 | ec2:AuthenticationType | The authentication type for the VPN tunnel endpoints\. | Pre Shared Keys, Certificates | String | 
-| ec2:DPDTimeoutSeconds | The duration after which DPD timeout occurs\. | An integer between 0 and 30 | Numeric | 
+| >ec2:DPDTimeoutSeconds | The duration after which DPD timeout occurs\. | An integer between 0 and 30 | Numeric | 
 | ec2:GatewayType | The gateway type for the VPN endpoint on the AWS side of the VPN connection\. | VGW, TGW | String | 
 | ec2:IKEVersions | The internet key exchange \(IKE\) versions that are permitted for the VPN tunnel\. | ikev1, ikev2 | String | 
 | ec2:InsideTunnelCidr | The range of inside IP addresses for the VPN tunnel\. | See [Tunnel options for your Site\-to\-Site VPN connection](VPNTunnels.md)  | String | 

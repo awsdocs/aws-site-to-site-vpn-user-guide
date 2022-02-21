@@ -21,7 +21,3 @@ To use an accelerated VPN connection, the following rules apply:
 + NAT\-traversal \(NAT\-T\) is required for an accelerated VPN connection and is enabled by default\. If you downloaded a [configuration file](SetUpVPNConnections.md#vpn-download-config) from the Amazon VPC console, check the NAT\-T setting and adjust it if necessary\.
 + IKE rekeys for accelerated VPN tunnels must be initiated from the customer gateway device to keep the tunnels up\.
 + Site\-to\-Site VPN connections that use certificate\-based authentication might not be compatible with AWS Global Accelerator, due to limited support for packet fragmentation in Global Accelerator\. For more information, see [How AWS Global Accelerator works](https://docs.aws.amazon.com/global-accelerator/latest/dg/introduction-how-it-works.html)\. If you require an accelerated VPN connection that uses certificate\-based authentication, then your customer gateway device must support IKE fragmentation\. Otherwise, do not enable your VPN for acceleration\.
-
-## Pricing<a name="accelerated-vpn-pricing"></a>
-
-Hourly charges apply for a Site\-to\-Site VPN connection\. For more information, see [AWS VPN pricing](https://aws.amazon.com/vpn/pricing/)\. When you create an accelerated VPN connection, we create and manage two accelerators on your behalf\. You are charged an hourly rate and data transfer costs for each accelerator\. For more information, see [AWS Global Accelerator pricing](https://aws.amazon.com/global-accelerator/pricing/)\. 

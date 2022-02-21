@@ -79,11 +79,11 @@ Default: AES128, AES256, AES128\-GCM\-16, AES256\-GCM\-16
 
 **Phase 1 integrity algorithms**  
 The integrity algorithms that are permitted for the VPN tunnel for phase 1 of the IKE negotiations\. You can specify one or more of the default values\.  
-Default: SHA\-1, SHA2\-256, SHA2\-384, SHA2\-512
+Default: SHA1, SHA2\-256, SHA2\-384, SHA2\-512
 
 **Phase 2 integrity algorithms**  
 The integrity algorithms that are permitted for the VPN tunnel for phase 2 of the IKE negotiations\. You can specify one or more of the default values\.  
-Default: SHA\-1, SHA2\-256, SHA2\-384, SHA2\-512
+Default: SHA1, SHA2\-256, SHA2\-384, SHA2\-512
 
 **Phase 1 lifetime**  
 AWS initiate re\-keys with the timing values set in the Phase 1 lifetime and Phase 2 lifetime fields\. If such lifetimes are different than the negotiated handshake values, this may interrupt tunnel connectivity\.
@@ -106,8 +106,8 @@ You can specify a percentage value between 0 and 100\.
 Default: 100
 
 **Rekey margin time**  
-The margin time in seconds before the phase 2 lifetime expires, during which the AWS side of the VPN connection performs an IKE rekey\.   
-You can specify a number between 60 and half of the value of the phase 2 lifetime seconds\.  
+The margin time in seconds before the phase 1 and phase 2 lifetime expires, during which the AWS side of the VPN connection performs an IKE rekey\.   
+You can specify a number between 60 and half of the value of the phase 2 lifetime\.  
 The exact time of the rekey is randomly selected based on the value for rekey fuzz\.  
 Default: 540 \(9 minutes\)
 

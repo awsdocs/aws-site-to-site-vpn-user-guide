@@ -15,8 +15,10 @@ The following metrics are available for your VPN tunnels\.
 | Metric | Description | 
 | --- | --- | 
 |  `TunnelState`  |  The state of the tunnels\. For static VPNs, 0 indicates DOWN and 1 indicates UP\. For BGP VPNs, 1 indicates ESTABLISHED and 0 is used for all other states\. For both types of VPNs, values between 0 and 1 indicate at least one tunnel is not UP\. Units: Fractional value between 0 and 1   | 
-|  `TunnelDataIn`  |  The bytes received on the AWS side of the connection through the VPN tunnel from a customer gateway\. Each metric data point represents the number of bytes received after the previous data point\. Use the Sum statistic to show the total number of bytes received during the period\. This metric counts the data after decryption\. Units: Bytes  | 
-|  `TunnelDataOut`  |  The bytes sent from the AWS side of the connection through the VPN tunnel to the customer gateway\. Each metric data point represents the number of bytes sent after the previous data point\. Use the Sum statistic to show the total number of bytes sent during the period\. This metric counts the data before encryption\. Units: Bytes  | 
+|  `TunnelDataIn` †  |  The bytes received on the AWS side of the connection through the VPN tunnel from a customer gateway\. Each metric data point represents the number of bytes received after the previous data point\. Use the Sum statistic to show the total number of bytes received during the period\. This metric counts the data after decryption\. Units: Bytes  | 
+|  `TunnelDataOut` †  |  The bytes sent from the AWS side of the connection through the VPN tunnel to the customer gateway\. Each metric data point represents the number of bytes sent after the previous data point\. Use the Sum statistic to show the total number of bytes sent during the period\. This metric counts the data before encryption\. Units: Bytes  | 
+
+† These metrics can report network usage even when the tunnel is down\. This is due to periodic status checks performed on the tunnel, and background ARP and BGP requests\.
 
 To filter the metric data, use the following dimensions\.
 

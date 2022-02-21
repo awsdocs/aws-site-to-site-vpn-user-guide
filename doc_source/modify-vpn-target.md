@@ -71,10 +71,10 @@ Keep a copy of the static route before you delete it\. You will need to add back
 
 ## Step 4: Update VPC route tables<a name="step-update-routing"></a>
 
-After you migrate to the new gateway, you might need to modify your VPC route table\. The following table provides information about the actions you need to take\. For information about updating VPC route tables, see [Route tables](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html) in the *Amazon VPC User Guide*\.
+After you migrate to the new gateway, you might need to modify your VPC route table\. For more information, see [Route tables](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html) in the *Amazon VPC User Guide*\.
 
+The following table provides information about the VPC route table updates to make after you modify the VPN gateway target\.
 
-**VPN gateway target modification required VPC route table updates**  
 
 | Existing gateway  | New gateway | VPC route table change | 
 | --- | --- | --- | 
@@ -90,10 +90,11 @@ After you migrate to the new gateway, you might need to modify your VPC route ta
 
 ## Step 5: Update the transit gateway routing \(required when the new gateway is a transit gateway\)<a name="step-update-transit-gateway-routing"></a>
 
- When the new gateway is a transit gateway, modify the transit gateway route table to allow traffic between the VPC and the Site\-to\-Site VPN\. For information about transit gateway routing, see [Transit gateway route tables](https://docs.aws.amazon.com/vpc/latest/tgw/tgw-route-tables.html) in the *Amazon VPC Transit Gateways*\.
+When the new gateway is a transit gateway, modify the transit gateway route table to allow traffic between the VPC and the Site\-to\-Site VPN\. For more information, see [Transit gateway route tables](https://docs.aws.amazon.com/vpc/latest/tgw/tgw-route-tables.html) in *Amazon VPC Transit Gateways*\.
 
-**Important**  
- If you deleted VPN static routes, you must add the static routes to the transit gateway route table\.
+If you deleted VPN static routes, you must add the static routes to the transit gateway route table\.
+
+Unlike a virtual private gateway, a transit gateway sets the same value for the multi\-exit discriminator \(MED\) across all the tunnels on a VPN attachment\. If you are migrating from a virtual private gateway to a transit gateway and relied on the MED value for tunnel selection, we recommend that you make routing changes to avoid connection issues\. For example, you can advertise more specific routes on your transit gateway\. For more information, see [Route tables and VPN route priority](VPNRoutingTypes.md#vpn-route-priority)\.
 
 ## Step 6: Update the customer gateway ASN \(required when the new gateway has a different ASN from the old gateway\)<a name="step-update-customer-gateway-asn"></a>
 

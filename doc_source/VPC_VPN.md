@@ -37,4 +37,8 @@ In addition, take the following into consideration when you use Site\-to\-Site V
 
 ## Pricing<a name="pricing"></a>
 
-For information about pricing, see [AWS VPN pricing](http://aws.amazon.com/vpn/pricing/)\.
+You are charged for each VPN connection hour that your VPN connection is provisioned and available\. For more information, see [AWS Site\-to\-Site VPN and Accelerated Site\-to\-Site VPN Connection pricing](https://aws.amazon.com/vpn/pricing/#AWS_Site-to-Site_VPN_and_Accelerated_Site-to-Site_VPN_Connection_Pricing)\.
+
+You are charged for data transfer out from Amazon EC2 to the internet\. For more information, see [Data Transfer](http://aws.amazon.com/ec2/pricing/on-demand/#Data_Transfer) on the Amazon EC2 On\-Demand Pricing page\.
+
+When you create an accelerated VPN connection, we create and manage two accelerators on your behalf\. You are charged an hourly rate and data transfer costs for each accelerator\. For more information, see [AWS Global Accelerator pricing](http://aws.amazon.com/global-accelerator/pricing/)\.

@@ -58,7 +58,7 @@ If you no longer require a virtual private gateway for your VPC, you can detach 
 
 1. Choose **Yes, Detach**\.
 
-If you no longer require a detached virtual private gateway, you can delete it\. You can't delete a virtual private gateway that's still attached to a VPC\.
+If you no longer require a detached virtual private gateway, you can delete it\. You can't delete a virtual private gateway that's still attached to a VPC\. After you delete your virtual private gateway, it remains visible for a short while with a state of `deleted`, and then the entry is automatically removed\.
 
 **To delete a virtual private gateway using the console**
 

@@ -2,7 +2,7 @@
 
 Your AWS account has the following quotas, formerly referred to as limits, related to Site\-to\-Site VPN\. Unless otherwise noted, each quota is Region\-specific\. You can request increases for some quotas, and other quotas cannot be increased\.
 
-To request a quota increase for an adjustable quota, choose **Yes** in the Client VPN quotas table\. For more information, see [Requesting a quota increase](https://docs.aws.amazon.com/servicequotas/latest/userguide/request-quota-increase.html) in the *Service Quotas User Guide*\.
+To request a quota increase for an adjustable quota, choose **Yes** in the **Adjustable** column\. For more information, see [Requesting a quota increase](https://docs.aws.amazon.com/servicequotas/latest/userguide/request-quota-increase.html) in the *Service Quotas User Guide*\.
 
 ## Site\-to\-Site VPN resources<a name="vpn-quotas-resources"></a>
 
@@ -29,6 +29,7 @@ Advertised route sources include VPC routes, other VPN routes, and routes from A
 | Routes advertised from a Site\-to\-Site VPN connection on a virtual private gateway to a customer gateway device | 1,000 | No | 
 | Dynamic routes advertised from a customer gateway device to a Site\-to\-Site VPN connection on a transit gateway | 1,000 | No | 
 | Routes advertised from a Site\-to\-Site VPN connection on a transit gateway to a customer gateway device | 5,000 | No | 
+| Static routes from a customer gateway device to a Site\-to\-Site VPN connection on a virtual private gateway | 100 | No | 
 
 ## Bandwidth and throughput<a name="vpn-quotas-bandwidth"></a>
 
