@@ -41,14 +41,14 @@ You must specify either an IP address, or the Amazon Resource Name of the privat
 
 1. Open the Amazon VPC console at [https://console\.aws\.amazon\.com/vpc/](https://console.aws.amazon.com/vpc/)\.
 
-1. In the navigation pane, choose **Customer Gateways**, and then **Create Customer Gateway**\.
+1. In the navigation pane, choose **Customer gateways**, and then **Create customer gateway**\.
 
-1. Complete the following and then choose **Create Customer Gateway**:
-   + \(Optional\) For **Name**, enter a name for your customer gateway\. Doing so creates a tag with a key of `Name` and the value that you specify\.
-   + For **Routing**, select the routing type\.
-   + For dynamic routing, for **BGP ASN**, enter the Border Gateway Protocol \(BGP\) Autonomous System Number \(ASN\)\.
-   + \(Optional\) For **IP Address**, enter the static, internet\-routable IP address for your customer gateway device\. If your customer gateway is behind a NAT device that's enabled for NAT\-T, use the public IP address of the NAT device\.
+1. Complete the following and then choose **Create customer gateway**:
+   + \(Optional\) For **Name tag**, enter a name for your customer gateway\. Doing so creates a tag with a key of `Name` and the value that you specify\.
+   + For **BGP ASN**, enter a Border Gateway Protocol \(BGP\) Autonomous System Number \(ASN\) for your customer gateway\. 
+   + \(Optional\) For **IP address**, enter the static, internet\-routable IP address for your customer gateway device\. If your customer gateway device is behind a NAT device that's enabled for NAT\-T, use the public IP address of the NAT device\.
    + \(Optional\) If you want to use a private certificate, for **Certificate ARN**, choose the Amazon Resource Name of the private certificate\.
+   + \(Optional\) For **Device**, enter a name for the device that hosts this customer gateway\.
 
 **To create a customer gateway using the command line or API**
 + [CreateCustomerGateway](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-CreateCustomerGateway.html) \(Amazon EC2 Query API\)
@@ -57,27 +57,29 @@ You must specify either an IP address, or the Amazon Resource Name of the privat
 
 ## Create a target gateway<a name="vpn-create-target-gateway"></a>
 
-To establish a VPN connection between your VPC and your on\-premises network, you must create a target gateway on the AWS side of the connection\. The target gateway can be a virtual private gateway or a transit gateway\. 
+To establish a VPN connection between your VPC and your on\-premises network, you must create a target gateway on the AWS side of the connection\. The target gateway can be a virtual private gateway or a transit gateway\.
 
 ### Create a virtual private gateway<a name="vpn-create-vpg"></a>
 
-When you create a virtual private gateway, you can optionally specify the private Autonomous System Number \(ASN\) for the Amazon side of the gateway\. This ASN must be different from the BGP ASN that you specified for the customer gateway\.
+When you create a virtual private gateway, you can specify a custom private Autonomous System Number \(ASN\) for the Amazon side of the gateway, or use the Amazon default ASN\. This ASN must be different from the ASN that you specified for the customer gateway\.
 
 After you create a virtual private gateway, you must attach it to your VPC\.
 
 **To create a virtual private gateway and attach it to your VPC**
 
-1. In the navigation pane, choose **Virtual Private Gateways**, **Create Virtual Private Gateway**\.
+1. In the navigation pane, choose **Virtual private gateways**, **Create virtual private gateway**\.
 
-1. \(Optional\) Enter a name for your virtual private gateway\. Doing so creates a tag with a key of `Name` and the value that you specify\.
+1. \(Optional\) Enter a name for your virtual private gateway for **Name tag**\. Doing so creates a tag with a key of `Name` and the value that you specify\.
 
-1. For **ASN**, keep the default selection to use the default Amazon ASN\. Otherwise, choose **Custom ASN** and enter a value\. For a 16\-bit ASN, the value must be in the 64512 to 65534 range\. For a 32\-bit ASN, the value must be in the 4200000000 to 4294967294 range\. 
+1. For **Autonomous System Number \(ASN\)**, keep the default selection to use the default Amazon ASN\. Otherwise, choose **Custom ASN** and enter a value\. For a 16\-bit ASN, the value must be in the 64512 to 65534 range\. For a 32\-bit ASN, the value must be in the 4200000000 to 4294967294 range\.
 
-1. Choose **Create Virtual Private Gateway**\.
+1. \(Optional\) Create additional tags for your virtual private gateway if desired\.
 
-1. Select the virtual private gateway that you created, and then choose **Actions**, **Attach to VPC**\.
+1. Choose **Create virtual private gateway**\.
 
-1. Select your VPC from the list and choose **Yes, Attach**\.
+1. Select the virtual private gateway you created, then choose **Actions**, **Attach to VPC**\.
+
+1. Under **Available VPCs**, select your VPC from the list and choose **Attach to VPC**\.
 
 **To create a virtual private gateway using the command line or API**
 + [CreateVpnGateway](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-CreateVpnGateway.html) \(Amazon EC2 Query API\)
@@ -165,23 +167,23 @@ For more information about working with security groups using the AWS CLI, see [
 
 ## Create a Site\-to\-Site VPN connection<a name="vpn-create-vpn-connection"></a>
 
-Create the Site\-to\-Site VPN connection using the customer gateway and the virtual private gateway or transit gateway that you created earlier\.
+Create the Site\-to\-Site VPN connection using the customer gateway in combination with the virtual private gateway or transit gateway that you created earlier\.
 
 **To create a Site\-to\-Site VPN connection**
 
-1. In the navigation pane, choose **Site\-to\-Site VPN Connections**, **Create VPN Connection**\.
+1. In the navigation pane, choose **Site\-to\-Site VPN Connections**, **Create VPN connection**\.
 
 1. \(Optional\) For **Name tag**, enter a name for your Site\-to\-Site VPN connection\. Doing so creates a tag with a key of `Name` and the value that you specify\.
 
-1. For **Target Gateway Type**, choose either **Virtual Private Gateway** or **Transit Gateway**\. Then, choose the virtual private gateway or transit gateway that you created earlier\.
+1. For **Target gateway type**, choose either **Virtual private gateway** or **Transit gateway**\. Then, choose the virtual private gateway or transit gateway that you created earlier\.
 
-1. For **Customer Gateway ID**, select the customer gateway that you created earlier\.
+1. For **Customer gateway**, select **Existing**, then choose the customer gateway that you created earlier from the drop\-down list under **Customer gateway ID**\.
 
 1. Select one of the routing options based on whether your customer gateway device supports Border Gateway Protocol \(BGP\):
    + If your customer gateway device supports BGP, choose **Dynamic \(requires BGP\)**\.
    + If your customer gateway device does not support BGP, choose **Static**\. For **Static IP Prefixes**, specify each IP prefix for the private network of your Site\-to\-Site VPN connection\.
 
-1. \(Optional\) For **Tunnel Inside IP Version**, specify whether the VPN tunnels support IPv4 or IPv6 traffic\. IPv6 traffic is only supported for VPN connections on a transit gateway\.
+1. \(Optional\) If your target gateway type is transit gateway, for **Tunnel Inside IP Version**, specify whether the VPN tunnels support IPv4 or IPv6 traffic\. IPv6 traffic is only supported for VPN connections on a transit gateway\.
 
 1. \(Optional\) For **Local IPv4 Network CIDR**, specify the IPv4 CIDR range on the customer gateway \(on\-premises\) side that is allowed to communicate over the VPN tunnels\. The default is `0.0.0.0/0`\.
 
@@ -208,7 +210,7 @@ Create the Site\-to\-Site VPN connection using the customer gateway and the virt
 
    For more information about these options, see [Tunnel options for your Site\-to\-Site VPN connection](VPNTunnels.md)\.
 
-1. Choose **Create VPN Connection**\. It might take a few minutes to create the Site\-to\-Site VPN connection\.
+1. Choose **Create VPN connection**\. It might take a few minutes to create the Site\-to\-Site VPN connection\.
 
 **To create a Site\-to\-Site VPN connection using the command line or API**
 + [CreateVpnConnection](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-CreateVpnConnection.html) \(Amazon EC2 Query API\)

@@ -12,6 +12,7 @@ To request a quota increase for an adjustable quota, choose **Yes** in the **Adj
 | Customer gateways per Region | 50 | [Yes](https://console.aws.amazon.com/servicequotas/home/services/ec2/quotas/L-4FB7FF5D) | 
 | Virtual private gateways per Region | 5 | [Yes](https://console.aws.amazon.com/servicequotas/home/services/ec2/quotas/L-7029FAB6) | 
 | Site\-to\-Site VPN connections per Region | 50 | [Yes](https://console.aws.amazon.com/servicequotas/home/services/ec2/quotas/L-3E6EC3A3) | 
+| Accelerated Site\-to\-Site VPN connections per Region | 10 | Yes | 
 | Site\-to\-Site VPN connections per virtual private gateway | 10 | [Yes](https://console.aws.amazon.com/servicequotas/home/services/ec2/quotas/L-B91E5754) | 
 
 You can attach one virtual private gateway to a VPC at a time\. To connect the same Site\-to\-Site VPN connection to multiple VPCs, we recommend that you explore using a transit gateway instead\. For more information, see [Transit gateways](https://docs.aws.amazon.com/vpc/latest/tgw/tgw-transit-gateways.html) in *Amazon VPC Transit Gateways*\.
@@ -45,11 +46,9 @@ For Site\-to\-Site VPN connections on a transit gateway, you can use ECMP to get
 
 ## Maximum transmission unit \(MTU\)<a name="vpn-quotas-mtu"></a>
 
-You must set the MTU of the logical interface for your customer gateway device to 1399 bytes\. For more information, see [Requirements for your customer gateway device](your-cgw.md#CGRequirements)\. 
+Site\-to\-Site VPN supports a maximum transmission unit \(MTU\) of 1446 bytes and a corresponding maximum segment size \(MSS\) of 1406 bytes\. However, certain algorithms that use larger TCP headers can effectively reduce that maximum value\. To avoid fragmentation, we recommend that you set the MTU and MSS based on the algorithms selected\. For more details on MTU, MSS, and the optimal values, see [Best practices for your customer gateway device](your-cgw.md#cgw-best-practice)\.
 
 Jumbo frames are not supported\. For more information, see [Jumbo frames](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/network_mtu.html#jumbo_frame_instances) in the *Amazon EC2 User Guide for Linux Instances*\.
-
-We recommend that you set the maximum segment size \(MSS\) on your customer gateway device to 1359 when using the SHA2\-384 or SHA2\-512 hashing algorithms\.
 
 A Site\-to\-Site VPN connection does not support Path MTU Discovery\.
 

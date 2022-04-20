@@ -20,13 +20,13 @@ After you create the VPN connection, you additionally have the option to downloa
 
 The AWS\-provided sample configuration file contains information specific to your VPN connection which you can use to configure your customer gateway device\. These device\-specific configuration files are only available for devices that AWS has tested\. If your specific customer gateway device is not listed, you can download a generic configuration file to begin with\.
 
-The following table contains a list of devices which have an example configuration file available for download that has been updated to support IKEv2\. We have introduced IKEv2 support in the configuration files for many popular customer gateway devices and will continue to add additional files over time\. This list will be updated as more example configuration files are added\.
-
 **Important**  
 The configuration file is an example only and might not match your intended Site\-to\-Site VPN connection settings entirely\. It specifies the minimum requirements for a Site\-to\-Site VPN connection of AES128, SHA1, and Diffie\-Hellman group 2 in most AWS Regions, and AES128, SHA2, and Diffie\-Hellman group 14 in the AWS GovCloud Regions\. It also specifies pre\-shared keys for authentication\. You must modify the example configuration file to take advantage of additional security algorithms, Diffie\-Hellman groups, private certificates, and IPv6 traffic\. 
 
 **Note**  
 These device\-specific configuration files are provided by AWS on a best\-effort basis\. While they have been tested by AWS, this testing is limited\. If you are experiencing an issue with the configuration files, you might need to contact the specific vendor for additional support\.
+
+The following table contains a list of devices which have an example configuration file available for download that has been updated to support IKEv2\. We have introduced IKEv2 support in the configuration files for many popular customer gateway devices and will continue to add additional files over time\. This list will be updated as more example configuration files are added\.
 
 
 | Vendor | Platform | Software | 
@@ -75,22 +75,41 @@ VPN endpoints support rekey and can start renegotiations when phase 1 is about t
 |  Use the AES 128\-bit encryption or AES 256\-bit encryption function  |   [RFC 3602](http://tools.ietf.org/html/rfc3602)   |  The encryption function is used to ensure privacy for both IKE and IPsec security associations\.  | 
 |  Use the SHA\-1 or SHA\-2 \(256\) hashing function  |   [RFC 2404](http://tools.ietf.org/html/rfc2404)   |  This hashing function is used to authenticate both IKE and IPsec security associations\.  | 
 |  Use Diffie\-Hellman Perfect Forward Secrecy\.  |   [RFC 2409](http://tools.ietf.org/html/rfc2409)   |  IKE uses Diffie\-Hellman to establish ephemeral keys to secure all communication between customer gateway devices and virtual private gateways\.  The following groups are supported: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/vpn/latest/s2svpn/your-cgw.html)  | 
-|  Fragment IP packets before encryption  |   [RFC 4459](http://tools.ietf.org/html/rfc4459)   |  When packets are too large to be transmitted, they must be fragmented\. We do not reassemble fragmented encrypted packets\. Therefore, your VPN device must fragment packets *before* encapsulating with the VPN headers\. The fragments are individually transmitted to the remote host, which reassembles them\.  | 
 |  \(Dynamically\-routed VPN connections\) Use IPsec Dead Peer Detection  |   [RFC 3706](http://tools.ietf.org/html/rfc3706)   |  Dead Peer Detection enables the VPN devices to rapidly identify when a network condition prevents delivery of packets across the internet\. When this occurs, the gateways delete the security associations and attempt to create new associations\. During this process, the alternate IPsec tunnel is used if possible\.  | 
 |  \(Dynamically\-routed VPN connections\) Bind tunnel to logical interface \(route\-based VPN\)  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/vpn/latest/s2svpn/images/Tunnel.png)   |   None   |  Your device must be able to bind the IPsec tunnel to a logical interface\. The logical interface contains an IP address that is used to establish BGP peering to the virtual private gateway\. This logical interface should perform no additional encapsulation \(for example, GRE or IP in IP\)\. Your interface should be set to a 1399 byte Maximum Transmission Unit \(MTU\)\.   | 
 |  \(Dynamically\-routed VPN connections\) Establish BGP peerings  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/vpn/latest/s2svpn/images/BGP.png)   |   [RFC 4271](http://tools.ietf.org/html/rfc4271)   |  BGP is used to exchange routes between the customer gateway device and the virtual private gateway for devices that use BGP\. All BGP traffic is encrypted and transmitted via the IPsec Security Association\. BGP is required for both gateways to exchange the IP prefixes that are reachable through the IPsec SA\.  | 
 
-Because the connection encapsulates packets with additional network headers \(including IPsec\), the amount of data that can be transmitted in a single packet is reduced\. We recommend that you use the techniques listed in the following table to help you to minimize problems related to the amount of data that can be transmitted through the IPsec tunnel\.
-
-
-|  Technique  |  RFC |  Comments | 
-| --- | --- | --- | 
-|  Adjust the maximum segment size \(MSS\) of TCP packets entering the VPN tunnel  |   [RFC 4459](http://tools.ietf.org/html/rfc4459)   |  TCP packets are often the most common type of packet across IPsec tunnels\. Some gateways can change the TCP maximum segment size \(MSS\) parameter\. This causes the TCP endpoints \(clients, servers\) to reduce the amount of data sent with each packet\. This is an ideal approach, as the packets arriving at the VPN devices are small enough to be encapsulated and transmitted\. We recommend setting the MSS on your customer gateway device to 1359 when using the SHA2\-384 or SHA2\-512 hashing algorithms\. This is necessary to accommodate for the larger header\.  | 
-|  Reset the "Don't Fragment" flag on packets  |   [RFC 791](http://tools.ietf.org/html/rfc791)   |  Some packets carry a flag, known as the Don't Fragment \(DF\) flag, which indicates that the packet should not be fragmented\. If the packets carry the flag, the gateways generate an ICMP Path MTU Exceeded message\. In some cases, applications do not contain adequate mechanisms for processing these ICMP messages and for reducing the amount of data transmitted in each packet\. Some VPN devices can override the DF flag and fragment packets unconditionally as required\. If your customer gateway device has this ability, we recommend that you use it as appropriate\.   | 
-
 An AWS VPN connection does not support Path MTU Discovery \([RFC 1191](https://tools.ietf.org/html/rfc1191)\)\.
 
 If you have a firewall between your customer gateway device and the internet, see [Configuring a firewall between the internet and your customer gateway device](#FirewallRules)\.
+
+## Best practices for your customer gateway device<a name="cgw-best-practice"></a>
+
+**Reset the "Don't Fragment \(DF\)" flag on packets**  
+Some packets carry a flag, known as the Don't Fragment \(DF\) flag, which indicates that the packet should not be fragmented\. If the packets carry the flag, the gateways generate an ICMP Path MTU Exceeded message\. In some cases, applications do not contain adequate mechanisms for processing these ICMP messages and for reducing the amount of data transmitted in each packet\. Some VPN devices can override the DF flag and fragment packets unconditionally as required\. If your customer gateway device has this ability, we recommend that you use it as appropriate\. See [RFC 791](http://tools.ietf.org/html/rfc791) for more details\.
+
+**Fragment IP packets before encryption**  
+It is highly recommended to fragment packets *before* they are encrypted to avoid poor performance\. When packets are too large to be transmitted, they must be fragmented\. We recommend configuring your VPN device to fragment packets *before* encapsulating them with the VPN headers if they must be fragmented\. See [RFC 4459](http://tools.ietf.org/html/rfc4459) for more details\.
+
+**Adjust MTU and MSS sizes according to the algorithms in use**  
+TCP packets are often the most common type of packet across IPsec tunnels\. Site\-to\-Site VPN supports a maximum transmission unit \(MTU\) of 1446 bytes and a corresponding maximum segment size \(MSS\) of 1406 bytes\. However, encryption algorithms have varying header sizes and can prevent the ability to achieve these maximum values\. To obtain optimal performance by avoiding fragmentation, we recommend that you set the MTU and MSS based specifically on the algorithms being used\.
+
+Use the following table to set your MTU/MSS to avoid fragmentation and achieve optimal performance:
+
+
+| Encryption Algorithm | Hashing Algorithm | NAT\-Traversal | MTU | MSS \(IPv4\) | MSS \(IPv6\-in\-IPv4\) | 
+| --- | --- | --- | --- | --- | --- | 
+|  AES\-GCM\-16  |  N/A  |  disabled  |  1446  |  1406  |  1386  | 
+|  AES\-GCM\-16  |  N/A  |  enabled  |  1438  |  1398  |  1378  | 
+|  AES\-CBC  |  SHA1/SHA2\-256  |  disabled  |  1438  |  1398  |  1378  | 
+|  AES\-CBC  |  SHA1/SHA2\-256  |  enabled  |  1422  |  1382  |  1362  | 
+|  AES\-CBC  |  SHA2\-384  |  disabled  |  1422  |  1382  |  1362  | 
+|  AES\-CBC  |  SHA2\-384  |  enabled  |  1422  |  1382  |  1362  | 
+|  AES\-CBC  |  SHA2\-512  |  disabled  |  1422  |  1382  |  1362  | 
+|  AES\-CBC  |  SHA2\-512  |  enabled  |  1406  |  1366  |  1346  | 
+
+**Note**  
+The AES\-GCM algorithms cover both encryption and authentication, so there is no distinct authentication algorithm choice which would affect MTU\.
 
 ## Configuring a firewall between the internet and your customer gateway device<a name="FirewallRules"></a>
 

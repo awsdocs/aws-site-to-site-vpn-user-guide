@@ -19,6 +19,10 @@ The files use placeholder values for some components\. For example, they use:
 + A placeholder for the IP address for the internet\-routable external interface on the customer gateway device \(*your\-cgw\-ip\-address*\)
 + A placeholder for the pre\-shared key value \(pre\-shared\-key\)
 + Example values for the tunnel inside IP addresses\.
++ Example values for MTU setting\.
+
+**Note**  
+MTU settings provided in the sample configuration files are examples only\. Please refer to [Best practices for your customer gateway device](your-cgw.md#cgw-best-practice) for information on setting the optimal MTU value for your situation\.
 
 In addition to providing placeholder values, the files specify the minimum requirements for a Site\-to\-Site VPN connection of AES128, SHA1, and Diffie\-Hellman group 2 in most AWS Regions, and AES128, SHA2, and Diffie\-Hellman group 14 in the AWS GovCloud Regions\. They also specify pre\-shared keys for [authentication](vpn-tunnel-authentication-options.md)\. You must modify the example configuration file to take advantage of additional security algorithms, Diffie\-Hellman groups, private certificates, and IPv6 traffic\. 
 

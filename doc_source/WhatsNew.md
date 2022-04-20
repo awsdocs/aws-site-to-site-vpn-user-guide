@@ -5,7 +5,7 @@ The following table describes the AWS Site\-to\-Site VPN User Guide updates\.
 | Change | Description | Date | 
 | --- |--- |--- |
 | [Updated Download Configuration utility](https://docs.aws.amazon.com/vpn/latest/s2svpn/your-cgw.html) | Site\-to\-Site VPN customers can generate configuration templates for compatible Customer Gateway \(CGW\) devices, making it easier to create VPN connections to AWS\. This update adds support for Internet Key Exchange version 2 \(IKEv2\) parameters for many popular CGW devices and includes two new APIs — GetVpnConnectionDeviceTypes and GetVpnConnectionDeviceSampleConfiguration\. | September 21, 2021 | 
-| [VPN connection notifications](https://docs.aws.amazon.com/vpn/latest/s2svpn/monitoring-vpn-health-events.html) | Site\-to\-Site VPN automatically sends notifications about your VPN connection to the AWS Personal Health Dashboard\. | October 29, 2020 | 
+| [VPN connection notifications](https://docs.aws.amazon.com/vpn/latest/s2svpn/monitoring-vpn-health-events.html) | Site\-to\-Site VPN automatically sends notifications about your VPN connection to the AWS Health Dashboard\. | October 29, 2020 | 
 | [VPN tunnel initiation](https://docs.aws.amazon.com/vpn/latest/s2svpn/initiate-vpn-tunnels.html) | You can configure your VPN tunnels so that AWS brings up the tunnels\. | August 27, 2020 | 
 | [Modify VPN connection options](https://docs.aws.amazon.com/vpn/latest/s2svpn/modify-vpn-connection-options.html) | You can modify the connection options for your Site\-to\-Site VPN connection\. | August 27, 2020 | 
 | [Additional security algorithms](https://docs.aws.amazon.com/vpn/latest/s2svpn/VPNTunnels.html) | You can apply additional security algorithms to your VPN tunnels\. | August 14, 2020 | 

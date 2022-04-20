@@ -4,11 +4,26 @@ AWS Site\-to\-Site VPN uses service\-linked roles for the permissions that it re
 
 ## Permissions granted by the service\-linked role<a name="service-linked-role-permissions"></a>
 
-When you work with a Site\-to\-Site VPN connection that uses certificate\-based authentication, Site\-to\-Site VPN uses the service\-linked role named **AWSServiceRoleForVPCS2SVPN** to call the following AWS Certificate Manager \(ACM\) actions on your behalf:
-+ `acm:ExportCertificate`
-+ `acm:DescribeCertificatee`
-+ `acm:ListCertificates`
-+ `acm-pca:DescribeCertificateAuthority`
+When you work with a Site\-to\-Site VPN connection that uses certificate\-based authentication, Site\-to\-Site VPN uses the service\-linked role named **AWSServiceRoleForVPCS2SVPN**\. This service\-linked role is attached to the managed policy `AWSVPCS2SVpnServiceRolePolicy` and contains the following AWS Certificate Manager \(ACM\) permissions:
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "0",
+            "Effect": "Allow",
+            "Action": [
+                "acm:ExportCertificate",
+                "acm:DescribeCertificate",
+                "acm:ListCertificates",
+                "acm-pca:DescribeCertificateAuthority"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+```
 
 ## Create the service\-linked role<a name="create-service-linked-role"></a>
 

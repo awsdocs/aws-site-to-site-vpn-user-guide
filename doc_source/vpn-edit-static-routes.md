@@ -1,16 +1,22 @@
 # Editing static routes for a Site\-to\-Site VPN connection<a name="vpn-edit-static-routes"></a>
 
-For a Site\-to\-Site VPN connection on a virtual private gateway that's configured for static routing, you can add, modify, or remove the static routes for your VPN configuration\. 
+For a Site\-to\-Site VPN connection on a virtual private gateway that's configured for static routing, you can add or remove static routes from your VPN configuration\. 
 
-**To add, modify, or remove a static route**
+**To add or remove a static route \(console\)**
 
 1. Open the Amazon VPC console at [https://console\.aws\.amazon\.com/vpc/](https://console.aws.amazon.com/vpc/)\.
 
 1. In the navigation pane, choose **Site\-to\-Site VPN Connections**\.
 
-1. Choose **Static Routes**, **Edit**\. 
+1. Select the appropriate Site\-to\-Site VPN connection that you want to work with\.
 
-1. Modify your existing static IP prefixes, or choose **Remove** to delete them\. Choose **Add Another Rule** to add a new IP prefix to your configuration\. When you are done, choose **Save**\.
+1. Choose **Static routes**, **Edit routes**\. 
+
+1. Modify your existing routes in the following ways:
+   + Remove a route by clicking the "X" next to an existing static IP prefix\.
+   + Add a route by entering a static IP prefix in CIDR notation into the **Static prefixes** input box\. For example `172.31.0.0/16`\. 
+
+1. When you are done, choose **Save changes**\.
 
 **Note**  
 If you have not enabled route propagation for your route table, you must manually update the routes in your route table to reflect the updated static IP prefixes in your Site\-to\-Site VPN connection\. For more information, see [\(Virtual private gateway\) Enable route propagation in your route table](SetUpVPNConnections.md#vpn-configure-routing)\.

@@ -1,6 +1,6 @@
 # Tunnel options for your Site\-to\-Site VPN connection<a name="VPNTunnels"></a>
 
-You use a Site\-to\-Site VPN connection to connect your remote network to a VPC\. Each Site\-to\-Site VPN connection has two tunnels, with each tunnel using a unique virtual private gateway public IP address\. It is important to configure both tunnels for redundancy\. When one tunnel becomes unavailable \(for example, down for maintenance\), network traffic is automatically routed to the available tunnel for that specific Site\-to\-Site VPN connection\.
+You use a Site\-to\-Site VPN connection to connect your remote network to a VPC\. Each Site\-to\-Site VPN connection has two tunnels, with each tunnel using a unique public IP address\. It is important to configure both tunnels for redundancy\. When one tunnel becomes unavailable \(for example, down for maintenance\), network traffic is automatically routed to the available tunnel for that specific Site\-to\-Site VPN connection\.
 
 The following diagram shows the two tunnels of the Site\-to\-Site VPN connection\.
 
@@ -30,7 +30,8 @@ The IKE versions that are permitted for the VPN tunnel\. You can specify one or 
 Default: `ikev1`, `ikev2`
 
 **Inside tunnel IPv4 CIDR**  
-The range of inside \(internal\) IPv4 addresses for the VPN tunnel\. You can specify a size /30 CIDR block from the `169.254.0.0/16` range\. The CIDR block must be unique across all Site\-to\-Site VPN connections that use the same virtual private gateway or transit gateway\.  
+The range of inside \(internal\) IPv4 addresses for the VPN tunnel\. You can specify a size /30 CIDR block from the `169.254.0.0/16` range\. The CIDR block must be unique across all Site\-to\-Site VPN connections that use the same virtual private gateway\.  
+The CIDR block does not need to be unique across all connections on a transit gateway\. However, if they are not unique, it can create a conflict on your customer gateway\. Proceed carefully when re\-using the same CIDR block on multiple Site\-to\-Site VPN connections on a transit gateway\.
 The following CIDR blocks are reserved and cannot be used:   
 + `169.254.0.0/30`
 + `169.254.1.0/30`
@@ -96,7 +97,7 @@ The lifetime in seconds for phase 2 of the IKE negotiations\. You can specify a 
 Default: 3,600 \(1 hour\)
 
 **Pre\-shared key \(PSK\)**  
-The pre\-shared key \(PSK\) to establish the initial internet key exchange \(IKE\) security association between the virtual private gateway and customer gateway\.   
+The pre\-shared key \(PSK\) to establish the initial internet key exchange \(IKE\) security association between the target gateway and customer gateway\.   
 The PSK must be between 8 and 64 characters in length and cannot start with zero \(0\)\. Allowed characters are alphanumeric characters, periods \(\.\), and underscores \(\_\)\.  
 Default: A 32\-character alphanumeric string\.
 
