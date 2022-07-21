@@ -16,3 +16,4 @@ You can work with Site\-to\-Site VPN resources using the Amazon VPC console or t
 + [Changing the customer gateway for a Site\-to\-Site VPN connection](change-vpn-cgw.md)
 + [Replacing compromised credentials](CompromisedCredentials.md)
 + [Rotating Site\-to\-Site VPN tunnel endpoint certificates](roate-vpn-certificate.md)
++ [Private IP VPN with AWS Direct Connect](private-ip-dx.md)

@@ -46,3 +46,9 @@ The VPC has an attached virtual private gateway, and connects to your on\-premis
 When both AWS Direct Connect and the VPN connection are set up on the same virtual private gateway, adding or removing objects might cause the virtual private gateway to enter the ‘attaching’ state\. This indicates a change is being made to internal routing that will switch between AWS Direct Connect and the VPN connection to minimize interruptions and packet loss\. When this is complete, the virtual private gateway returns to the ‘attached’ state\.
 
 ![\[Site-to-Site VPN connection with AWS Direct Connect\]](http://docs.aws.amazon.com/vpn/latest/s2svpn/images/vpn-direct-connect.png)
+
+## Private IP Site\-to\-Site VPN connection with AWS Direct Connect<a name="private-ip-direct-connect"></a>
+
+With a private IP Site\-to\-Site VPN you can encrypt AWS Direct Connect traffic between your on\-premises network and AWS without the use of public IP addresses\. Private IP VPN over AWS Direct Connect ensures that traffic between AWS and on\-premises networks is both secure and private, allowing customers to comply with regulatory and security mandates\.
+
+![\[Private IP Site-to-Site VPN connection with AWS Direct Connect\]](http://docs.aws.amazon.com/vpn/latest/s2svpn/images/private-ip-dx.png)

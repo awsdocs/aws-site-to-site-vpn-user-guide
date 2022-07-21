@@ -57,6 +57,7 @@ Amazon's trademarks and trade dress may not be used in
    + [Changing the customer gateway for a Site-to-Site VPN connection](change-vpn-cgw.md)
    + [Replacing compromised credentials](CompromisedCredentials.md)
    + [Rotating Site-to-Site VPN tunnel endpoint certificates](roate-vpn-certificate.md)
+   + [Private IP VPN with AWS Direct Connect](private-ip-dx.md)
 + [Security in AWS Site-to-Site VPN](security.md)
    + [Data protection in AWS Site-to-Site VPN](data-protection.md)
       + [Internetwork traffic privacy](internetwork-traffic-privacy.md)

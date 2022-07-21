@@ -185,11 +185,9 @@ Create the Site\-to\-Site VPN connection using the customer gateway in combinati
 
 1. \(Optional\) If your target gateway type is transit gateway, for **Tunnel Inside IP Version**, specify whether the VPN tunnels support IPv4 or IPv6 traffic\. IPv6 traffic is only supported for VPN connections on a transit gateway\.
 
-1. \(Optional\) For **Local IPv4 Network CIDR**, specify the IPv4 CIDR range on the customer gateway \(on\-premises\) side that is allowed to communicate over the VPN tunnels\. The default is `0.0.0.0/0`\.
+1. \(Optional\) If you specified **IPv4** for **Tunnel Inside IP Version**, you can optionally specify the IPv4 CIDR ranges for the customer gateway and AWS sides that are allowed to communicate over the VPN tunnels\. The default is `0.0.0.0/0`\.
 
-   For **Remote IPv4 Network CIDR**, specify the IPv4 CIDR range on the AWS side that is allowed to communicate over the VPN tunnels\. The default is `0.0.0.0/0`\.
-
-   If you specified **IPv6** for **Tunnel Inside IP Version**, then specify the IPv6 CIDR ranges on the customer gateway side and AWS side that are allowed to communicate over the VPN tunnels\. The default for both ranges is `::/0`\.
+   If you specified **IPv6** for **Tunnel Inside IP Version**, you can optionally specify the IPv6 CIDR ranges for the customer gateway and AWS sides that are allowed to communicate over the VPN tunnels\. The default for both ranges is `::/0`\.
 
 1. \(Optional\) For **Tunnel Options**, you can specify the following information for each tunnel:
    + A size /30 IPv4 CIDR block from the `169.254.0.0/16` range for the inside tunnel IPv4 addresses\.

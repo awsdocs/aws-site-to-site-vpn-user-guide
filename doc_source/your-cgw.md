@@ -113,7 +113,7 @@ The AES\-GCM algorithms cover both encryption and authentication, so there is no
 
 ## Configuring a firewall between the internet and your customer gateway device<a name="FirewallRules"></a>
 
-You must have an internet\-routable IP address to use as the endpoint for the IPsec tunnels that connect your customer gateway device to the virtual private gateway\. If a firewall is in place between the internet and your gateway, the rules in the following tables must be in place to establish the IPsec tunnels\. The virtual private gateway addresses are in the configuration file\.
+You must have a static IP address to use as the endpoint for the IPsec tunnels that connect your customer gateway device to AWS Site\-to\-Site VPN endpoints\. If a firewall is in place between AWS and your customer gateway device, the rules in the following tables must be in place to establish the IPsec tunnels\. The IP addresses for the AWS\-side will be in the configuration file\.
 
 
 **Inbound \(from the internet\)**  
@@ -177,7 +177,8 @@ You must have an internet\-routable IP address to use as the endpoint for the IP
 
 Rules I1, I2, O1, and O2 enable the transmission of IKE packets\. Rules I3, I4, O3, and O4 enable the transmission of IPsec packets that contain the encrypted network traffic\.
 
-If you are using NAT traversal \(NAT\-T\) on your device, you must include rules that allow UDP access over port 4500\. Check if your device is advertising NAT\-T\.
+**Note**  
+If you are using NAT traversal \(NAT\-T\) on your device, ensure that UDP traffic on port 4500 is also allowed to pass between your network and the AWS Site\-to\-Site VPN endpoints\. Check if your device is advertising NAT\-T\.
 
 ## Multiple VPN connection scenarios<a name="your-cgw-multiple-connection"></a>
 

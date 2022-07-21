@@ -16,4 +16,4 @@ For general testing instructions, see [Testing the Site\-to\-Site VPN connection
 
 **Additional resources**
 + [Amazon VPC forum](https://forums.aws.amazon.com/forum.jspa?forumID=58)
-+ [How do I troubleshoot VPN tunnel connectivity to my Amazon VPC?](https://aws.amazon.com/premiumsupport/knowledge-center/vpn-tunnel-troubleshooting/)
++ [How do I troubleshoot VPN tunnel connectivity to my Amazon VPC?](https://aws.amazon.com/premiumsupport/knowledge-center/#AWS_Virtual_Private_Network_.28AWS_VPN.29)
