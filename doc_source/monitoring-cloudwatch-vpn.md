@@ -2,9 +2,6 @@
 
 You can monitor VPN tunnels using CloudWatch, which collects and processes raw data from the VPN service into readable, near real\-time metrics\. These statistics are recorded for a period of 15 months, so that you can access historical information and gain a better perspective on how your web application or service is performing\. VPN metric data is automatically sent to CloudWatch as it becomes available\.
 
-**Important**  
-CloudWatch metrics are not supported for AWS Classic VPN connections\. For more information, see [Site\-to\-Site VPN categories](vpn-categories.md)\.
-
 For more information, see the [Amazon CloudWatch User Guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/)\.
 
 ## VPN tunnel metrics and dimensions<a name="metrics-dimensions-vpn"></a>

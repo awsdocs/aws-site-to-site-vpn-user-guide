@@ -17,6 +17,7 @@ To establish a baseline, you should monitor the following items:
 
 **Topics**
 + [Monitoring tools](#monitoring-automated-manual)
++ [AWS Site\-to\-Site VPN logs](monitoring-logs.md)
 + [Monitoring VPN tunnels using Amazon CloudWatch](monitoring-cloudwatch-vpn.md)
 + [Monitoring VPN connections using AWS Health events](monitoring-vpn-health-events.md)
 

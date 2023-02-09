@@ -25,6 +25,11 @@ The action to take after dead peer detection \(DPD\) timeout occurs\. You can sp
 For more information, see [Site\-to\-Site VPN tunnel initiation options](initiate-vpn-tunnels.md)\.  
 Default: `Clear`
 
+**VPN logging options**  
+With Site\-to\-Site VPN logs, you can gain access to details on IP Security \(IPsec\) tunnel establishment, Internet Key Exchange \(IKE\) negotiations, and dead peer detection \(DPD\) protocol messages\.  
+For more information, see [AWS Site\-to\-Site VPN logs](monitoring-logs.md)\.  
+Available log formats: `json`, `text`
+
 **IKE versions**  
 The IKE versions that are permitted for the VPN tunnel\. You can specify one or more of the default values\.  
 Default: `ikev1`, `ikev2`
@@ -124,6 +129,6 @@ The action to take when establishing the tunnel for a VPN connection\. You can s
 For more information, see [Site\-to\-Site VPN tunnel initiation options](initiate-vpn-tunnels.md)\.  
 Default: `Add`
 
-You can specify the tunnel options when you create a Site\-to\-Site VPN connection, or you can modify the tunnel options for an existing VPN connection\. You cannot configure tunnel options for an AWS Classic VPN connection\. For more information, see the following topics:
+You can specify the tunnel options when you create a Site\-to\-Site VPN connection, or you can modify the tunnel options for an existing VPN connection\. For more information, see the following topics:
 + [Create a Site\-to\-Site VPN connection](SetUpVPNConnections.md#vpn-create-vpn-connection)
 + [Modifying Site\-to\-Site VPN tunnel options](modify-vpn-tunnel-options.md)

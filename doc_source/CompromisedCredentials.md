@@ -8,7 +8,7 @@ You can modify the tunnel options for the Site\-to\-Site VPN connection and spec
 Alternatively, you can delete the Site\-to\-Site VPN connection\. For more information, see [Deleting a Site\-to\-Site VPN connection](delete-vpn.md)\. You don't need to delete the VPC or the virtual private gateway\. Then, create a new Site\-to\-Site VPN connection using the same virtual private gateway, and configure the new keys on your customer gateway device\. You can specify your own pre\-shared keys for the tunnels or let AWS generate new pre\-shared keys for you\. For more information, see [Create a Site\-to\-Site VPN connection](SetUpVPNConnections.md#vpn-create-vpn-connection)\. The tunnel's inside and outside addresses might change when you recreate the Site\-to\-Site VPN connection\.
 
 **To change the certificate for the AWS side of the tunnel endpoint**  
-Rotate the certificate\. For more information, see [Rotating Site\-to\-Site VPN tunnel endpoint certificates](roate-vpn-certificate.md)\.
+Rotate the certificate\. For more information, see [Rotating Site\-to\-Site VPN tunnel endpoint certificates](rotate-vpn-certificate.md)\.
 
 **To change the certificate on the customer gateway device**
 

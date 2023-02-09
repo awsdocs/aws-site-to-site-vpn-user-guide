@@ -3,8 +3,6 @@
 You can work with Site\-to\-Site VPN resources using the Amazon VPC console or the AWS CLI\.
 
 **Topics**
-+ [Identifying a Site\-to\-Site VPN connection](identify-vpn.md)
-+ [Migrating from AWS Classic VPN to AWS VPN](aws-vpn-migrate.md)
 + [Creating an AWS Cloud WAN Site\-to\-Site VPN attachment](create-cwan-vpn-attachment.md)
 + [Creating a transit gateway VPN attachment](create-tgw-vpn-attachment.md)
 + [Testing the Site\-to\-Site VPN connection](HowToTestEndToEnd_Linux.md)
@@ -15,5 +13,5 @@ You can work with Site\-to\-Site VPN resources using the Amazon VPC console or t
 + [Editing static routes for a Site\-to\-Site VPN connection](vpn-edit-static-routes.md)
 + [Changing the customer gateway for a Site\-to\-Site VPN connection](change-vpn-cgw.md)
 + [Replacing compromised credentials](CompromisedCredentials.md)
-+ [Rotating Site\-to\-Site VPN tunnel endpoint certificates](roate-vpn-certificate.md)
++ [Rotating Site\-to\-Site VPN tunnel endpoint certificates](rotate-vpn-certificate.md)
 + [Private IP VPN with AWS Direct Connect](private-ip-dx.md)

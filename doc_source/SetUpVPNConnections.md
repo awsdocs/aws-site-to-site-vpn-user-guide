@@ -32,7 +32,7 @@ You need the following information to set up and configure the components of a S
 
 A customer gateway provides information to AWS about your customer gateway device or software application\. For more information, see [Customer gateway](how_it_works.md#CustomerGateway)\.
 
-If you plan to use a private certificate to authenticate your VPN, create a private certificate from a subordinate CA using AWS Certificate Manager Private Certificate Authority\. For information about creating a private certificate, see [Creating and managing a private CA](https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaCreatingManagingCA.html) in the *AWS Certificate Manager Private Certificate Authority User Guide*\.
+If you plan to use a private certificate to authenticate your VPN, create a private certificate from a subordinate CA using AWS Private Certificate Authority\. For information about creating a private certificate, see [Creating and managing a private CA](https://docs.aws.amazon.com/privateca/latest/userguide/PcaCreatingManagingCA.html) in the *AWS Private Certificate Authority User Guide*\.
 
 **Note**  
 You must specify either an IP address, or the Amazon Resource Name of the private certificate\.
@@ -189,6 +189,8 @@ Create the Site\-to\-Site VPN connection using the customer gateway in combinati
 
    If you specified **IPv6** for **Tunnel Inside IP Version**, you can optionally specify the IPv6 CIDR ranges for the customer gateway and AWS sides that are allowed to communicate over the VPN tunnels\. The default for both ranges is `::/0`\.
 
+1. For **Outside IP address type**, leave the default option of `PublicIpv4` selected\.
+
 1. \(Optional\) For **Tunnel Options**, you can specify the following information for each tunnel:
    + A size /30 IPv4 CIDR block from the `169.254.0.0/16` range for the inside tunnel IPv4 addresses\.
    + If you specified **IPv6** for **Tunnel Inside IP Version**, a /126 IPv6 CIDR block from the `fd00::/8` range for the inside tunnel IPv6 addresses\.
@@ -205,6 +207,7 @@ Create the Site\-to\-Site VPN connection using the customer gateway in combinati
      + Dead peer detection interval
      + Dead peer detection timeout action
      + Startup action
+     + VPN tunnel logging options
 
    For more information about these options, see [Tunnel options for your Site\-to\-Site VPN connection](VPNTunnels.md)\.
 

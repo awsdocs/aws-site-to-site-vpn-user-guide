@@ -4,19 +4,18 @@
 *****Copyright &copy; Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
 
 -----
-Amazon's trademarks and trade dress may not be used in 
-     connection with any product or service that is not Amazon's, 
-     in any manner that is likely to cause confusion among customers, 
-     or in any manner that disparages or discredits Amazon. All other 
-     trademarks not owned by Amazon are the property of their respective
-     owners, who may or may not be affiliated with, connected to, or 
-     sponsored by Amazon.
+Amazon's trademarks and trade dress may not be used in
+connection with any product or service that is not Amazon's,
+in any manner that is likely to cause confusion among customers,
+or in any manner that disparages or discredits Amazon. All other
+trademarks not owned by Amazon are the property of their respective
+owners, who may or may not be affiliated with, connected to, or
+sponsored by Amazon.
 
 -----
 ## Contents
 + [What is AWS Site-to-Site VPN?](VPC_VPN.md)
 + [How AWS Site-to-Site VPN works](how_it_works.md)
-   + [Site-to-Site VPN categories](vpn-categories.md)
    + [Tunnel options for your Site-to-Site VPN connection](VPNTunnels.md)
    + [Site-to-Site VPN tunnel authentication options](vpn-tunnel-authentication-options.md)
    + [Site-to-Site VPN tunnel initiation options](initiate-vpn-tunnels.md)
@@ -44,8 +43,6 @@ Amazon's trademarks and trade dress may not be used in
       + [Troubleshooting Juniper ScreenOS customer gateway device connectivity](Juniper_ScreenOs_Troubleshooting.md)
       + [Troubleshooting Yamaha customer gateway device connectivity](Yamaha_Troubleshooting.md)
 + [Working with Site-to-Site VPN](working-with-site-site.md)
-   + [Identifying a Site-to-Site VPN connection](identify-vpn.md)
-   + [Migrating from AWS Classic VPN to AWS VPN](aws-vpn-migrate.md)
    + [Creating an AWS Cloud WAN Site-to-Site VPN attachment](create-cwan-vpn-attachment.md)
    + [Creating a transit gateway VPN attachment](create-tgw-vpn-attachment.md)
    + [Testing the Site-to-Site VPN connection](HowToTestEndToEnd_Linux.md)
@@ -56,17 +53,20 @@ Amazon's trademarks and trade dress may not be used in
    + [Editing static routes for a Site-to-Site VPN connection](vpn-edit-static-routes.md)
    + [Changing the customer gateway for a Site-to-Site VPN connection](change-vpn-cgw.md)
    + [Replacing compromised credentials](CompromisedCredentials.md)
-   + [Rotating Site-to-Site VPN tunnel endpoint certificates](roate-vpn-certificate.md)
+   + [Rotating Site-to-Site VPN tunnel endpoint certificates](rotate-vpn-certificate.md)
    + [Private IP VPN with AWS Direct Connect](private-ip-dx.md)
 + [Security in AWS Site-to-Site VPN](security.md)
    + [Data protection in AWS Site-to-Site VPN](data-protection.md)
-      + [Internetwork traffic privacy](internetwork-traffic-privacy.md)
-   + [Identity and access management for AWS Site-to-Site VPN](vpn-authentication-access-control.md)
-      + [AWS Site-to-Site VPN service-linked role](vpn-service-linked-roles.md)
-   + [Logging and monitoring](logging-monitoring.md)
+   + [Identity and Access Management for AWS Site-to-Site VPN](security-iam.md)
+      + [How AWS Site-to-Site VPN works with IAM](security_iam_service-with-iam.md)
+      + [Identity-based policy examples for AWS Site-to-Site VPN](security_iam_id-based-policy-examples.md)
+      + [Troubleshooting AWS Site-to-Site VPN identity and access](security_iam_troubleshoot.md)
+      + [Using service-linked roles for Site-to-Site VPN](using-service-linked-roles.md)
    + [Resilience in AWS Site-to-Site VPN](disaster-recovery-resiliency.md)
-   + [Infrastructure security in AWS Site-to-Site VPN](infrastructure-security.md)
+   + [Infrastructure Security in AWS Site-to-Site VPN](infrastructure-security.md)
 + [Monitoring your Site-to-Site VPN connection](monitoring-overview-vpn.md)
+   + [AWS Site-to-Site VPN logs](monitoring-logs.md)
+      + [Contents of Site-to-Site VPN logs](log-contents.md)
    + [Monitoring VPN tunnels using Amazon CloudWatch](monitoring-cloudwatch-vpn.md)
    + [Monitoring VPN connections using AWS Health events](monitoring-vpn-health-events.md)
 + [Site-to-Site VPN quotas](vpn-limits.md)
