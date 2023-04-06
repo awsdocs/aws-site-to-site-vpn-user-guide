@@ -115,7 +115,7 @@ Default: 100
 The margin time in seconds before the phase 1 and phase 2 lifetime expires, during which the AWS side of the VPN connection performs an IKE rekey\.   
 You can specify a number between 60 and half of the value of the phase 2 lifetime\.  
 The exact time of the rekey is randomly selected based on the value for rekey fuzz\.  
-Default: 540 \(9 minutes\)
+Default: 270 \(4\.5 minutes\)
 
 **Replay window size packets**  
 The number of packets in an IKE replay window\.   
@@ -128,6 +128,11 @@ The action to take when establishing the tunnel for a VPN connection\. You can s
 + `Add`: Your customer gateway device must initiate the IKE negotiation to bring the tunnel up\.
 For more information, see [Site\-to\-Site VPN tunnel initiation options](initiate-vpn-tunnels.md)\.  
 Default: `Add`
+
+**Tunnel endpoint lifecycle control**  
+Tunnel endpoint lifecycle control provides control over the schedule of endpoint replacements\.  
+For more information, see [Tunnel endpoint lifecycle control](tunnel-endpoint-lifecycle.md)\.  
+Default: `Off`
 
 You can specify the tunnel options when you create a Site\-to\-Site VPN connection, or you can modify the tunnel options for an existing VPN connection\. For more information, see the following topics:
 + [Create a Site\-to\-Site VPN connection](SetUpVPNConnections.md#vpn-create-vpn-connection)

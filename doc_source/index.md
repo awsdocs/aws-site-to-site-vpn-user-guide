@@ -20,6 +20,7 @@ sponsored by Amazon.
    + [Site-to-Site VPN tunnel authentication options](vpn-tunnel-authentication-options.md)
    + [Site-to-Site VPN tunnel initiation options](initiate-vpn-tunnels.md)
    + [Site-to-Site VPN tunnel endpoint replacements](endpoint-replacements.md)
+      + [Tunnel endpoint lifecycle control](tunnel-endpoint-lifecycle.md)
    + [Customer gateway options for your Site-to-Site VPN connection](cgw-options.md)
    + [Accelerated Site-to-Site VPN connections](accelerated-vpn.md)
    + [Site-to-Site VPN routing options](VPNRoutingTypes.md)

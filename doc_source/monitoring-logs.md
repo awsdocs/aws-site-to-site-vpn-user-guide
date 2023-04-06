@@ -6,6 +6,7 @@ Site\-to\-Site VPN logs can be published to Amazon CloudWatch Logs\. This featur
 
 **Topics**
 + [Benefits of Site\-to\-Site VPN logs](#log-benefits)
++ [Amazon CloudWatch Logs resource policy size restrictions](#cwl-policy-size)
 + [Contents of Site\-to\-Site VPN logs](log-contents.md)
 + [IAM requirements to publish to CloudWatch Logs](#publish-cw-logs)
 + [View Site\-to\-Site VPN logs configuration](#status-logs)
@@ -16,6 +17,10 @@ Site\-to\-Site VPN logs can be published to Amazon CloudWatch Logs\. This featur
 + **Simplified VPN troubleshooting:** Site\-to\-Site VPN logs help you to pinpoint configuration mismatches between AWS and your customer gateway device, and address initial VPN connectivity issues\. VPN connections can intermittently flap over time due to misconfigured settings \(such as poorly tuned timeouts\), there can be issues in the underlying transport networks \(like internet weather\), or routing changes or path failures can cause disruption of connectivity over VPN\. This feature allows you to accurately diagnose the cause of intermittent connection failures and fine\-tune low\-level tunnel configuration for reliable operation\.
 + **Centralized AWS Site\-to\-Site VPN visibility:** Site\-to\-Site VPN logs can provide tunnel activity logs for all of the different ways that Site\-to\-Site VPN is connected: Virtual Gateway, Transit Gateway, and CloudHub, using both internet and AWS Direct Connect as transport\. This feature provides customers with a single consistent way to access and analyze detailed logs for all of their Site\-to\-Site VPN connections\.
 + **Security and compliance:** Site\-to\-Site VPN logs can be sent to Amazon CloudWatch Logs for retrospective analysis of VPN connection status and activity over time\. This can help you meet compliance and regulatory requirements\.
+
+## Amazon CloudWatch Logs resource policy size restrictions<a name="cwl-policy-size"></a>
+
+CloudWatch Logs resource policies are limited to 5120 characters\. When CloudWatch Logs detects that a policy approaches this size limit, it automatically enables log groups that start with `/aws/vendedlogs/`\. When you enable logging, Site\-to\-Site VPN must update your CloudWatch Logs resource policy with the log group you specify\. To avoid reaching the CloudWatch Logs resource policy size limit, prefix your log group names with `/aws/vendedlogs/`\.
 
 ## IAM requirements to publish to CloudWatch Logs<a name="publish-cw-logs"></a>
 
@@ -49,7 +54,7 @@ VPN tunnel logs can be published directly to CloudWatch Logs\. For this to work 
         "logs:DescribeLogGroups"
       ],
       "Resource": [
-        "CloudWatch Logs log group ARN"
+        "*"
       ],
       "Effect": "Allow"
     }
